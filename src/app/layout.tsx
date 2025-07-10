@@ -4,7 +4,7 @@ import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { CyberNavbar } from './components/CyberNavbar';
 import { HolographicFooter } from './components/HolographicFooter';
-import CosmicPortal from './components/CosmicPortal';
+// import CosmicPortal from './components/CosmicPortal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.className} bg-black color`}>
-        <CosmicPortal />
+        {/* <CosmicPortal /> */}
         <CyberNavbar />
         <main className="min-h-screen">
           <ErrorBoundary>{children}</ErrorBoundary>
