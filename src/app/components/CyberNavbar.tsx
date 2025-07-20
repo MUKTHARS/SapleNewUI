@@ -12,6 +12,7 @@ export function CyberNavbar() {
   const navItems = [
     { href: '/products', name: 'PRODUCTS' },
     // { href: '/explore', name: 'EXPLORE' },
+    { href: '/solutions', name: 'SOLUTIONS' },
     { href: '/contact', name: 'CONTACT' },
   ];
 
