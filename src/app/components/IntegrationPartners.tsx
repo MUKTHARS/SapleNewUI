@@ -107,7 +107,7 @@ const IntegrationItem = ({
     const isActive = hoveredItem === integration.name;
     const posX = integration.x * dimensions.width;
     const posY = integration.y * dimensions.height;
-
+    console.log(`${integration.name}=M ${posX} ${posY} L ${dimensions.width / 2} ${dimensions.height / 2}`)
     return (
         <motion.div
             className="absolute z-10 cursor-pointer"
@@ -166,7 +166,7 @@ const IntegrationItem = ({
                             }}
                         >
                             <motion.path
-                                d={`M ${posX} ${posY} L ${dimensions.width / 2} ${dimensions.height / 2}`}
+                                // d={`M ${dimensions.width / 2} ${dimensions.height / 2} L ${posX} ${posY}`}
                                 stroke={integration.color}
                                 strokeWidth={1}
                                 strokeDasharray="8 4"
