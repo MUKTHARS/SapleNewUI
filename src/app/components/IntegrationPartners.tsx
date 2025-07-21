@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, animate, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, AnimatePresence, MotionValue  } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
-import Logo from './saple-logo.jpeg';
+// import Logo from './saple-logo.jpeg';
 import WordPress from './WordPress.png';
 import Shopify from './Shopify.png';
 import Webflow from './webflow.svg';
@@ -57,9 +57,12 @@ const generateParticles = (count: number, width: number, height: number): Partic
     }));
 };
 
-const CentralLogo = ({ energyPulse, pulseOpacity }: {
-    energyPulse: ReturnType<typeof useMotionValue>,
-    pulseOpacity: ReturnType<typeof useTransform>
+const CentralLogo = ({
+  energyPulse,
+  pulseOpacity
+}: {
+  energyPulse: MotionValue<number>;
+  pulseOpacity: MotionValue<number>;
 }) => (
     <motion.div className="absolute z-20" whileHover={{ scale: 1.1 }}>
         <div className="relative w-32 h-32 md:w-40 md:h-40">
@@ -206,7 +209,7 @@ export function IntegrationPartners() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Motion values
-    const energyPulse = useMotionValue(0);
+    const energyPulse = useMotionValue<number>(0);
     const pulseOpacity = useTransform(energyPulse, [0, 1], [0.1, 0.4]);
 
     // Memoized values
@@ -496,7 +499,7 @@ export function IntegrationPartners() {
                                         </li>
                                         <li className="flex items-start">
                                             <span className="text-blue-500 mr-2">•</span>
-                                            <span><strong>Webflow:</strong> Add to Project Settings > Custom Code</span>
+                                            <span><strong>Webflow:</strong> Add to Project Settings &gt; Custom Code</span>
                                         </li>
                                         <li className="flex items-start">
                                             <span className="text-blue-500 mr-2">•</span>
