@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { SolutionsHero } from '../components/SolutionsHero';
 import { IndustrySolutions } from '../components/IndustrySolutions';
 import { HowItWorks } from '../components/HowItWorks';
+import { IntegrationPartners } from '../components/IntegrationPartners';
 import { CtaSection } from '../components/CtaSection';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 
@@ -18,6 +19,7 @@ export default function SolutionsPage() {
         <SolutionsHero />
         <IndustrySolutions />
         <HowItWorks />
+        <IntegrationPartners />
         <CtaSection />
       </ErrorBoundary>
     </div>
