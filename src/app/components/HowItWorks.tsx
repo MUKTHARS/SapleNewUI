@@ -8,18 +8,18 @@ export function HowItWorks() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        {/* <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-6">Integrate AI Agents With Your Support Stack</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">How it works</h2>
+          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Seamless integration with your existing tools and workflows
-          </p>
-        </motion.div> */}
+          </p> */}
+        </motion.div>
 
         <div className="max-w-4xl mx-auto">
           {[
