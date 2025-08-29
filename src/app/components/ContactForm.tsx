@@ -61,7 +61,7 @@ export function ContactForm() {
               <div>
                 <h3 className="font-medium text-gray-900">Let&apos;s Talk</h3>
                 <p className="text-gray-600">
-                  Drop us an email anytime at <a href="mailto:chand@saple.ai" className="text-color underline">chand@saple.ai</a><br />
+                  Drop us an email anytime at <a href="mailto:support@saple.ai" className="text-color underline">support@saple.ai</a><br />
                 </p>
               </div>
             </div>
