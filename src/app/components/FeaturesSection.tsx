@@ -35,7 +35,7 @@ export function FeaturesSection() {
         <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">
           Deploy empathetic multimodal AI agents that type, talk, listen, look, and more to scale the relationships that matter for your business.
         </p>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div

@@ -16,11 +16,11 @@ export default function NoCodeAgenticAI() {
   return (
     <div className="bg-white">
       <ErrorBoundary>
-        <BlogHero 
+        <BlogHero
           title="How No-Code Agentic AI is Transforming Modern Business Workflows"
           subtitle="The future of intelligent automation without coding"
         />
-        
+
         <BlogContent>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Introduction: A Shift in Intelligent Automation</h2>
           <p className="text-gray-600 mb-8">
@@ -111,25 +111,25 @@ export default function NoCodeAgenticAI() {
           </p>
           <div className="space-y-6 mb-8">
             {[
-              { 
-                icon: <Headphones className="w-5 h-5" />, 
-                title: "Customer Support", 
-                description: "Handle common queries and escalate issues with context-aware automation." 
+              {
+                icon: <Headphones className="w-5 h-5" />,
+                title: "Customer Support",
+                description: "Handle common queries and escalate issues with context-aware automation."
               },
-              { 
-                icon: <Mail className="w-5 h-5" />, 
-                title: "Sales and Outreach", 
-                description: "Automate lead qualification and follow-ups with intelligent workflows." 
+              {
+                icon: <Mail className="w-5 h-5" />,
+                title: "Sales and Outreach",
+                description: "Automate lead qualification and follow-ups with intelligent workflows."
               },
-              { 
-                icon: <FileText className="w-5 h-5" />, 
-                title: "Back Office", 
-                description: "Streamline document validation, scheduling, and data entry tasks." 
+              {
+                icon: <FileText className="w-5 h-5" />,
+                title: "Back Office",
+                description: "Streamline document validation, scheduling, and data entry tasks."
               },
-              { 
-                icon: <Settings className="w-5 h-5" />, 
-                title: "Internal Ops", 
-                description: "Build internal tools that integrate across systems without needing a developer." 
+              {
+                icon: <Settings className="w-5 h-5" />,
+                title: "Internal Ops",
+                description: "Build internal tools that integrate across systems without needing a developer."
               }
             ].map((item, index) => (
               <div key={index} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
@@ -163,7 +163,7 @@ export default function NoCodeAgenticAI() {
             Rather than replacing people, tools like saple.ai are augmenting how work gets done—enhancing decision-making, reducing repetitive tasks, and allowing employees to focus on higher-value activities. As organizations move forward, adopting such platforms will be key to staying agile, efficient, and innovation-ready.
           </p>
         </BlogContent>
-        
+
         <CtaSection />
       </ErrorBoundary>
     </div>

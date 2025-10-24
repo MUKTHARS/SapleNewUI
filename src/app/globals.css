@@ -27,13 +27,11 @@ body {
 }
 
 .holographic-effect {
-  background: linear-gradient(
-    135deg,
-    rgba(74, 222, 128, 0.1) 0%,
-    rgba(74, 222, 128, 0) 20%,
-    rgba(74, 222, 128, 0) 80%,
-    rgba(74, 222, 128, 0.1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(74, 222, 128, 0.1) 0%,
+      rgba(74, 222, 128, 0) 20%,
+      rgba(74, 222, 128, 0) 80%,
+      rgba(74, 222, 128, 0.1) 100%);
 }
 
 .bg-color {

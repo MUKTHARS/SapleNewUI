@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, animate, AnimatePresence, MotionValue  } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, AnimatePresence, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 // import Logo from './saple-logo.jpeg';
@@ -58,11 +58,11 @@ const generateParticles = (count: number, width: number, height: number): Partic
 };
 
 const CentralLogo = ({
-  energyPulse,
-  pulseOpacity
+    energyPulse,
+    pulseOpacity
 }: {
-  energyPulse: MotionValue<number>;
-  pulseOpacity: MotionValue<number>;
+    energyPulse: MotionValue<number>;
+    pulseOpacity: MotionValue<number>;
 }) => (
     <motion.div className="absolute z-20" whileHover={{ scale: 1.1 }}>
         <div className="relative w-32 h-32 md:w-40 md:h-40">
