@@ -50,7 +50,7 @@ export default function RootLayout({
         {/* Main layout - navbar and footer always visible */}
         <CyberNavbar />
 
-        <main className="min-h-screen">
+        <main>
           <ErrorBoundary>{children}</ErrorBoundary>
         </main>
 
