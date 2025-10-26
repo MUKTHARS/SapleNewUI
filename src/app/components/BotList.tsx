@@ -21,6 +21,7 @@ interface Bot {
   calendly_enabled: boolean;
   calendly_link: string;
   tenant?: string;
+  container: string;
 }
 
 interface UploadedFile {
@@ -870,7 +871,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   <span>Train</span>
                 </button>
                 <button
-                  onClick={() => handleOpenCopyScriptModal(bot.id, bot.name, bot.tenant)}
+                  onClick={() => handleOpenCopyScriptModal(bot.container, bot.name, bot.tenant)}
                   className="flex-1 bg-gradient-to-r from-teal-600 to-teal-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-teal-700 hover:to-teal-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                 >
                   <Copy className="w-4 h-4" />
