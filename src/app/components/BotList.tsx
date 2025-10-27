@@ -577,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       {/* Right Panel - Preview (Full Height) */}
       {previewBot && (
-        <div className="w-1/2 pl-6 flex flex-col h-[85vh]"> {/* Changed to h-screen */}
+        <div className="w-1/2 pl-6 flex flex-col h-[80vh]"> {/* Changed to h-screen */}
           <div className="flex-1 flex flex-col bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden h-full"> {/* Added h-full */}
             {/* Preview Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">

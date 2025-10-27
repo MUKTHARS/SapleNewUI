@@ -92,7 +92,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-[75vh]">
+    <div className="flex h-[80vh]">
       {/* Sidebar */}
       <DashboardSidebar
         activeTab={activeTab}
@@ -104,7 +104,7 @@ export default function Dashboard() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-h-0">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200 shadow-sm flex-shrink-0">
+        {/* <header className="bg-white border-b border-gray-200 shadow-sm flex-shrink-0">
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               <div>
@@ -123,7 +123,7 @@ export default function Dashboard() {
               </div>
 
               {/* User Info */}
-              <div className="flex items-center space-x-4">
+              {/* <div className="flex items-center space-x-4">
                 <div className="text-right">
                   <p className="font-medium text-gray-900">{user?.first_name || user?.username}</p>
                   <p className="text-sm text-gray-500">{workspace?.name || 'Workspace'}</p>
@@ -134,7 +134,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-        </header>
+        </header> */}
 
         {/* Main Content - Scrollable Area */}
         <main className="flex-1 overflow-auto p-6 bg-gray-50">
