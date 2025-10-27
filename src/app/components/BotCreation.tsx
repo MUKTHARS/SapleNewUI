@@ -27,7 +27,7 @@ export function BotCreation() {
     color: '#0C7075',
     font: 'Arial',
     font_style: 'normal',
-    font_size: '16px',
+    font_size: '12px',
     default_model: 'gpt-4o-mini',
     prompt: `You are a helpful, professional AI assistant trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
@@ -63,7 +63,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           color: '#0C7075',
           font: 'Arial',
           font_style: 'normal',
-          font_size: '16px',
+          font_size: '12px',
           default_model: 'gpt-4o-mini',
           prompt: `You are a helpful, professional AI assistant trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
