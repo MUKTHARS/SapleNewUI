@@ -1,8 +1,8 @@
-// components/BotList.tsx - IMPROVED UI DESIGN
+// components/BotList.tsx - FULL HEIGHT PREVIEW
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bot, Settings, MessageSquare, Upload, Train, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, MoreVertical, Sparkles } from 'lucide-react';
+import { Bot, Settings, MessageSquare, Upload, Train, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, MoreVertical, Sparkles, Eye } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface Bot {
@@ -53,6 +53,7 @@ export function BotList() {
   const [fileToDelete, setFileToDelete] = useState<UploadedFile | null>(null);
   const [selectedFramework, setSelectedFramework] = useState<string>('html');
   const [expandedFrameworks, setExpandedFrameworks] = useState<string[]>(['html']);
+  const [previewBot, setPreviewBot] = useState<Bot | null>(null);
   const router = useRouter();
 
   const frameworkInstructions: FrameworkInstruction[] = [
@@ -183,6 +184,10 @@ export function BotList() {
       if (response.ok) {
         const data = await response.json();
         setBots(data);
+        // Auto-select first bot for preview if available
+        if (data.length > 0 && !previewBot) {
+          setPreviewBot(data[0]);
+        }
       } else {
         console.error('Failed to fetch bots');
       }
@@ -230,6 +235,14 @@ export function BotList() {
     setCopyScriptModal({open: true, botId, botName, workspaceId});
     setSelectedFramework('html');
     setExpandedFrameworks(['html']);
+  };
+
+  const handlePreviewBot = (bot: Bot) => {
+    setPreviewBot(bot);
+  };
+
+  const handleClosePreview = () => {
+    setPreviewBot(null);
   };
 
   const handleFileUpload = async () => {
@@ -418,25 +431,197 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header Section */}
-      <div className="mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <div className="mb-4 sm:mb-0">
-            <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-              AI Assistants
-            </h1>
-            <p className="text-gray-600 mt-2">Manage and configure your AI assistants</p>
+    <div className="h-screen flex"> {/* Changed to h-screen for full height */}
+      {/* Left Panel - Bot List (Scrollable) */}
+      <div className={`${previewBot ? 'w-1/2' : 'w-full'} pr-6 border-r border-gray-200 overflow-y-auto`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          {/* Header Section */}
+          <div className="mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div className="mb-4 sm:mb-0">
+                <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                  AI Assistants
+                </h1>
+                <p className="text-gray-600 mt-2">Manage and configure your AI assistants</p>
+              </div>
+              <button
+                onClick={() => router.push('/dashboard?tab=bots')}
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Plus className="w-5 h-5 mr-2" />
+                New Assistant
+              </button>
+            </div>
           </div>
-          <button
-            onClick={() => router.push('/dashboard?tab=bots')}
-            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            <Plus className="w-5 h-5 mr-2" />
-            New Assistant
-          </button>
+
+          {/* Bot Cards Grid */}
+          <div className={`grid grid-cols-1 ${previewBot ? 'md:grid-cols-1' : 'md:grid-cols-2 xl:grid-cols-2'} gap-6 pb-6`}>
+            {bots.map((bot) => (
+              <div
+                key={bot.id}
+                className={`bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group ${
+                  previewBot?.id === bot.id ? 'ring-2 ring-teal-500 ring-opacity-50' : ''
+                }`}
+              >
+                {/* Bot Header with Gradient */}
+                <div
+                  className="h-2 bg-gradient-to-r from-blue-500 to-purple-600"
+                  style={{ background: `linear-gradient(45deg, ${bot.color}20, ${bot.color}60)` }}
+                />
+
+                <div className="p-6">
+                  {/* Bot Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg"
+                        style={{ 
+                          background: `linear-gradient(135deg, ${bot.color}, ${bot.color}cc)`,
+                          boxShadow: `0 4px 15px ${bot.color}40`
+                        }}
+                      >
+                        <Bot className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900 text-lg">{bot.name}</h3>
+                        <p className="text-sm text-gray-500" style={{ fontFamily: bot.font }}>
+                          {bot.default_model}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" title="Online" />
+                  </div>
+
+                  {/* Bot Preview */}
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 mb-5 border border-gray-200">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <Bot className="w-4 h-4 text-teal-600" />
+                      </div>
+                      <div className="flex-1">
+                        <p
+                          className="text-sm text-gray-700 leading-relaxed"
+                          style={{
+                            fontFamily: bot.font,
+                            fontSize: bot.font_size,
+                            color: bot.color
+                          }}
+                        >
+                          Hi! I'm {bot.name}, your AI assistant. How can I help you today?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleEditBot(bot.id)}
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                    >
+                      <Edit className="w-4 h-4" />
+                      <span>Edit</span>
+                    </button>
+                    <button
+                      onClick={() => handleOpenUploadTrainModal(bot.id, bot.name)}
+                      className="flex-1 bg-gradient-to-r from-orange-600 to-orange-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-orange-700 hover:to-orange-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                    >
+                      <Upload className="w-4 h-4" />
+                      <span>Train</span>
+                    </button>
+                    <button
+                      onClick={() => handlePreviewBot(bot)}
+                      className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl ${
+                        previewBot?.id === bot.id 
+                          ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white' 
+                          : 'bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:from-gray-700 hover:to-gray-800'
+                      }`}
+                    >
+                      <Eye className="w-4 h-4" />
+                      <span>Preview</span>
+                    </button>
+                    <button
+                      onClick={() => handleOpenCopyScriptModal(bot.container, bot.name, bot.tenant)}
+                      className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                    >
+                      <Copy className="w-4 h-4" />
+                      <span>Embed</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Empty State */}
+          {bots.length === 0 && (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Bot className="w-10 h-10 text-gray-500" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No AI Assistants Yet</h3>
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                Create your first AI assistant to start providing intelligent chat support on your website.
+              </p>
+              <button
+                onClick={() => router.push('/dashboard?tab=bots')}
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Plus className="w-5 h-5 mr-2" />
+                Create Your First Assistant
+              </button>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Right Panel - Preview (Full Height) */}
+      {previewBot && (
+        <div className="w-1/2 pl-6 flex flex-col h-[85vh]"> {/* Changed to h-screen */}
+          <div className="flex-1 flex flex-col bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden h-full"> {/* Added h-full */}
+            {/* Preview Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+              <div className="flex items-center space-x-3">
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-white"
+                  style={{ 
+                    background: `linear-gradient(135deg, ${previewBot.color}, ${previewBot.color}cc)`
+                  }}
+                >
+                  <Bot className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Preview: {previewBot.name}</h3>
+                  <p className="text-sm text-gray-500">Live bot preview - Test your assistant</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" title="Online" />
+                  <span className="text-xs text-gray-500">Live</span>
+                </div>
+                <button
+                  onClick={handleClosePreview}
+                  className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-lg ml-2"
+                  title="Close preview"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Bot Preview Iframe - Full Height */}
+            <div className="flex-1 h-full"> {/* Changed to ensure full height */}
+              <iframe
+                src={`${process.env.NEXT_PUBLIC_APP_URL || 'https://devbot.saple.ai'}/${previewBot.tenant}/${previewBot.container}`}
+                className="w-full h-full border-0"
+                title={`${previewBot.name} Preview`}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Upload & Train Modal */}
       {uploadTrainModal.open && (
@@ -794,112 +979,6 @@ document.addEventListener("DOMContentLoaded", function() {
               </button>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Bot Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {bots.map((bot) => (
-          <div
-            key={bot.id}
-            className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
-          >
-            {/* Bot Header with Gradient */}
-            <div
-              className="h-2 bg-gradient-to-r from-blue-500 to-purple-600"
-              style={{ background: `linear-gradient(45deg, ${bot.color}20, ${bot.color}60)` }}
-            />
-
-            <div className="p-6">
-              {/* Bot Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${bot.color}, ${bot.color}cc)`,
-                      boxShadow: `0 4px 15px ${bot.color}40`
-                    }}
-                  >
-                    <Bot className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">{bot.name}</h3>
-                    <p className="text-sm text-gray-500" style={{ fontFamily: bot.font }}>
-                      {bot.default_model}
-                    </p>
-                  </div>
-                </div>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" title="Online" />
-              </div>
-
-              {/* Bot Preview */}
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 mb-5 border border-gray-200">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <Bot className="w-4 h-4 text-teal-600" />
-                  </div>
-                  <div className="flex-1">
-                    <p
-                      className="text-sm text-gray-700 leading-relaxed"
-                      style={{
-                        fontFamily: bot.font,
-                        fontSize: bot.font_size,
-                        color: bot.color
-                      }}
-                    >
-                      Hi! I'm {bot.name}, your AI assistant. How can I help you today?
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => handleEditBot(bot.id)}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
-                >
-                  <Edit className="w-4 h-4" />
-                  <span>Edit</span>
-                </button>
-                <button
-                  onClick={() => handleOpenUploadTrainModal(bot.id, bot.name)}
-                  className="flex-1 bg-gradient-to-r from-orange-600 to-orange-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-orange-700 hover:to-orange-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
-                >
-                  <Upload className="w-4 h-4" />
-                  <span>Train</span>
-                </button>
-                <button
-                  onClick={() => handleOpenCopyScriptModal(bot.container, bot.name, bot.tenant)}
-                  className="flex-1 bg-gradient-to-r from-teal-600 to-teal-700 text-white py-2.5 px-3 rounded-xl text-sm font-semibold hover:from-teal-700 hover:to-teal-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
-                >
-                  <Copy className="w-4 h-4" />
-                  <span>Embed</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Empty State */}
-      {bots.length === 0 && (
-        <div className="text-center py-16">
-          <div className="w-24 h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <Bot className="w-10 h-10 text-gray-500" />
-          </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No AI Assistants Yet</h3>
-          <p className="text-gray-600 mb-6 max-w-md mx-auto">
-            Create your first AI assistant to start providing intelligent chat support on your website.
-          </p>
-          <button
-            onClick={() => router.push('/dashboard?tab=bots')}
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            <Plus className="w-5 h-5 mr-2" />
-            Create Your First Assistant
-          </button>
         </div>
       )}
     </div>
