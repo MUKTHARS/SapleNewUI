@@ -1,4 +1,4 @@
-// components/UserSection.tsx - UPDATED (auto-show workspace modal)
+// components/UserSection.tsx - FIXED
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -28,6 +28,8 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
   const checkUserWorkspace = async () => {
     try {
       setWorkspaceLoading(true);
+      setHasCheckedWorkspace(false); // Reset this at the start
+      
       const token = sessionStorage.getItem('access_token');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/workspace/current/`,
@@ -50,14 +52,20 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
       setCurrentWorkspace(null);
     } finally {
       setWorkspaceLoading(false);
-      setHasCheckedWorkspace(true);
+      setHasCheckedWorkspace(true); // Only set this after everything is done
     }
   };
 
   // Automatically show workspace modal when user has no workspace
   useEffect(() => {
+    // Only show modal after we've checked AND there's no workspace AND we're not loading
     if (hasCheckedWorkspace && !currentWorkspace && !workspaceLoading && isLoggedIn) {
-      setShowWorkspaceModal(true);
+      // Add a small delay to ensure the UI has updated properly
+      const timer = setTimeout(() => {
+        setShowWorkspaceModal(true);
+      }, 100);
+      
+      return () => clearTimeout(timer);
     }
   }, [hasCheckedWorkspace, currentWorkspace, workspaceLoading, isLoggedIn]);
 
@@ -96,7 +104,7 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
           onLogout={handleLogout}
           onCreateWorkspace={handleCreateWorkspaceClick}
           onDashboardClick={handleDashboardClick}
-          isLoading={workspaceLoading}
+          isLoading={workspaceLoading || !hasCheckedWorkspace} // Show loading until we've checked
         />
       ) : (
         <LoginButton onClick={onLoginClick} />
@@ -114,7 +122,7 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
   );
 };
 
-// Updated LoggedInUser Component - simplified since modal shows automatically
+// Updated LoggedInUser Component
 interface LoggedInUserProps {
   user: any;
   workspace: any;
@@ -129,7 +137,7 @@ const LoggedInUser = ({ user, workspace, onLogout, onCreateWorkspace, onDashboar
     {isLoading ? (
       <div className="flex items-center">
         <div className="w-4 h-4 border-2 border-green-400 border-t-transparent rounded-full animate-spin mr-2"></div>
-        <span className="text-gray-400 text-sm font-mono">Loading...</span>
+        <span className="text-gray-400 text-sm font-mono">Checking workspace...</span>
       </div>
     ) : workspace ? (
       // User has a workspace - show dashboard button
@@ -160,15 +168,19 @@ const LoggedInUser = ({ user, workspace, onLogout, onCreateWorkspace, onDashboar
         </motion.button>
       </div>
     ) : (
-      // User needs to create a workspace - show loading or minimal UI since modal will auto-open
+      // User needs to create a workspace
       <div className="flex items-center space-x-3">
         <span className="text-gray-300 text-sm font-mono">
           Welcome, {user?.first_name || user?.username}
         </span>
-        <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
-          <span className="text-yellow-400 text-xs font-mono">Creating workspace...</span>
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onCreateWorkspace}
+          className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-md text-sm font-mono tracking-wider transition-colors border border-yellow-400/30"
+        >
+          CREATE WORKSPACE
+        </motion.button>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
