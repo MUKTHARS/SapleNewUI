@@ -183,7 +183,7 @@ export function BotList() {
 
       if (response.ok) {
         const data = await response.json();
-        setBots(data);
+        setBots(data.bots);
         // Auto-select first bot for preview if available
         if (data.length > 0 && !previewBot) {
           setPreviewBot(data[0]);
