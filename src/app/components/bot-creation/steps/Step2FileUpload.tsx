@@ -54,7 +54,7 @@ export function Step2FileUpload({
     setError('');
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const botId = createdBot?.id;
 
       if (!botId) {

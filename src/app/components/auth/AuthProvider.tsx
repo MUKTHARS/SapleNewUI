@@ -30,21 +30,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       if (!token) {
         setIsLoading(false);
         return;
       }
 
-      const userData = localStorage.getItem('user');
+      const userData = sessionStorage.getItem('user');
       if (userData) {
         setUser(JSON.parse(userData));
       }
     } catch (error) {
       console.error('Auth check error:', error);
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
-      localStorage.removeItem('user');
+      sessionStorage.removeItem('access_token');
+      sessionStorage.removeItem('refresh_token');
+      sessionStorage.removeItem('user');
     } finally {
       setIsLoading(false);
     }
@@ -77,9 +77,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const data = await result.json();
 
       if (result.ok) {
-        localStorage.setItem('access_token', data.tokens.access);
-        localStorage.setItem('refresh_token', data.tokens.refresh);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        sessionStorage.setItem('access_token', data.tokens.access);
+        sessionStorage.setItem('refresh_token', data.tokens.refresh);
+        sessionStorage.setItem('user', JSON.stringify(data.user));
         setUser(data.user);
 
         // Check if user has workspace
@@ -117,9 +117,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('refresh_token');
+    sessionStorage.removeItem('user');
     setUser(null);
     router.push('/');
   };

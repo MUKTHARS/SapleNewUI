@@ -28,7 +28,7 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
   const checkUserWorkspace = async () => {
     try {
       setWorkspaceLoading(true);
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/workspace/current/`,
         {

@@ -71,9 +71,9 @@ export const GoogleLoginButton = ({ onSuccess, onError, onWorkspaceCheck }: Goog
       const data = await result.json();
 
       if (result.ok) {
-        localStorage.setItem('access_token', data.tokens.access);
-        localStorage.setItem('refresh_token', data.tokens.refresh);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        sessionStorage.setItem('access_token', data.tokens.access);
+        sessionStorage.setItem('refresh_token', data.tokens.refresh);
+        sessionStorage.setItem('user', JSON.stringify(data.user));
         onSuccess?.(data.user);
 
         // Check if user has a workspace

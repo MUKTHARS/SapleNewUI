@@ -28,8 +28,8 @@ export function CyberNavbar() {
 
   // Check if user is logged in on component mount
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    const userData = localStorage.getItem('user');
+    const token = sessionStorage.getItem('access_token');
+    const userData = sessionStorage.getItem('user');
     if (token && userData) {
       setIsLoggedIn(true);
       setUser(JSON.parse(userData));
@@ -72,9 +72,9 @@ export function CyberNavbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('refresh_token');
+    sessionStorage.removeItem('user');
     setIsLoggedIn(false);
     setUser(null);
     setIsMobileMenuOpen(false); // Close mobile menu after logout

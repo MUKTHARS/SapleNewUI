@@ -36,7 +36,7 @@ export function TeamManagement() {
 
   const fetchTeamMembers = async () => {
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/workspace/team-members/`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -59,7 +59,7 @@ export function TeamManagement() {
     setSuccessMessage('');
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/workspace/team-members/invite/`, {
         method: 'POST',
         headers: {
@@ -111,7 +111,7 @@ export function TeamManagement() {
     if (!confirm('Are you sure you want to remove this team member?')) return;
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/workspace/team-members/remove/${memberId}/`, {
         method: 'DELETE',
         headers: {

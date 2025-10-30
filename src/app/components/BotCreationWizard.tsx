@@ -111,7 +111,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     clearError();
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/create/`, {
         method: 'POST',
         headers: {
@@ -145,7 +145,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     clearError();
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const uploadFormData = new FormData();
 
       selectedFiles.forEach(file => {
@@ -184,7 +184,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     if (!createdBot) return;
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/${createdBot.id}/files/`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -209,7 +209,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     clearError();
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/${createdBot.id}/train/`, {
         method: 'POST',
         headers: {
@@ -241,7 +241,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     clearError();
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/${createdBot.id}/update/`, {
         method: 'PUT',
         headers: {

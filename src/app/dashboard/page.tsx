@@ -18,7 +18,7 @@ export default function Dashboard() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const userData = localStorage.getItem('user');
+    const userData = sessionStorage.getItem('user');
     if (!userData) {
       router.push('/');
       return;
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
   const fetchWorkspaceData = async () => {
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/workspace/current/`,
         {

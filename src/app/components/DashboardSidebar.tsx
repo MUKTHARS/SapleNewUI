@@ -26,9 +26,9 @@ export function DashboardSidebar({ activeTab, onTabChange, user, workspace }: Da
   const router = useRouter();
 
   const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('refresh_token');
+    sessionStorage.removeItem('user');
     router.push('/');
   };
 

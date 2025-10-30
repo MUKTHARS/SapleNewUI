@@ -44,7 +44,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     setIsLoading(true);
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/create/`, {
         method: 'POST',
         headers: {

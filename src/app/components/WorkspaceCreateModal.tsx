@@ -43,7 +43,7 @@ export const WorkspaceCreateModal = ({
     setFieldError(null); // Clear previous errors
 
     try {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/workspace/create/`,
         {

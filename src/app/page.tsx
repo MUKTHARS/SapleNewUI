@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       if (token) {
         // Check if user has a workspace
         try {
