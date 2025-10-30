@@ -1,5 +1,5 @@
 // components/bot-creation/steps/Step3Training.tsx
-import { ArrowLeft, Train, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { ArrowLeft, Brain , AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { StepProps } from '../types/bot-types';
 import { ErrorAlert } from '../shared/ErrorAlert';
 
@@ -67,7 +67,7 @@ export function Step3Training({
           disabled={isLoading}
           className="bg-orange-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-orange-700 transition-colors disabled:opacity-50 flex items-center space-x-2"
         >
-          <Train className="w-4 h-4" />
+          <Brain className="w-4 h-4" />
           <span>{isLoading ? 'Starting Training...' : `Start Training`}</span>
         </button>
       </div>

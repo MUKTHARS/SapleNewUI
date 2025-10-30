@@ -10,7 +10,7 @@ import {
   Calendar,
   Save,
   Upload,
-  Train,
+  Brain,
   ArrowLeft,
   ArrowRight,
   FileText,
@@ -386,7 +386,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       number: 3, 
       title: 'Training', 
       description: 'AI model training',
-      icon: Train,
+      icon: Brain,
       completed: currentStep > 3 || (editMode && currentStep >= 3)
     },
     { 
@@ -725,7 +725,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           disabled={isLoading}
           className="bg-orange-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-orange-700 transition-colors disabled:opacity-50 flex items-center space-x-2"
         >
-          <Train className="w-4 h-4" />
+          <Brain className="w-4 h-4" />
           <span>{isLoading ? (editMode ? 'Retraining...' : 'Starting Training...') : (editMode ? 'Retrain Bot' : 'Start Training')}</span>
         </button>
       </div>

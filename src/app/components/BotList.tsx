@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bot, Settings, MessageSquare, Upload, Train, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, MoreVertical, Sparkles, Eye } from 'lucide-react';
+import { Bot, Settings, MessageSquare, Upload, Brain, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, MoreVertical, Sparkles, Eye } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface Bot {
@@ -785,7 +785,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </>
                   ) : (
                     <>
-                      <Train className="w-4 h-4" />
+                      <Brain className="w-4 h-4" />
                       <span>Train Assistant</span>
                     </>
                   )}

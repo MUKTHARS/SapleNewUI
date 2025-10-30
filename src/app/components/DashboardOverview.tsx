@@ -231,7 +231,7 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
       >
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold mb-2">Welcome back! 👋</h2>
+            <h2 className="text-2xl font-bold mb-2">Welcome back! </h2>
             <p className="text-teal-100">
               Here's what's happening with your AI assistants today.
             </p>
