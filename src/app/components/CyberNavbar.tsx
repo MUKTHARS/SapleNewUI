@@ -80,6 +80,14 @@ export function CyberNavbar() {
     setIsMobileMenuOpen(false); // Close mobile menu after logout
   };
 
+  useEffect(() => {
+    const openLoginModalHandler = () => setShowLoginModal(true);
+    window.addEventListener('open-login-modal', openLoginModalHandler);
+    return () => {
+      window.removeEventListener('open-login-modal', openLoginModalHandler);
+    };
+  }, []);
+
   return (
     <>
       <nav className="container mx-auto px-4 flex justify-between items-center border-b border-green-400/20">
