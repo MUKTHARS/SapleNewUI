@@ -43,26 +43,26 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
         <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <Bot className="w-10 h-10 text-blue-600" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Let's Create Your AI Assistant</h2>
-        <p className="text-gray-600 mt-2 text-lg">Start by giving your assistant a friendly name and choose how users will interact with it</p>
+        <h2 className="text-2xl font-bold text-gray-900">Let's Create Your AI Agent</h2>
+        <p className="text-gray-600 mt-2 text-lg">Start by giving your agent a friendly name and choose how users will interact with it</p>
       </div>
 
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Bot Name */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <label className="block text-lg font-semibold text-gray-900 mb-4">
-            What would you like to call your assistant?
+            What would you like to call your agent?
           </label>
           <input
             type="text"
             value={formData.name}
             onChange={(e) => onChange({ ...formData, name: e.target.value })}
             className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg placeholder-gray-400"
-            placeholder="e.g., Customer Support Bot, Sales Assistant..."
+            placeholder="e.g., Customer Support Agent, Sales Agent..."
             maxLength={50}
           />
           <div className="flex justify-between text-sm text-gray-500 mt-3">
-            <span>This will be your assistant's display name</span>
+            <span>This will be your agent's display name</span>
             <span>{formData.name.length}/50</span>
           </div>
         </div>
@@ -70,7 +70,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
         {/* Media Type Selection */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <label className="block text-lg font-semibold text-gray-900 mb-6">
-            How will users interact with your assistant?
+            How will users interact with your agent?
           </label>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {mediaTypes.map((type) => {
@@ -184,7 +184,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
                   </div>
                 </div>
                 <p className="text-blue-700 text-sm italic">
-                  You can always change this later in the assistant settings
+                  You can always change this later in the agent settings
                 </p>
               </div>
             </div>
@@ -198,14 +198,14 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
               <span className="text-white text-lg">💡</span>
             </div>
             <div>
-              <p className="text-orange-800 font-bold text-lg mb-2">Naming Your Assistant</p>
+              <p className="text-orange-800 font-bold text-lg mb-2">Naming Your Agent</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="text-orange-700 font-semibold">Good Examples</p>
                   <ul className="text-orange-600 mt-1 space-y-1">
                     <li>• Support Helper</li>
                     <li>• Product Guide</li>
-                    <li>• Sales Assistant</li>
+                    <li>• Sales Agent</li>
                     <li>• Customer Care</li>
                   </ul>
                 </div>
@@ -246,7 +246,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
             {isLoading ? (
               <>
                 <Loader2 className="w-6 h-6 animate-spin" />
-                <span>Creating Assistant...</span>
+                <span>Creating Agent...</span>
               </>
             ) : (
               <>

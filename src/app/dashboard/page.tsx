@@ -111,8 +111,8 @@ export default function Dashboard() {
                 <h1 className="text-2xl font-bold text-gray-900">
                   {activeTab === 'overview' && 'Dashboard Overview'}
                   {activeTab === 'team' && 'Team Management'}
-                  {activeTab === 'bots' && 'Create AI Assistant'}
-                  {activeTab === 'bot-list' && 'My AI Assistants'}
+                  {activeTab === 'bots' && 'Create AI Agent'}
+                  {activeTab === 'bot-list' && 'My AI Agents'}
                 </h1>
                 <p className="text-gray-600 mt-1">
                   {activeTab === 'overview' && 'Monitor your workspace performance and analytics'}

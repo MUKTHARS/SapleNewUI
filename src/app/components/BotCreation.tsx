@@ -29,7 +29,7 @@ export function BotCreation() {
     font_style: 'normal',
     font_size: '12px',
     default_model: 'gpt-4o-mini',
-    prompt: `You are a helpful, professional AI assistant trained on company-specific documents. 
+    prompt: `You are a helpful, professional AI agent trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
 If you don't know the answer or it's outside your scope, say so politely. 
 Always maintain a friendly, respectful, and informative tone. 
@@ -65,7 +65,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           font_style: 'normal',
           font_size: '12px',
           default_model: 'gpt-4o-mini',
-          prompt: `You are a helpful, professional AI assistant trained on company-specific documents. 
+          prompt: `You are a helpful, professional AI agent trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
 If you don't know the answer or it's outside your scope, say so politely. 
 Always maintain a friendly, respectful, and informative tone. 
@@ -74,14 +74,14 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           calendly_enabled: false,
           calendly_link: '',
         });
-        alert('Bot created successfully!');
+        alert('Agent created successfully!');
         // You might want to redirect to bot list or refresh bot list here
       } else {
-        alert(data.error || 'Failed to create bot');
+        alert(data.error || 'Failed to create agent');
       }
     } catch (error) {
-      console.error('Bot creation error:', error);
-      alert('Failed to create bot');
+      console.error('Agent creation error:', error);
+      alert('Failed to create agent');
     } finally {
       setIsLoading(false);
     }
@@ -102,8 +102,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               <Bot className="w-5 h-5 text-teal-600" />
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">Create New AI Assistant</h2>
-              <p className="text-gray-600 text-sm">Configure your AI assistant's settings and behavior</p>
+              <h2 className="text-xl font-semibold text-gray-900">Create New AI Agent</h2>
+              <p className="text-gray-600 text-sm">Configure your AI agent's settings and behavior</p>
             </div>
           </div>
         </div>
@@ -114,14 +114,14 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Bot Name *
+                Agent Name *
               </label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                placeholder="My Assistant Bot"
+                placeholder="My Agent"
                 required
               />
             </div>
@@ -234,7 +234,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                   onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
                   rows={6}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-vertical"
-                  placeholder="Define how your AI assistant should behave..."
+                  placeholder="Define how your AI agent should behave..."
                 />
               </div>
 
@@ -247,10 +247,10 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                   value={formData.welcome_message}
                   onChange={(e) => setFormData({ ...formData, welcome_message: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  placeholder="Welcome message (use {bot_name} for bot name)"
+                  placeholder="Welcome message (use {bot_name} for agent name)"
                 />
                 <p className="text-sm text-gray-500 mt-1">
-                  Use {'{bot_name}'} to automatically insert the bot's name
+                  Use {'{bot_name}'} to automatically insert the agent's name
                 </p>
               </div>
             </div>
@@ -306,12 +306,12 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Creating Assistant...</span>
+                  <span>Creating agent...</span>
                 </>
               ) : (
                 <>
                   <Save className="w-4 h-4" />
-                  <span>Create AI Assistant</span>
+                  <span>Create AI agent</span>
                 </>
               )}
             </motion.button>

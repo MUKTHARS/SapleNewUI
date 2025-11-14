@@ -37,12 +37,12 @@ export function Step4Configuration({
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">
-          {editMode ? 'Update Bot Configuration' : 'Bot Configuration'}
+          {editMode ? 'Update Agent Configuration' : 'Agent Configuration'}
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode
-            ? 'Customize your AI assistant\'s appearance and behavior'
-            : 'Customize your bot\'s appearance and behavior'
+            ? 'Customize your AI agent\'s appearance and behavior'
+            : 'Customize your agent\'s appearance and behavior'
           }
         </p>
       </div>
@@ -180,10 +180,10 @@ export function Step4Configuration({
               onChange={(e) => handleInputChange('prompt', e.target.value)}
               rows={6}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-vertical"
-              placeholder="Define how your AI assistant should behave..."
+              placeholder="Define how your AI agent should behave..."
             />
             <p className="text-sm text-gray-500 mt-1">
-              This prompt defines the bot's personality, behavior, and response style
+              This prompt defines the agent's personality, behavior, and response style
             </p>
           </div>
 
@@ -197,10 +197,10 @@ export function Step4Configuration({
               value={formData.welcome_message}
               onChange={(e) => handleInputChange('welcome_message', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="Welcome message (use {bot_name} for bot name)"
+              placeholder="Welcome message (use {bot_name} for agent name)"
             />
             <p className="text-sm text-gray-500 mt-1">
-              Use {'{bot_name}'} to automatically insert the bot's name. Example: "Hi! I'm {'{bot_name}'}, how can I help you?"
+              Use {'{bot_name}'} to automatically insert the agent's name. Example: "Hi! I'm {'{bot_name}'}, how can I help you?"
             </p>
           </div>
         </div>
@@ -273,7 +273,7 @@ export function Step4Configuration({
           ) : (
             <>
               <Save className="w-4 h-4" />
-              <span>{editMode ? 'Update Bot' : 'Save Configuration'}</span>
+              <span>{editMode ? 'Update Agent' : 'Save Configuration'}</span>
             </>
           )}
         </button>

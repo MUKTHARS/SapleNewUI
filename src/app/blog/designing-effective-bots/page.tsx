@@ -104,7 +104,7 @@ export default function DesigningEffectiveBots() {
             <h3 className="font-semibold mb-2">Characteristics:</h3>
             <ul className="space-y-2">
               {[
-                "Conversational and Engaging: Should feel like a helpful assistant, not a script.",
+                "Conversational and Engaging: Should feel like a helpful agent, not a script.",
                 "Goal-driven: Direct users toward CTAs (e.g., book a demo, request a quote).",
                 "Personalized: Use previous interactions or input to tailor suggestions.",
                 "Trust-building: Avoid hard-sell tactics; instead, educate and support."

@@ -45,12 +45,12 @@ export function DashboardSidebar({ activeTab, onTabChange, user, workspace }: Da
     },
     {
       id: 'bots' as const,
-      label: 'Create Bot',
+      label: 'Create Agent',
       icon: <Bot className="w-5 h-5" />,
     },
     {
       id: 'bot-list' as const,
-      label: 'My Bots',
+      label: 'My Agents',
       icon: <BotIcon className="w-5 h-5" />,
     },
   ];

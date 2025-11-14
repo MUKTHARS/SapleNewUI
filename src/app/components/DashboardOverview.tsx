@@ -146,7 +146,7 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
       description: `${teamStats.active} active, ${teamStats.new_this_month} new this month`
     },
     {
-      title: 'Active Bots',
+      title: 'Active Agents',
       value: formatNumber(botStats.active),
       ...calculateTrend(botStats.active, botStats.total - botStats.active),
       icon: <Bot className="w-6 h-6" />,
@@ -518,7 +518,7 @@ function BotPerformanceSection({ bots }: BotPerformanceSectionProps) {
       transition={{ delay: 0.6 }}
       className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
     >
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">Bot Performance</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-6">Agent Performance</h3>
       <div className="space-y-4">
         {bots.slice(0, 4).map((bot) => (
           <div key={bot.bot_id} className="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
@@ -542,7 +542,7 @@ function BotPerformanceSection({ bots }: BotPerformanceSectionProps) {
         {bots.length === 0 && (
           <div className="text-center py-8 text-gray-500">
             <Bot className="w-12 h-12 mx-auto mb-2 opacity-50" />
-            <p>No bot activity yet</p>
+            <p>No agent activity yet</p>
           </div>
         )}
       </div>
@@ -587,7 +587,7 @@ function StorageOverviewSection({ storage }: StorageOverviewSectionProps) {
 
       {/* Storage by Bot */}
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-900 text-sm">Storage by Bot</h4>
+        <h4 className="font-medium text-gray-900 text-sm">Storage by Agent</h4>
         {storage.usage_by_bot.slice(0, 5).map((bot) => (
           <div key={bot.bot__name} className="flex items-center justify-between">
             <span className="text-sm text-gray-600 truncate flex-1 mr-4">{bot.bot__name || 'Unassigned'}</span>
@@ -615,11 +615,11 @@ function StorageOverviewSection({ storage }: StorageOverviewSectionProps) {
 function QuickActionsSection() {
   const quickActions = [
     {
-      title: 'Create Bot',
-      description: 'New AI assistant',
+      title: 'Create Agent',
+      description: 'New AI agent',
       icon: <Bot className="w-5 h-5 text-white" />,
       color: 'bg-blue-500 hover:bg-blue-600',
-      action: () => console.log('Create Bot')
+      action: () => console.log('Create Agent')
     },
     {
       title: 'Invite Team',

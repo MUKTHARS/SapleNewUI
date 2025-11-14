@@ -63,8 +63,8 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
         </h2>
         <p className="text-gray-600 mt-2 text-lg">
           {editMode 
-            ? 'Review your changes before updating your assistant' 
-            : 'Everything looks good. Your assistant is ready to be created!'
+            ? 'Review your changes before updating your agent' 
+            : 'Everything looks good. Your agent is ready to be created!'
           }
         </p>
       </div>
@@ -163,9 +163,9 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
               <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <span className="text-white text-xl font-bold">1</span>
               </div>
-              <p className="font-semibold text-blue-800">Assistant Creation</p>
+              <p className="font-semibold text-blue-800">Agent Creation</p>
               <p className="text-blue-700 text-sm mt-2">
-                Your assistant will be created instantly with all your settings
+                Your agent will be created instantly with all your settings
               </p>
             </div>
             <div className="text-center">
@@ -183,7 +183,7 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
               </div>
               <p className="font-semibold text-purple-800">Ready to Use</p>
               <p className="text-purple-700 text-sm mt-2">
-                Your assistant will be ready to use in about 5-10 minutes
+                Your agent will be ready to use in about 5-10 minutes
               </p>
             </div>
           </div>
@@ -227,12 +227,12 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
               {isLoading ? (
                 <>
                   <Loader2 className="w-6 h-6 animate-spin" />
-                  <span>Creating Assistant...</span>
+                  <span>Creating Agent...</span>
                 </>
               ) : (
                 <>
                   <CheckCircle className="w-6 h-6" />
-                  <span>{editMode ? 'Update Assistant' : 'Create Assistant'}</span>
+                  <span>{editMode ? 'Update Agent' : 'Create Agent'}</span>
                 </>
               )}
             </button>

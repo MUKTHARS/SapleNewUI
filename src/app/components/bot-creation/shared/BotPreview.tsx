@@ -28,7 +28,7 @@ export function BotPreview({ formData }: BotPreviewProps) {
               fontWeight: formData.font_style.includes('bold') ? 'bold' : 'normal'
             }}
           >
-            {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Bot')}
+            {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Agent')}
           </p>
         </div>
       </div>

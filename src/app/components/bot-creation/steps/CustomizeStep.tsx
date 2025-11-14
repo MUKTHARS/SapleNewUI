@@ -58,7 +58,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
         <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <Settings className="w-10 h-10 text-orange-600" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Customize Your Assistant</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Customize Your Agent</h2>
         <p className="text-gray-600 mt-2 text-lg">Make it look and sound just right</p>
         
         {/* Media Type Indicator */}
@@ -68,9 +68,9 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
           </div>
           <div>
             <p className="font-semibold text-gray-900">
-              {formData.media_type === 'text' && 'Text Assistant'}
-              {formData.media_type === 'audio' && 'Voice Assistant'}
-              {formData.media_type === 'both' && 'Text & Voice Assistant'}
+              {formData.media_type === 'text' && 'Text Agent'}
+              {formData.media_type === 'audio' && 'Voice Agent'}
+              {formData.media_type === 'both' && 'Text & Voice Agent'}
             </p>
             <p className="text-sm text-gray-500">
               {formData.media_type === 'text' && 'Users will interact via text messages'}
@@ -136,7 +136,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                           placeholder="#0C7075"
                         />
                         <p className="text-sm text-gray-500 mt-2">
-                          This color will be used for your assistant's branding
+                          This color will be used for your agent's branding
                         </p>
                       </div>
                     </div>
@@ -214,7 +214,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       ))}
                     </select>
                     <p className="text-sm text-gray-500 mt-2">
-                      Choose the AI model that powers your assistant's intelligence
+                      Choose the AI model that powers your agent's intelligence
                     </p>
                   </div>
 
@@ -230,7 +230,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       placeholder="Hi! I'm {bot_name}, how can I help you today?"
                     />
                     <p className="text-sm text-gray-500 mt-2">
-                      Use {'{bot_name}'} to automatically insert your assistant's name
+                      Use {'{bot_name}'} to automatically insert your agent's name
                     </p>
                   </div>
 
@@ -243,10 +243,10 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       onChange={(e) => handleInputChange('prompt', e.target.value)}
                       rows={6}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical"
-                      placeholder="Describe how your assistant should behave, its personality, tone, and response style..."
+                      placeholder="Describe how your agent should behave, its personality, tone, and response style..."
                     />
                     <p className="text-sm text-gray-500 mt-2">
-                      Guide your assistant's behavior, tone, and response style
+                      Guide your agent's behavior, tone, and response style
                     </p>
                   </div>
                 </div>
@@ -331,7 +331,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       <div>
                         <p className="text-green-800 font-semibold">Voice Preview Available</p>
                         <p className="text-green-700 text-sm mt-1">
-                          You'll be able to test and preview the selected voice after your assistant is created and trained.
+                          You'll be able to test and preview the selected voice after your agent is created and trained.
                         </p>
                       </div>
                     </div>
@@ -404,9 +404,9 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
               <div className="flex items-center space-x-4">
                 <Mic className="w-8 h-8 text-green-600" />
                 <div>
-                  <p className="font-semibold text-green-800 text-lg">Voice Assistant Ready</p>
+                  <p className="font-semibold text-green-800 text-lg">Voice Agent Ready</p>
                   <p className="text-green-700">
-                    Your assistant will support voice interactions
+                    Your agent will support voice interactions
                     {formData.voice_type && (
                       <span className="font-semibold"> with {voiceOptions.find(v => v.id === formData.voice_type)?.name} voice</span>
                     )}

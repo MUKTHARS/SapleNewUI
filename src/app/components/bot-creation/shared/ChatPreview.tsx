@@ -26,10 +26,10 @@ export function ChatPreview({ formData }: ChatPreviewProps) {
 
   const getMediaTypeLabel = () => {
     switch (formData.media_type) {
-      case 'text': return 'Text Assistant';
-      case 'audio': return 'Voice Assistant';
-      case 'both': return 'Text & Voice Assistant';
-      default: return 'Text Assistant';
+      case 'text': return 'Text Agent';
+      case 'audio': return 'Voice Agent';
+      case 'both': return 'Text & Voice Agent';
+      default: return 'Text Agent';
     }
   };
 
@@ -47,7 +47,7 @@ export function ChatPreview({ formData }: ChatPreviewProps) {
           <div className="flex-1">
             <div className="flex items-center space-x-2 mb-1">
               <p className="font-semibold text-gray-900" style={{ fontFamily: formData.font }}>
-                {formData.name || 'Your Assistant'}
+                {formData.name || 'Your Agent'}
               </p>
               <div className={`w-6 h-6 rounded-full flex items-center justify-center ${getMediaTypeColor()} shadow-sm`}>
                 {getMediaTypeIcon()}
@@ -83,7 +83,7 @@ export function ChatPreview({ formData }: ChatPreviewProps) {
                   fontWeight: formData.font_style.includes('bold') ? 'bold' : 'normal'
                 }}
               >
-                {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Assistant')}
+                {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Agent')}
               </p>
             </div>
           </div>
@@ -177,10 +177,10 @@ export function ChatPreview({ formData }: ChatPreviewProps) {
 
       <div className="text-center">
         <p className="text-sm text-gray-500 font-medium">
-          Live preview of your assistant's appearance and interaction style
+          Live preview of your agent's appearance and interaction style
         </p>
         <p className="text-xs text-gray-400 mt-1">
-          This shows how users will interact with your {formData.media_type === 'both' ? 'text and voice' : formData.media_type} assistant
+          This shows how users will interact with your {formData.media_type === 'both' ? 'text and voice' : formData.media_type} agent
         </p>
       </div>
     </div>

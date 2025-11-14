@@ -33,7 +33,7 @@ export function HeroSection() {
                 }}
                 className="inline-flex items-center bg-color hover:bg-color text-white px-6 py-3 rounded-lg font-medium"
               >
-                Build Your Chatbot <ArrowRight className="ml-2" size={18} />
+                Build Your Agent <ArrowRight className="ml-2" size={18} />
               </button>
               <p className="text-sm text-gray-600 mt-2 text-center">Start with a free plan</p>
             </motion.div>

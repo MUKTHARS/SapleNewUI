@@ -189,7 +189,7 @@ export function BotList() {
           setPreviewBot(data[0]);
         }
       } else {
-        console.error('Failed to fetch bots');
+        console.error('Failed to fetch agents');
       }
     } catch (error) {
       console.error('Error fetching bots:', error);
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  AI Assistants
+                  AI Agents
                 </h1>
                 <p className="text-gray-600 mt-2">Manage and configure your AI assistants</p>
               </div>
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 <Plus className="w-5 h-5 mr-2" />
-                New Assistant
+                New Agent
               </button>
             </div>
           </div>
@@ -507,7 +507,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             color: bot.color
                           }}
                         >
-                          Hi! I'm {bot.name}, your AI assistant. How can I help you today?
+                          Hi! I'm {bot.name}, your AI agent. How can I help you today?
                         </p>
                       </div>
                     </div>
@@ -559,16 +559,16 @@ document.addEventListener("DOMContentLoaded", function() {
               <div className="w-24 h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Bot className="w-10 h-10 text-gray-500" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No AI Assistants Yet</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No AI Agents Yet</h3>
               <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                Create your first AI assistant to start providing intelligent chat support on your website.
+                Create your first AI agent to start providing intelligent chat support on your website.
               </p>
               <button
                 onClick={() => router.push('/dashboard?tab=bots')}
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:from-teal-700 hover:to-teal-800 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 <Plus className="w-5 h-5 mr-2" />
-                Create Your First Assistant
+                Create Your First Agent
               </button>
             </div>
           )}
@@ -592,7 +592,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Preview: {previewBot.name}</h3>
-                  <p className="text-sm text-gray-500">Live bot preview - Test your assistant</p>
+                  <p className="text-sm text-gray-500">Live agent preview - Test your agent</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -786,7 +786,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   ) : (
                     <>
                       <Brain className="w-4 h-4" />
-                      <span>Train Assistant</span>
+                      <span>Train Agent</span>
                     </>
                   )}
                 </button>

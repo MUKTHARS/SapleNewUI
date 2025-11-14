@@ -58,7 +58,7 @@ export function Step2FileUpload({
       const botId = createdBot?.id;
 
       if (!botId) {
-        throw new Error('Bot ID not found');
+        throw new Error('Agent ID not found');
       }
 
       const response = await fetch(
@@ -102,8 +102,8 @@ export function Step2FileUpload({
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode
-            ? 'Add new files or remove existing ones from your bot training data.'
-            : 'Upload PDF, DOCX, TXT, MD, or Excel files to train your bot.'
+            ? 'Add new files or remove existing ones from your agent training data.'
+            : 'Upload PDF, DOCX, TXT, MD, or Excel files to train your agent.'
           }
           {bucketName && (
             <span> Files are stored in S3 bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code></span>
@@ -230,8 +230,8 @@ export function Step2FileUpload({
           <h4 className="font-medium text-gray-900 mb-2">No Files Yet</h4>
           <p className="text-gray-600 text-sm">
             {editMode
-              ? 'Upload training files to help your bot learn.'
-              : 'Start by uploading some training files for your bot.'
+              ? 'Upload training files to help your agent learn.'
+              : 'Start by uploading some training files for your agent.'
             }
           </p>
         </div>

@@ -19,13 +19,13 @@ export function Step1BasicInfo({
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">Basic Information</h3>
         <p className="text-gray-600 mb-4">
-          Start by giving your AI assistant a name. This will automatically create an S3 bucket for file storage.
+          Start by giving your AI agent a name. This will automatically create an S3 bucket for file storage.
         </p>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Bot Name *
+          Agent Name *
         </label>
         <input
           type="text"
@@ -35,12 +35,12 @@ export function Step1BasicInfo({
             clearError();
           }}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-          placeholder="My Assistant Bot"
+          placeholder="My Agent"
           required
           minLength={3}
         />
         <p className="text-sm text-gray-500 mt-1">
-          A unique S3 bucket will be created automatically for this bot. Name must be at least 3 characters.
+          A unique S3 bucket will be created automatically for this agent. Name must be at least 3 characters.
         </p>
       </div>
 
@@ -55,11 +55,11 @@ export function Step1BasicInfo({
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Creating Bot & S3 Bucket...</span>
+              <span>Creating Agent & S3 Bucket...</span>
             </>
           ) : (
             <>
-              <span>Create Bot & S3 Bucket</span>
+              <span>Create Agent & S3 Bucket</span>
               <ArrowRight className="w-4 h-4" />
             </>
           )}

@@ -36,11 +36,11 @@ export default function EditBotPage() {
         setBotData(data);
       } else {
         const errorData = await response.json();
-        setError(errorData.error || 'Failed to fetch bot data');
+        setError(errorData.error || 'Failed to fetch agent data');
       }
     } catch (error) {
-      console.error('Error fetching bot:', error);
-      setError('Failed to load bot data');
+      console.error('Error fetching agent:', error);
+      setError('Failed to load agent data');
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +55,7 @@ export default function EditBotPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading bot data...</p>
+          <p className="text-gray-600">Loading agent data...</p>
         </div>
       </div>
     );
@@ -68,13 +68,13 @@ export default function EditBotPage() {
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="text-red-600 text-2xl">⚠️</span>
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Bot</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Agent</h3>
           <p className="text-gray-600 mb-6">{error}</p>
           <button
             onClick={handleBack}
             className="bg-teal-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors"
           >
-            Back to Bot List
+            Back to Agent List
           </button>
         </div>
       </div>
@@ -89,10 +89,10 @@ export default function EditBotPage() {
             onClick={handleBack}
             className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-4 transition-colors"
           >
-            <span>← Back to Bot List</span>
+            <span>← Back to Agent List</span>
           </button>
-          <h1 className="text-3xl font-bold text-gray-900">Edit Bot: {botData?.name}</h1>
-          <p className="text-gray-600 mt-2">Update your AI assistant's configuration and files</p>
+          <h1 className="text-3xl font-bold text-gray-900">Edit Agent: {botData?.name}</h1>
+          <p className="text-gray-600 mt-2">Update your AI agent's configuration and files</p>
         </div>
         <BotCreationWizard editMode={true} existingBot={botData} />
       </div>

@@ -88,7 +88,7 @@ export function BotCreationWizard({ editMode = false, existingBot = null }: BotC
     font_style: existingBot?.font_style || 'normal',
     font_size: existingBot?.font_size || '12px',
     default_model: existingBot?.default_model || 'gpt-4o-mini',
-    prompt: existingBot?.prompt || `You are a helpful, professional AI assistant trained on company-specific documents. 
+    prompt: existingBot?.prompt || `You are a helpful, professional AI agent trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
 If you don't know the answer or it's outside your scope, say so politely. 
 Always maintain a friendly, respectful, and informative tone. 
@@ -133,12 +133,12 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
 
   const handleCreateBot = async () => {
     if (!formData.name) {
-      setError('Please enter a bot name');
+      setError('Please enter a agent name');
       return;
     }
 
     if (formData.name.length < 3) {
-      setError('Bot name must be at least 3 characters long');
+      setError('Agent name must be at least 3 characters long');
       return;
     }
 
@@ -163,11 +163,11 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         setBucketName(data.bucket_name);
         setCurrentStep(2);
       } else {
-        setError(data.error || 'Failed to create bot');
+        setError(data.error || 'Failed to create agent');
       }
     } catch (error) {
-      console.error('Bot creation error:', error);
-      setError('Failed to create bot. Please try again.');
+      console.error('Agent creation error:', error);
+      setError('Failed to create agent. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -321,11 +321,11 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       if (response.ok) {
         setCurrentStep(5);
       } else {
-        setError(data.error || 'Failed to update bot');
+        setError(data.error || 'Failed to update agent');
       }
     } catch (error) {
-      console.error('Bot update error:', error);
-      setError('Failed to update bot. Please try again.');
+      console.error('Agent update error:', error);
+      setError('Failed to update agent. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -371,7 +371,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     { 
       number: 1, 
       title: 'Basic Info', 
-      description: 'Bot name and setup',
+      description: 'Agent name and setup',
       icon: User,
       completed: currentStep > 1 || (editMode && currentStep >= 1)
     },
@@ -413,14 +413,14 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode 
-            ? 'View and update your AI assistant\'s basic information.'
-            : 'Start by giving your AI assistant a name. This will automatically create an S3 bucket for file storage.'}
+            ? 'View and update your AI agent\'s basic information.'
+            : 'Start by giving your AI agent a name. This will automatically create an S3 bucket for file storage.'}
         </p>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Bot Name *
+          Agent Name *
         </label>
         <input
           type="text"
@@ -430,15 +430,15 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             clearError();
           }}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-          placeholder="My Assistant Bot"
+          placeholder="My Agent Agent"
           required
           minLength={3}
           disabled={editMode}
         />
         <p className="text-sm text-gray-500 mt-1">
           {editMode 
-            ? 'Bot name cannot be changed after creation.'
-            : 'A unique S3 bucket will be created automatically for this bot. Name must be at least 3 characters.'}
+            ? 'Agent name cannot be changed after creation.'
+            : 'A unique S3 bucket will be created automatically for this agent. Name must be at least 3 characters.'}
         </p>
       </div>
 
@@ -447,7 +447,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           <div className="flex items-center space-x-2">
             <Bot className="w-4 h-4 text-blue-600" />
             <p className="text-blue-700 text-sm">
-              <strong>Bot ID:</strong> {createdBot.id}
+              <strong>Agent ID:</strong> {createdBot.id}
             </p>
           </div>
           {bucketName && (
@@ -477,11 +477,11 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Creating Bot & S3 Bucket...</span>
+                <span>Creating Agent & S3 Bucket...</span>
               </>
             ) : (
               <>
-                <span>Create Bot & S3 Bucket</span>
+                <span>Create Agent & S3 Bucket</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
@@ -507,8 +507,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode 
-            ? 'Upload additional files or manage existing training files for your bot.'
-            : 'Upload PDF, DOCX, TXT, MD, or Excel files to train your bot.'}
+            ? 'Upload additional files or manage existing training files for your agent.'
+            : 'Upload PDF, DOCX, TXT, MD, or Excel files to train your agent.'}
           {bucketName && (
             <span> Files will be stored in S3 bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code></span>
           )}
@@ -658,12 +658,12 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">
-          {editMode ? 'Retrain Your Bot' : 'Train Your Bot'}
+          {editMode ? 'Retrain Your Agent' : 'Train Your Agent'}
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode
-            ? 'Retrain your bot with the updated files to incorporate new knowledge.'
-            : 'Start the training process with your uploaded files. This will send the files from S3 to the training API to create your AI assistant.'}
+            ? 'Retrain your agent with the updated files to incorporate new knowledge.'
+            : 'Start the training process with your uploaded files. This will send the files from S3 to the training API to create your AI agent.'}
         </p>
       </div>
 
@@ -676,8 +676,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             </h4>
             <p className="text-yellow-700 text-sm mt-1">
               {editMode
-                ? 'Your bot can be retrained with the current files to update its knowledge base.'
-                : 'Your bot needs to be trained with the uploaded files to provide accurate responses.'}
+                ? 'Your agent can be retrained with the current files to update its knowledge base.'
+                : 'Your agent needs to be trained with the uploaded files to provide accurate responses.'}
               {uploadedFiles.length > 0 && (
                 <span> Training will process {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''} from your S3 bucket.</span>
               )}
@@ -697,7 +697,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             </p>
           )}
           <p className="text-sm text-gray-600 mt-1">
-            <strong>Bot Model:</strong> {formData.default_model}
+            <strong>Agent Model:</strong> {formData.default_model}
           </p>
         </div>
       )}
@@ -726,7 +726,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           className="bg-orange-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-orange-700 transition-colors disabled:opacity-50 flex items-center space-x-2"
         >
           <Brain className="w-4 h-4" />
-          <span>{isLoading ? (editMode ? 'Retraining...' : 'Starting Training...') : (editMode ? 'Retrain Bot' : 'Start Training')}</span>
+          <span>{isLoading ? (editMode ? 'Retraining...' : 'Starting Training...') : (editMode ? 'Retrain Agent' : 'Start Training')}</span>
         </button>
       </div>
 
@@ -746,8 +746,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
   const renderStep4 = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">Bot Configuration</h3>
-        <p className="text-gray-600 mb-4">Customize your bot's appearance and behavior</p>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">Agent Configuration</h3>
+        <p className="text-gray-600 mb-4">Customize your agent's appearance and behavior</p>
       </div>
 
       {/* Bot Preview */}
@@ -771,7 +771,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                 fontWeight: formData.font_style.includes('bold') ? 'bold' : 'normal'
               }}
             >
-              {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Bot')}
+              {formData.welcome_message.replace('{bot_name}', formData.name || 'Your Agent')}
             </p>
           </div>
         </div>
@@ -900,10 +900,10 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
               rows={6}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-vertical"
-              placeholder="Define how your AI assistant should behave..."
+              placeholder="Define how your AI agent should behave..."
             />
             <p className="text-sm text-gray-500 mt-1">
-              This prompt defines the bot's personality and behavior
+              This prompt defines the agent's personality and behavior
             </p>
           </div>
 
@@ -916,10 +916,10 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               value={formData.welcome_message}
               onChange={(e) => setFormData({ ...formData, welcome_message: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              placeholder="Welcome message (use {bot_name} for bot name)"
+              placeholder="Welcome message (use {bot_name} for agent name)"
             />
             <p className="text-sm text-gray-500 mt-1">
-              Use {'{bot_name}'} to automatically insert the bot's name
+              Use {'{bot_name}'} to automatically insert the agent's name
             </p>
           </div>
         </div>
@@ -999,10 +999,10 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         <CheckCircle className="w-8 h-8 text-green-600" />
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-2">
-        {editMode ? 'Bot Updated Successfully!' : 'Bot Created Successfully!'}
+        {editMode ? 'Agent Updated Successfully!' : 'Agent Created Successfully!'}
       </h3>
       <p className="text-gray-600 mb-2">
-        Your AI assistant "{createdBot?.name}" is {editMode ? 'updated' : 'ready to use'}.
+        Your AI agent "{createdBot?.name}" is {editMode ? 'updated' : 'ready to use'}.
       </p>
       {bucketName && (
         <p className="text-sm text-gray-500 mb-6">
@@ -1014,7 +1014,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           onClick={() => window.location.href = '/dashboard?tab=bot-list'}
           className="bg-teal-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors"
         >
-          View All Bots
+          View All Agents
         </button>
         {!editMode && (
           <button
@@ -1034,7 +1034,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                 font_style: 'normal',
                 font_size: '12px',
                 default_model: 'gpt-4o-mini',
-                prompt: `You are a helpful, professional AI assistant trained on company-specific documents. 
+                prompt: `You are a helpful, professional AI agent trained on company-specific documents. 
 Answer user questions clearly and concisely using the provided knowledge. 
 If you don't know the answer or it's outside your scope, say so politely. 
 Always maintain a friendly, respectful, and informative tone. 
@@ -1046,7 +1046,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             }}
             className="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg font-medium hover:bg-gray-300 transition-colors"
           >
-            Create Another Bot
+            Create Another Agent
           </button>
         )}
       </div>
@@ -1062,7 +1062,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             <Bot className="w-5 h-5 text-teal-600" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900">Edit Bot</h2>
+            <h2 className="text-lg font-semibold text-gray-900">Edit Agent</h2>
             <p className="text-gray-600 text-sm">{existingBot?.name}</p>
           </div>
         </div>
@@ -1110,7 +1110,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       {createdBot && (
         <div className="p-6 border-t border-gray-200">
           <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="font-medium text-blue-900 mb-2">Bot Information</h4>
+            <h4 className="font-medium text-blue-900 mb-2">Agent Information</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-blue-700">Status:</span>
@@ -1198,10 +1198,10 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">
-                    Create New AI Assistant
+                    Create New AI Agent
                   </h2>
                   <p className="text-gray-600 text-sm">
-                    Step-by-step bot creation process with S3 storage
+                    Step-by-step agent creation process with S3 storage
                   </p>
                 </div>
               </div>

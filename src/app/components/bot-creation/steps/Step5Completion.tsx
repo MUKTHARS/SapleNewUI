@@ -16,10 +16,10 @@ export function Step5Completion({ createdBot, bucketName, onReset, editMode = fa
         <CheckCircle className="w-8 h-8 text-green-600" />
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-2">
-        {editMode ? 'Bot Updated Successfully!' : 'Bot Created Successfully!'}
+        {editMode ? 'Agent Updated Successfully!' : 'Agent Created Successfully!'}
       </h3>
       <p className="text-gray-600 mb-2">
-        Your AI assistant "{createdBot?.name}" has been {editMode ? 'updated' : 'created'}.
+        Your AI agent "{createdBot?.name}" has been {editMode ? 'updated' : 'created'}.
       </p>
       {bucketName && (
         <p className="text-sm text-gray-500 mb-6">
@@ -31,13 +31,13 @@ export function Step5Completion({ createdBot, bucketName, onReset, editMode = fa
           onClick={() => window.location.href = '/dashboard?tab=bot-list'}
           className="bg-teal-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-teal-700 transition-colors"
         >
-          View All Bots
+          View All Agents
         </button>
         <button
           onClick={onReset}
           className="bg-gray-200 text-gray-700 py-2 px-6 rounded-lg font-medium hover:bg-gray-300 transition-colors"
         >
-          {editMode ? 'Back to Bot List' : 'Create Another Bot'}
+          {editMode ? 'Back to Agent List' : 'Create Another Agent'}
         </button>
       </div>
     </div>

@@ -333,7 +333,7 @@ export function IntegrationPartners() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        Embed our AI assistant on any platform that supports JavaScript
+                        Embed our AI agent on any platform that supports JavaScript
                     </motion.p>
                 </motion.div>
 
@@ -422,7 +422,7 @@ export function IntegrationPartners() {
                                 One-Step Integration
                             </h3>
                             <p className="text-lg md:text-xl text-gray-600 text-center max-w-3xl mx-auto mb-8 md:mb-10">
-                                Add this script to your website to enable the Saple AI assistant
+                                Add this script to your website to enable the Saple AI agent
                             </p>
 
                             <div className="relative">

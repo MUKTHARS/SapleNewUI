@@ -103,15 +103,15 @@ export function KnowledgeStep({
         <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <Sparkles className="w-10 h-10 text-purple-600" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Teach Your Assistant</h2>
-        <p className="text-gray-600 mt-2 text-lg">Upload documents to train your AI assistant with knowledge</p>
+        <h2 className="text-2xl font-bold text-gray-900">Teach Your Agent</h2>
+        <p className="text-gray-600 mt-2 text-lg">Upload documents to train your AI agent with knowledge</p>
         
         {/* Media Type Indicator */}
         <div className="mt-4 inline-flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-200">
           <span className="text-blue-700 font-medium">
-            {formData.media_type === 'text' && '📝 Text Assistant'}
-            {formData.media_type === 'audio' && '🎤 Voice Assistant'}
-            {formData.media_type === 'both' && '💬 Text & Voice Assistant'}
+            {formData.media_type === 'text' && '📝 Text Agent'}
+            {formData.media_type === 'audio' && '🎤 Voice Agent'}
+            {formData.media_type === 'both' && '💬 Text & Voice Agent'}
           </span>
         </div>
       </div>
@@ -131,7 +131,7 @@ export function KnowledgeStep({
           <Upload className="w-16 h-16 text-gray-400 mx-auto mb-6" />
           <h3 className="text-2xl font-bold text-gray-900 mb-3">Add Training Documents</h3>
           <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
-            Drag and drop your files here, or click to browse. Your assistant will learn from these documents to provide accurate responses.
+            Drag and drop your files here, or click to browse. Your agent will learn from these documents to provide accurate responses.
           </p>
           
           <input
@@ -281,12 +281,12 @@ export function KnowledgeStep({
                 <p className="text-green-700 text-lg">
                   {uploadedFiles.length > 0 
                     ? `You've added ${uploadedFiles.length} training document${uploadedFiles.length !== 1 ? 's' : ''} to your knowledge base`
-                    : 'Add at least one document to teach your assistant'
+                    : 'Add at least one document to teach your agent'
                   }
                 </p>
                 {uploadedFiles.length > 0 && (
                   <p className="text-green-600 text-sm mt-2">
-                    Your assistant will be trained on this knowledge to provide accurate responses
+                    Your agent will be trained on this knowledge to provide accurate responses
                   </p>
                 )}
               </div>
@@ -321,7 +321,7 @@ export function KnowledgeStep({
             disabled={uploadedFiles.length === 0 && !editMode}
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 text-lg shadow-lg hover:shadow-xl"
           >
-            Customize Assistant →
+            Customize Agent →
           </button>
         </div>
       </div>
