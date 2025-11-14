@@ -235,7 +235,7 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
             <p className="text-teal-100">
               Here's what's happening with your AI assistants today.
             </p>
-            <div className="flex flex-wrap gap-4 mt-4 text-sm">
+            {/* <div className="flex flex-wrap gap-4 mt-4 text-sm">
               <div className="flex items-center space-x-1">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>System: {systemHealth?.storage_health.status || 'Loading...'}</span>
@@ -248,13 +248,16 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
                 <TrendingUp className="w-4 h-4" />
                 <span>{userEngagement?.retention_metrics.retention_rate || 0}% user retention</span>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
             <Activity className="w-8 h-8" />
           </div>
         </div>
       </motion.div>
+
+      {/* Quick Actions */}
+      <QuickActionsSection />
 
       {/* Main Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -308,8 +311,7 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
         <StorageOverviewSection storage={storageUsage} />
       </div>
 
-      {/* Quick Actions */}
-      <QuickActionsSection />
+
     </div>
   );
 }
