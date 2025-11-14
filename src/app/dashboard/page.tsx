@@ -117,8 +117,8 @@ export default function Dashboard() {
                 <p className="text-gray-600 mt-1">
                   {activeTab === 'overview' && 'Monitor your workspace performance and analytics'}
                   {activeTab === 'team' && 'Manage team members and their permissions'}
-                  {activeTab === 'bots' && 'Create and configure AI assistants for your business'}
-                  {activeTab === 'bot-list' && 'View and manage your existing AI assistants'}
+                  {activeTab === 'bots' && 'Create and configure AI agents for your business'}
+                  {activeTab === 'bot-list' && 'View and manage your existing AI agents'}
                 </p>
               </div>
 

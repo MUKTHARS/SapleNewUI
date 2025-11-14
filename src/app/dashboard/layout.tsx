@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Dashboard | SAPLE.AI',
-  description: 'Manage your AI assistants and team',
+  description: 'Manage your AI agents and team',
 };
 
 export default function DashboardLayout({

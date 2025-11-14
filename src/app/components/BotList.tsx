@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div className="flex justify-center items-center py-20">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading your AI assistants...</p>
+          <p className="text-gray-600">Loading your AI agents...</p>
         </div>
       </div>
     );
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   AI Agents
                 </h1>
-                <p className="text-gray-600 mt-2">Manage and configure your AI assistants</p>
+                <p className="text-gray-600 mt-2">Manage and configure your AI agents</p>
               </div>
               <button
                 onClick={() => router.push('/dashboard?tab=bots')}

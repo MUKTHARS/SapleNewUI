@@ -131,7 +131,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
                         </div>
                         <div className="flex items-center space-x-2 text-xs text-gray-500">
                           <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-                          <span>Voice assistants</span>
+                          <span>Voice agents</span>
                         </div>
                         <div className="flex items-center space-x-2 text-xs text-gray-500">
                           <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
@@ -176,7 +176,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
                   </div>
                   <div>
                     <p className="text-green-700 font-medium">Voice Only</p>
-                    <p className="text-green-600">Ideal for call centers, voice assistants, and hands-free applications</p>
+                    <p className="text-green-600">Ideal for call centers, voice agents, and hands-free applications</p>
                   </div>
                   <div>
                     <p className="text-purple-700 font-medium">Text & Voice</p>
