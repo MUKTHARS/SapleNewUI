@@ -21,11 +21,7 @@ export function Step5Completion({ createdBot, bucketName, onReset, editMode = fa
       <p className="text-gray-600 mb-2">
         Your AI agent "{createdBot?.name}" has been {editMode ? 'updated' : 'created'}.
       </p>
-      {bucketName && (
-        <p className="text-sm text-gray-500 mb-6">
-          S3 Bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code>
-        </p>
-      )}
+
       <div className="space-x-4">
         <button
           onClick={() => window.location.href = '/dashboard?tab=bot-list'}

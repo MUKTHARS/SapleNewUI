@@ -295,7 +295,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">Basic Information</h3>
         <p className="text-gray-600 mb-4">
-          Start by giving your AI agent a name. This will automatically create an S3 bucket for file storage.
+          Start by giving your AI agent a name.
         </p>
       </div>
 
@@ -316,7 +316,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           minLength={3}
         />
         <p className="text-sm text-gray-500 mt-1">
-          A unique S3 bucket will be created automatically for this agent. Name must be at least 3 characters.
+          Name must be at least 3 characters.
         </p>
       </div>
 
@@ -338,11 +338,11 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Creating Agent & S3 Bucket...</span>
+              <span>Creating Agent...</span>
             </>
           ) : (
             <>
-              <span>Create Agent & S3 Bucket</span>
+              <span>Create Agent</span>
               <ArrowRight className="w-4 h-4" />
             </>
           )}
@@ -357,9 +357,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         <h3 className="text-lg font-medium text-gray-900 mb-2">Upload Training Files</h3>
         <p className="text-gray-600 mb-4">
           Upload PDF, DOCX, TXT, MD, or Excel files to train your agent.
-          {bucketName && (
-            <span> Files will be stored in S3 bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code></span>
-          )}
         </p>
       </div>
 
@@ -415,12 +412,12 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Uploading to S3...</span>
+                <span>Uploading...</span>
               </>
             ) : (
               <>
                 <Upload className="w-4 h-4" />
-                <span>Upload {selectedFiles.length} File{selectedFiles.length !== 1 ? 's' : ''} to S3</span>
+                <span>Upload {selectedFiles.length} File{selectedFiles.length !== 1 ? 's' : ''}</span>
               </>
             )}
           </button>
@@ -495,25 +492,20 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             <h4 className="font-medium text-yellow-800">Training Required</h4>
             <p className="text-yellow-700 text-sm mt-1">
               Your agent needs to be trained with the uploaded files to provide accurate responses.
-              Training will process {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''} from your S3 bucket.
+              Training will process {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''}.
             </p>
           </div>
         </div>
       </div>
 
-      {bucketName && (
-        <div className="bg-gray-50 rounded-lg p-4">
-          <p className="text-sm text-gray-600">
-            <strong>S3 Bucket:</strong> <code className="bg-white px-2 py-1 rounded border">{bucketName}</code>
-          </p>
-          <p className="text-sm text-gray-600 mt-1">
-            <strong>Files to train:</strong> {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''}
-          </p>
-          <p className="text-sm text-gray-600 mt-1">
-            <strong>Agent Model:</strong> {formData.default_model}
-          </p>
-        </div>
-      )}
+      <div className="bg-gray-50 rounded-lg p-4">
+        <p className="text-sm text-gray-600">
+          <strong>Files to train:</strong> {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''}
+        </p>
+        <p className="text-sm text-gray-600 mt-1">
+          <strong>Agent Model:</strong> {formData.default_model}
+        </p>
+      </div>
 
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -815,11 +807,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       <p className="text-gray-600 mb-2">
         Your AI agent "{createdBot?.name}" is ready to use.
       </p>
-      {bucketName && (
-        <p className="text-sm text-gray-500 mb-6">
-          S3 Bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code>
-        </p>
-      )}
+
       <div className="space-x-4">
         <button
           onClick={() => window.location.href = '/dashboard?tab=bot-list'}
@@ -881,7 +869,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">Create New AI Agent</h2>
-              <p className="text-gray-600 text-sm">Step-by-step agent creation process with S3 storage</p>
+              <p className="text-gray-600 text-sm">Step-by-step agent creation process</p>
             </div>
           </div>
         </div>

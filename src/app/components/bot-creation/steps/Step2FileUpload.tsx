@@ -105,9 +105,6 @@ export function Step2FileUpload({
             ? 'Add new files or remove existing ones from your agent training data.'
             : 'Upload PDF, DOCX, TXT, MD, or Excel files to train your agent.'
           }
-          {bucketName && (
-            <span> Files are stored in S3 bucket: <code className="bg-gray-100 px-2 py-1 rounded text-sm">{bucketName}</code></span>
-          )}
         </p>
       </div>
 
@@ -174,12 +171,12 @@ export function Step2FileUpload({
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Uploading to S3...</span>
+                  <span>Uploading...</span>
               </>
             ) : (
               <>
                 <Upload className="w-4 h-4" />
-                <span>Upload {selectedFiles.length} File{selectedFiles.length !== 1 ? 's' : ''} to S3</span>
+                <span>Upload {selectedFiles.length} File{selectedFiles.length !== 1 ? 's' : ''}</span>
               </>
             )}
           </button>

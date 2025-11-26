@@ -19,7 +19,7 @@ export function Step1BasicInfo({
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">Basic Information</h3>
         <p className="text-gray-600 mb-4">
-          Start by giving your AI agent a name. This will automatically create an S3 bucket for file storage.
+          Start by giving your AI agent a name.
         </p>
       </div>
 
@@ -40,7 +40,7 @@ export function Step1BasicInfo({
           minLength={3}
         />
         <p className="text-sm text-gray-500 mt-1">
-          A unique S3 bucket will be created automatically for this agent. Name must be at least 3 characters.
+          Name must be at least 3 characters.
         </p>
       </div>
 
@@ -55,11 +55,11 @@ export function Step1BasicInfo({
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Creating Agent & S3 Bucket...</span>
+              <span>Creating Agent...</span>
             </>
           ) : (
             <>
-              <span>Create Agent & S3 Bucket</span>
+              <span>Create Agent</span>
               <ArrowRight className="w-4 h-4" />
             </>
           )}
