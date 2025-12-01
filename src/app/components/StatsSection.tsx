@@ -18,7 +18,7 @@ export function StatsSection() {
         <p className="text-xl text-center max-w-3xl mx-auto mb-16">
           Future proof your processes and stay on the cutting-edge of technology. Optimize customer experience by deploying smart, AI-enabled automation services.
         </p>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div

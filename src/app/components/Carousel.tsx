@@ -29,8 +29,8 @@ export function Carousel() {
   return (
     <div className="relative bg-white p-8 rounded-xl shadow-sm border border-gray-200">
       <div className="overflow-hidden">
-        <div className="whitespace-nowrap transition-transform duration-300" 
-             style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+        <div className="whitespace-nowrap transition-transform duration-300"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="inline-block w-full whitespace-normal px-4">
               <h3 className="text-2xl font-semibold mb-4">{slide.title}</h3>
@@ -39,9 +39,9 @@ export function Carousel() {
           ))}
         </div>
       </div>
-      
+
       <div className="flex justify-between mt-6">
-        <button 
+        <button
           onClick={prevSlide}
           className="p-2 rounded-full hover:bg-gray-100"
         >
@@ -56,7 +56,7 @@ export function Carousel() {
             />
           ))}
         </div>
-        <button 
+        <button
           onClick={nextSlide}
           className="p-2 rounded-full hover:bg-gray-100"
         >

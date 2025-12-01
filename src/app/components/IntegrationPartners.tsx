@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, animate, AnimatePresence, MotionValue  } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, AnimatePresence, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 // import Logo from './saple-logo.jpeg';
@@ -58,11 +58,11 @@ const generateParticles = (count: number, width: number, height: number): Partic
 };
 
 const CentralLogo = ({
-  energyPulse,
-  pulseOpacity
+    energyPulse,
+    pulseOpacity
 }: {
-  energyPulse: MotionValue<number>;
-  pulseOpacity: MotionValue<number>;
+    energyPulse: MotionValue<number>;
+    pulseOpacity: MotionValue<number>;
 }) => (
     <motion.div className="absolute z-20" whileHover={{ scale: 1.1 }}>
         <div className="relative w-32 h-32 md:w-40 md:h-40">
@@ -333,7 +333,7 @@ export function IntegrationPartners() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        Embed our AI assistant on any platform that supports JavaScript
+                        Embed our AI agent on any platform that supports JavaScript
                     </motion.p>
                 </motion.div>
 
@@ -422,7 +422,7 @@ export function IntegrationPartners() {
                                 One-Step Integration
                             </h3>
                             <p className="text-lg md:text-xl text-gray-600 text-center max-w-3xl mx-auto mb-8 md:mb-10">
-                                Add this script to your website to enable the Saple AI assistant
+                                Add this script to your website to enable the Saple AI agent
                             </p>
 
                             <div className="relative">

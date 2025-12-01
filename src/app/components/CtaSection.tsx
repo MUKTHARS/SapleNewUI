@@ -23,8 +23,8 @@ export function CtaSection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="inline-flex items-center bg-color hover:bg-color text-white px-8 py-4 rounded-lg font-medium transition-all"
             >
               Get Started <ArrowRight className="ml-2" size={20} />

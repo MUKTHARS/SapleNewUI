@@ -16,11 +16,11 @@ export default function DesigningEffectiveBots() {
   return (
     <div className="bg-white">
       <ErrorBoundary>
-        <BlogHero 
+        <BlogHero
           title="Designing Effective Bots: Tone, Characteristics, and Use Case-Specific Guidelines"
           subtitle="How to create AI bots that deliver value, clarity, and trust across different industries"
         />
-        
+
         <BlogContent>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Introduction</h2>
           <p className="text-gray-600 mb-8">
@@ -104,7 +104,7 @@ export default function DesigningEffectiveBots() {
             <h3 className="font-semibold mb-2">Characteristics:</h3>
             <ul className="space-y-2">
               {[
-                "Conversational and Engaging: Should feel like a helpful assistant, not a script.",
+                "Conversational and Engaging: Should feel like a helpful agent, not a script.",
                 "Goal-driven: Direct users toward CTAs (e.g., book a demo, request a quote).",
                 "Personalized: Use previous interactions or input to tailor suggestions.",
                 "Trust-building: Avoid hard-sell tactics; instead, educate and support."
@@ -167,7 +167,7 @@ export default function DesigningEffectiveBots() {
             By tailoring tone and capabilities to specific use cases, saple.ai helps businesses create bots that not only assist but truly elevate the user experience.
           </p>
         </BlogContent>
-        
+
         <CtaSection />
       </ErrorBoundary>
     </div>

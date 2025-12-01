@@ -52,7 +52,7 @@ export function ContactForm() {
       >
         <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 h-full">
           <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-          
+
           <div className="space-y-6">
             <div className="flex items-start space-x-4">
               <div className="flex-shrink-0 mt-1 color">
@@ -76,7 +76,7 @@ export function ContactForm() {
       >
         <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-          
+
           {submitStatus && (
             <div className={`p-4 mb-6 rounded-lg ${submitStatus.success ? 'bg-blue-100 color' : 'bg-red-100 text-red-700'}`}>
               {submitStatus.message}
@@ -104,7 +104,7 @@ export function ContactForm() {
               <input
                 id="email"
                 type="email"
-                {...register('email', { 
+                {...register('email', {
                   required: 'Email is required',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,

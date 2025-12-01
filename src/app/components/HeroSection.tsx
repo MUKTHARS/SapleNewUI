@@ -22,19 +22,30 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.div whileHover={{ scale: 1.03 }}>
-              <Link 
-                href="/contact" 
+              <button
+                onClick={() => {
+                  const token = sessionStorage.getItem('access_token');
+                  if (!token) {
+                    window.dispatchEvent(new Event('open-login-modal'));
+                  } else {
+                    window.location.href = '/contact';
+                  }
+                }}
                 className="inline-flex items-center bg-color hover:bg-color text-white px-6 py-3 rounded-lg font-medium"
               >
-                Request Demo <ArrowRight className="ml-2" size={18} />
-              </Link>
+                Build Your Agent <ArrowRight className="ml-2" size={18} />
+              </button>
+              <p className="text-sm text-gray-600 mt-2 text-center">Start with a free plan</p>
             </motion.div>
-            <Link 
-              href="/products" 
-              className="inline-flex items-center border border-gray-300 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium"
-            >
-              Explore Features
-            </Link>
+            <div className="flex flex-col items-center">
+              <Link
+                href="/products"
+                className="inline-flex items-center border border-gray-300 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium"
+              >
+                Explore Features
+              </Link>
+              <p className="text-sm text-transparent mt-2">placeholder</p>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,10 +1,9 @@
-// app/layout.tsx
+// app/layout.tsx - UPDATED
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { CyberNavbar } from './components/CyberNavbar';
 import { HolographicFooter } from './components/HolographicFooter';
-// import CosmicPortal from './components/CosmicPortal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import Script from 'next/script';
 
@@ -47,11 +46,14 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "si8ook5389");
           `}
         </Script>
-        {/* <CosmicPortal /> */}
+
+        {/* Main layout - navbar and footer always visible */}
         <CyberNavbar />
-        <main className="min-h-screen">
+
+        <main>
           <ErrorBoundary>{children}</ErrorBoundary>
         </main>
+
         <HolographicFooter />
       </body>
     </html>
