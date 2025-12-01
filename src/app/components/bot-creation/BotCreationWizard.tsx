@@ -2,11 +2,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import {
   Bot,
   Palette,
-  MessageSquare,
   Calendar,
   Save,
   Upload,
@@ -76,7 +74,7 @@ export function BotCreationWizard({ editMode = false, existingBot = null }: BotC
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [trainingStatus, setTrainingStatus] = useState<string>('');
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
-  const [bucketName, setBucketName] = useState<string>('');
+
   const [error, setError] = useState<string>('');
   const [fileToDelete, setFileToDelete] = useState<UploadedFile | null>(null);
 
@@ -102,11 +100,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
   useEffect(() => {
     if (editMode && existingBot) {
       setCreatedBot(existingBot);
-      fetchUploadedFiles();
-      // Try to get bucket name from existing bot data
-      if (existingBot.container_name) {
-        setBucketName(existingBot.container_name);
-      }
     }
   }, [editMode, existingBot]);
 
@@ -160,7 +153,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
 
       if (response.ok) {
         setCreatedBot(data.bot);
-        setBucketName(data.bucket_name);
         setCurrentStep(2);
       } else {
         setError(data.error || 'Failed to create agent');
@@ -202,7 +194,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         fetchUploadedFiles();
 
         if (data.rejected_files && data.rejected_files.length > 0) {
-          setError(`Some files were rejected: ${data.rejected_files.map((f: any) => `${f.name} (${f.reason})`).join(', ')}`);
+          setError(`Some files were rejected: ${data.rejected_files.map((f: Record<string, unknown>) => `${f.name} (${f.reason})`).join(', ')}`);
         }
       } else {
         setError(data.error || 'Failed to upload files');
@@ -413,7 +405,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         </h3>
         <p className="text-gray-600 mb-4">
           {editMode 
-            ? 'View and update your AI agent\'s basic information.'
+            ? 'View and update your AI agent&apos;s basic information.'
             : 'Start by giving your AI agent a name.'}
         </p>
       </div>
@@ -735,7 +727,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">Agent Configuration</h3>
-        <p className="text-gray-600 mb-4">Customize your agent's appearance and behavior</p>
+        <p className="text-gray-600 mb-4">Customize your agent&apos;s appearance and behavior</p>
       </div>
 
       {/* Bot Preview */}
@@ -891,7 +883,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               placeholder="Define how your AI agent should behave..."
             />
             <p className="text-sm text-gray-500 mt-1">
-              This prompt defines the agent's personality and behavior
+              This prompt defines the agent&apos;s personality and behavior
             </p>
           </div>
 
@@ -907,7 +899,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               placeholder="Welcome message (use {bot_name} for agent name)"
             />
             <p className="text-sm text-gray-500 mt-1">
-              Use {'{bot_name}'} to automatically insert the agent's name
+              Use {'{bot_name}'} to automatically insert the agent&apos;s name
             </p>
           </div>
         </div>
@@ -990,7 +982,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         {editMode ? 'Agent Updated Successfully!' : 'Agent Created Successfully!'}
       </h3>
       <p className="text-gray-600 mb-2">
-        Your AI agent "{createdBot?.name}" is {editMode ? 'updated' : 'ready to use'}.
+        Your AI agent &quot;{createdBot?.name}&quot; is {editMode ? 'updated' : 'ready to use'}.
       </p>
 
       <div className="space-x-4">
@@ -1008,7 +1000,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               setSelectedFiles([]);
               setUploadedFiles([]);
               setTrainingStatus('');
-              setBucketName('');
               setError('');
               setFormData({
                 name: '',

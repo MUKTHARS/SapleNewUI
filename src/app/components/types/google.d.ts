@@ -5,10 +5,10 @@ interface Window {
       id: {
         initialize: (config: {
           client_id: string;
-          callback: (response: any) => void;
+          callback: (response: Record<string, unknown>) => void;
           auto_select?: boolean;
         }) => void;
-        prompt: (callback?: (notification: any) => void) => void;
+        prompt: (callback?: (notification: Record<string, unknown>) => void) => void;
         renderButton: (
           element: HTMLElement | null,
           config: {

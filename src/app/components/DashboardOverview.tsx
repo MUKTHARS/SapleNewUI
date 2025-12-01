@@ -4,27 +4,20 @@
 import { motion } from 'framer-motion';
 import { 
   Users, Bot, MessageSquare, BarChart3, ArrowUp, ArrowDown, Activity, 
-  FileText, Cpu, Database, TrendingUp, Clock, AlertCircle, CheckCircle2,
-  Upload, Download, Zap, Shield, Brain, ChartBar
+  Database, AlertCircle, CheckCircle2,
+  Upload, Zap, Shield, Brain, ChartBar
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { 
   dashboardService, 
   TeamMembersStats,
   BotsStats,
-  FilesStats,
-  TrainingStats,
   ConversationStats,
   SystemHealth,
-  UserEngagement,
   StorageUsage,
   RecentActivity
 } from '@/services/dashboardService';
 import { formatDistanceToNow } from 'date-fns';
-
-interface DashboardOverviewProps {
-  workspace: any;
-}
 
 interface StatCard {
   title: string;
@@ -36,14 +29,11 @@ interface StatCard {
   description?: string;
 }
 
-export function DashboardOverview({ workspace }: DashboardOverviewProps) {
+export function DashboardOverview(): React.ReactNode {
   const [teamStats, setTeamStats] = useState<TeamMembersStats | null>(null);
   const [botStats, setBotStats] = useState<BotsStats | null>(null);
-  const [fileStats, setFileStats] = useState<FilesStats | null>(null);
-  const [trainingStats, setTrainingStats] = useState<TrainingStats | null>(null);
   const [conversationStats, setConversationStats] = useState<ConversationStats | null>(null);
   const [systemHealth, setSystemHealth] = useState<SystemHealth | null>(null);
-  const [userEngagement, setUserEngagement] = useState<UserEngagement | null>(null);
   const [storageUsage, setStorageUsage] = useState<StorageUsage | null>(null);
   const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
   const [loading, setLoading] = useState(true);
@@ -61,32 +51,23 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
       const [
         teamData,
         botData,
-        fileData,
-        trainingData,
         conversationData,
         healthData,
-        engagementData,
         storageData,
         activityData
       ] = await Promise.all([
         dashboardService.getTeamMembersStats(),
         dashboardService.getBotsStats(),
-        dashboardService.getFilesStats(),
-        dashboardService.getTrainingStats(),
         dashboardService.getConversationStats(),
         dashboardService.getSystemHealth(),
-        dashboardService.getUserEngagement(),
         dashboardService.getStorageUsage(),
         dashboardService.getRecentActivity()
       ]);
 
       setTeamStats(teamData);
       setBotStats(botData);
-      setFileStats(fileData);
-      setTrainingStats(trainingData);
       setConversationStats(conversationData);
       setSystemHealth(healthData);
-      setUserEngagement(engagementData);
       setStorageUsage(storageData);
       setRecentActivity(activityData);
       
@@ -231,9 +212,9 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
       >
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold mb-2">Welcome back! </h2>
+            <h2 className="text-2xl font-bold mb-2">Welcome back!</h2>
             <p className="text-teal-100">
-              Here's what's happening with your AI agents today.
+              Here&apos;s what&apos;s happening with your AI agents today.
             </p>
             {/* <div className="flex flex-wrap gap-4 mt-4 text-sm">
               <div className="flex items-center space-x-1">
@@ -274,7 +255,7 @@ export function DashboardOverview({ workspace }: DashboardOverviewProps) {
       >
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Performance Metrics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {performanceStats.map((stat, index) => (
+          {performanceStats.map((stat) => (
             <div
               key={stat.title}
               className="bg-white rounded-lg p-4 shadow-sm border border-gray-200"
@@ -473,7 +454,7 @@ function SystemHealthSection({ health }: SystemHealthSectionProps) {
     >
       <h3 className="text-lg font-semibold text-gray-900 mb-6">System Health</h3>
       <div className="space-y-4">
-        {healthItems.map((item, index) => (
+        {healthItems.map((item) => (
           <div
             key={item.name}
             className={`flex items-center justify-between p-4 rounded-lg border ${getStatusColor(item.status)}`}
@@ -655,7 +636,7 @@ function QuickActionsSection() {
     >
       <h3 className="text-lg font-semibold text-gray-900 mb-6">Quick Actions</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {quickActions.map((action, index) => (
+        {quickActions.map((action) => (
           <button
             key={action.title}
             onClick={action.action}

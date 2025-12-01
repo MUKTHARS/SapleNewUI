@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { UserPlus, Mail, Crown, User, Trash2, MoreVertical, AlertCircle } from 'lucide-react';
+import { UserPlus, Mail, Crown, User, Trash2, AlertCircle } from 'lucide-react';
 
 interface TeamMember {
   id: string;

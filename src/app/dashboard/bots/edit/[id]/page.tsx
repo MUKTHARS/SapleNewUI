@@ -17,6 +17,7 @@ export default function EditBotPage() {
     if (params.id) {
       fetchBotData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
 
   const fetchBotData = async () => {
@@ -92,7 +93,7 @@ export default function EditBotPage() {
             <span>← Back to Agent List</span>
           </button>
           <h1 className="text-3xl font-bold text-gray-900">Edit Agent: {botData?.name}</h1>
-          <p className="text-gray-600 mt-2">Update your AI agent's configuration and files</p>
+          <p className="text-gray-600 mt-2">Update your AI agent&apos;s configuration and files</p>
         </div>
         <BotCreationWizard editMode={true} existingBot={botData} />
       </div>

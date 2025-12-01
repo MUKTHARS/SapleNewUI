@@ -19,7 +19,7 @@ export function Step4Configuration({
   const fontSizeOptions = ['12px', '14px', '16px', '18px', '20px', '22px', '24px'];
   const modelOptions = ['gpt-4o-mini', 'gpt-4', 'gpt-3.5-turbo'];
 
-  const handleInputChange = (field: keyof typeof formData, value: any) => {
+  const handleInputChange = (field: keyof typeof formData, value: unknown) => {
     setFormData({
       ...formData,
       [field]: value
@@ -183,7 +183,7 @@ export function Step4Configuration({
               placeholder="Define how your AI agent should behave..."
             />
             <p className="text-sm text-gray-500 mt-1">
-              This prompt defines the agent's personality, behavior, and response style
+              This prompt defines the agent&apos;s personality, behavior, and response style
             </p>
           </div>
 
@@ -200,7 +200,7 @@ export function Step4Configuration({
               placeholder="Welcome message (use {bot_name} for agent name)"
             />
             <p className="text-sm text-gray-500 mt-1">
-              Use {'{bot_name}'} to automatically insert the agent's name. Example: "Hi! I'm {'{bot_name}'}, how can I help you?"
+              Use {'{bot_name}'} to automatically insert the agent&apos;s name. Example: &quot;Hi! I&apos;m {'{bot_name}'}, how can I help you?&quot;
             </p>
           </div>
         </div>

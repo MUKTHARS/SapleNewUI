@@ -1,35 +1,63 @@
 // components/GoogleLoginButton.tsx - UPDATED
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface GoogleLoginButtonProps {
-  onSuccess?: (userData: any) => void;
+  onSuccess?: (userData: Record<string, unknown>) => void;
   onError?: (error: string) => void;
   onWorkspaceCheck?: (hasWorkspace: boolean) => void;
 }
 
 export const GoogleLoginButton = ({ onSuccess, onError, onWorkspaceCheck }: GoogleLoginButtonProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    // Load Google SDK
-    if (document.querySelector('script[src="https://accounts.google.com/gsi/client"]')) {
-      initializeGoogle();
-      return;
-    }
+   const initializeGoogle = useCallback(() => {
+     if (!window.google) return;
 
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.async = true;
-    script.defer = true;
-    script.onload = () => initializeGoogle();
-    script.onerror = () => {
-      console.error('Failed to load Google SDK');
-      onError?.('Failed to load Google authentication');
-    };
-    document.head.appendChild(script);
-  }, []);
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     const google = window.google as any;
+     google.accounts.id.initialize({
+       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
+       callback: handleGoogleResponse,
+       auto_select: false,
+     });
+
+     // Render Google's button directly
+     const buttonContainer = document.getElementById('googleButton');
+     if (buttonContainer) {
+       google.accounts.id.renderButton(buttonContainer, {
+         theme: 'outline',
+         size: 'large',
+         text: 'continue_with',
+         shape: 'rectangular',
+         width: 280,
+       });
+     }
+
+     // Optionally show One Tap
+     google.accounts.id.prompt();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+   useEffect(() => {
+     // Load Google SDK
+     if (document.querySelector('script[src="https://accounts.google.com/gsi/client"]')) {
+       initializeGoogle();
+       return;
+     }
+
+     const script = document.createElement('script');
+     script.src = 'https://accounts.google.com/gsi/client';
+     script.async = true;
+     script.defer = true;
+     script.onload = () => initializeGoogle();
+     script.onerror = () => {
+       console.error('Failed to load Google SDK');
+       onError?.('Failed to load Google authentication');
+     };
+     document.head.appendChild(script);
+   }, [onError, initializeGoogle]);
 
   const checkUserWorkspace = async (token: string): Promise<boolean> => {
     try {
@@ -54,7 +82,7 @@ export const GoogleLoginButton = ({ onSuccess, onError, onWorkspaceCheck }: Goog
     }
   };
 
-  const handleGoogleResponse = async (response: any) => {
+  const handleGoogleResponse = async (response: Record<string, string>) => {
     try {
       setIsLoading(true);
 
@@ -90,37 +118,13 @@ export const GoogleLoginButton = ({ onSuccess, onError, onWorkspaceCheck }: Goog
       } else {
         throw new Error(data.error || 'Login failed');
       }
-    } catch (error: any) {
-      console.error('Login error:', error);
-      onError?.(error.message || 'Login failed');
+    } catch (error) {
+    const message = error instanceof Error ? error.message : 'Login failed';
+    console.error('Login error:', error);
+    onError?.(message);
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const initializeGoogle = () => {
-    if (!window.google) return;
-
-    window.google.accounts.id.initialize({
-      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
-      callback: handleGoogleResponse,
-      auto_select: false,
-    });
-
-    // Render Google's button directly
-    const buttonContainer = document.getElementById('googleButton');
-    if (buttonContainer) {
-      window.google.accounts.id.renderButton(buttonContainer, {
-        theme: 'outline',
-        size: 'large',
-        text: 'continue_with',
-        shape: 'rectangular',
-        width: 280,
-      });
-    }
-
-    // Optionally show One Tap
-    window.google.accounts.id.prompt();
   };
 
   return (

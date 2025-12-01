@@ -2,7 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   LayoutDashboard,
@@ -10,27 +9,18 @@ import {
   Bot,
   BotIcon,
   ChevronLeft,
-  ChevronRight,
-  LogOut
+  ChevronRight
 } from 'lucide-react';
 
 interface DashboardSidebarProps {
   activeTab: string;
   onTabChange: (tab: 'overview' | 'team' | 'bots' | 'bot-list') => void;
-  user: any;
-  workspace: any;
+  user?: Record<string, unknown>;
+  workspace?: Record<string, unknown>;
 }
 
 export function DashboardSidebar({ activeTab, onTabChange, user, workspace }: DashboardSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const router = useRouter();
-
-  const handleLogout = () => {
-    sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('refresh_token');
-    sessionStorage.removeItem('user');
-    router.push('/');
-  };
 
   const navigationItems = [
     {
@@ -95,14 +85,14 @@ export function DashboardSidebar({ activeTab, onTabChange, user, workspace }: Da
               className="mt-4 pt-4 border-t border-gray-100"
             >
               <p className="text-gray-900 font-medium text-sm">
-                {user?.first_name || user?.username}
+                {(user?.first_name as string) || (user?.username as string)}
               </p>
               <p className="text-gray-500 text-xs truncate">
-                {user?.email}
+                {user?.email as string}
               </p>
               {workspace && (
                 <p className="text-teal-600 text-xs font-medium mt-1">
-                  {workspace.name}
+                  {(workspace.name as string)}
                 </p>
               )}
             </motion.div>

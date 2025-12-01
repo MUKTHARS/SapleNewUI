@@ -1,12 +1,11 @@
 // components/bot-creation/steps/Step3Training.tsx
-import { ArrowLeft, Brain , AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { ArrowLeft, Brain, AlertCircle, CheckCircle } from 'lucide-react';
 import { StepProps } from '../types/bot-types';
 import { ErrorAlert } from '../shared/ErrorAlert';
 
 export function Step3Training({
   formData,
   uploadedFiles,
-  bucketName,
   trainingStatus,
   error,
   isLoading,
@@ -41,7 +40,7 @@ export function Step3Training({
           <strong>Files to train:</strong> {uploadedFiles.length} file{uploadedFiles.length !== 1 ? 's' : ''}
         </p>
         <p className="text-sm text-gray-600 mt-1">
-          <strong>Agent Model:</strong> {formData.default_model}
+          <strong>Agent Model:</strong> {formData.default_model as string}
         </p>
       </div>
 

@@ -14,9 +14,8 @@ export function CyberNavbar() {
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [needsWorkspace, setNeedsWorkspace] = useState(false);
 
   const navItems = [
     { href: '/products', name: 'PRODUCTS' },
@@ -53,18 +52,12 @@ export function CyberNavbar() {
     };
   }, [isMobileMenuOpen]);
 
-  const handleLoginSuccess = (userData: any) => {
+  const handleLoginSuccess = (userData: Record<string, unknown>) => {
     setIsLoggedIn(true);
     setUser(userData);
     setShowLoginModal(false);
     setIsMobileMenuOpen(false);
     console.log('Login successful:', userData);
-  };
-
-  const handleWorkspaceNeeded = () => {
-    setNeedsWorkspace(true);
-    // The UserSection component will automatically show the workspace creation button
-    // because the user won't have a workspace
   };
 
   const handleLoginError = (error: string) => {
@@ -99,7 +92,7 @@ export function CyberNavbar() {
 
           <UserSection
             isLoggedIn={isLoggedIn}
-            user={user}
+            user={user || undefined}
             onLoginClick={() => setShowLoginModal(true)}
             onLogout={handleLogout}
           />
@@ -109,7 +102,7 @@ export function CyberNavbar() {
         <div className="lg:hidden flex items-center space-x-4">
           <UserSection
             isLoggedIn={isLoggedIn}
-            user={user}
+            user={user || undefined}
             onLoginClick={() => setShowLoginModal(true)}
             onLogout={handleLogout}
           />
@@ -190,10 +183,10 @@ export function CyberNavbar() {
                   {isLoggedIn ? (
                     <div className="text-center">
                       <p className="text-gray-300 text-sm font-mono mb-2">
-                        Welcome, {user?.first_name || user?.username}
+                        Welcome, {(user?.first_name as string) || (user?.username as string)}
                       </p>
                       <p className="text-green-400 text-xs font-mono mb-4">
-                        {user?.email}
+                        {user?.email as string}
                       </p>
                       <motion.button
                         whileTap={{ scale: 0.95 }}
@@ -230,7 +223,6 @@ export function CyberNavbar() {
         onClose={() => setShowLoginModal(false)}
         onSuccess={handleLoginSuccess}
         onError={handleLoginError}
-        onWorkspaceNeeded={handleWorkspaceNeeded}
       />
     </>
   );

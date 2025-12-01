@@ -7,12 +7,11 @@ import { GoogleLoginButton } from './GoogleLoginButton';
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: (userData: any) => void;
+  onSuccess: (userData: Record<string, unknown>) => void;
   onError: (error: string) => void;
-  onWorkspaceNeeded?: () => void;
 }
 
-export const LoginModal = ({ isOpen, onClose, onSuccess, onError, onWorkspaceNeeded }: LoginModalProps) => {
+export const LoginModal = ({ isOpen, onClose, onSuccess, onError }: LoginModalProps) => {
   const [isCheckingWorkspace, setIsCheckingWorkspace] = useState(false);
 
   if (!isOpen) return null;
@@ -20,8 +19,6 @@ export const LoginModal = ({ isOpen, onClose, onSuccess, onError, onWorkspaceNee
   const handleWorkspaceCheck = (hasWorkspace: boolean) => {
     if (!hasWorkspace) {
       setIsCheckingWorkspace(true);
-      // Let the parent component know that workspace creation is needed
-      onWorkspaceNeeded?.();
       // Close the login modal after a brief delay
       setTimeout(() => {
         onClose();
@@ -73,7 +70,7 @@ const ModalHeader = ({ onClose }: ModalHeaderProps) => (
 
 // Modal Content Component - UPDATED
 interface ModalContentProps {
-  onSuccess: (userData: any) => void;
+  onSuccess: (userData: Record<string, unknown>) => void;
   onError: (error: string) => void;
   onWorkspaceCheck?: (hasWorkspace: boolean) => void;
 }

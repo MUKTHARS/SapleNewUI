@@ -4,16 +4,15 @@ import { Settings, Bot, MessageSquare, Calendar, ArrowRight, ArrowLeft, Mic, Vol
 import { ChatPreview } from '../shared/ChatPreview';
 
 interface CustomizeStepProps {
-  formData: any;
-  onChange: (data: any) => void;
+  formData: Record<string, unknown>;
+  onChange: (data: Record<string, unknown>) => void;
   error: string;
-  isLoading: boolean;
   onBack: () => void;
   onNext: () => void;
   editMode?: boolean;
 }
 
-export function CustomizeStep({ formData, onChange, error, isLoading, onBack, onNext, editMode = false }: CustomizeStepProps) {
+export function CustomizeStep({ formData, onChange, error, onBack, onNext, editMode = false }: CustomizeStepProps) {
   const [activeTab, setActiveTab] = useState('appearance');
 
   const fontOptions = ['Arial', 'Helvetica', 'Georgia', 'Times New Roman', 'Courier New', 'Verdana'];
@@ -30,7 +29,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
     { id: 'shimmer', name: 'Shimmer', description: 'Soft and calming', emoji: '✨' }
   ];
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     onChange({ ...formData, [field]: value });
   };
 
@@ -85,7 +84,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
         {[
           { id: 'appearance', label: 'Appearance', icon: Bot, show: true },
           { id: 'behavior', label: 'Behavior', icon: MessageSquare, show: true },
-          { id: 'voice', label: 'Voice', icon: Volume2, show: ['audio', 'both'].includes(formData.media_type) },
+          { id: 'voice', label: 'Voice', icon: Volume2, show: ['audio', 'both'].includes(formData.media_type as string) },
           { id: 'integration', label: 'Integrations', icon: Calendar, show: true },
         ].map((tab) => {
           if (!tab.show) return null;
@@ -123,20 +122,20 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                     <div className="flex items-center space-x-4">
                       <input
                         type="color"
-                        value={formData.color}
+                        value={formData.color as string}
                         onChange={(e) => handleInputChange('color', e.target.value)}
                         className="w-20 h-20 border-2 border-gray-300 rounded-xl cursor-pointer shadow-sm"
                       />
                       <div className="flex-1">
                         <input
                           type="text"
-                          value={formData.color}
+                          value={formData.color as string}
                           onChange={(e) => handleInputChange('color', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-lg"
                           placeholder="#0C7075"
                         />
                         <p className="text-sm text-gray-500 mt-2">
-                          This color will be used for your agent's branding
+                          This color will be used for your agent&apos;s branding
                         </p>
                       </div>
                     </div>
@@ -148,7 +147,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                         Font Family
                       </label>
                       <select
-                        value={formData.font}
+                        value={formData.font as string}
                         onChange={(e) => handleInputChange('font', e.target.value)}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       >
@@ -163,7 +162,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                         Font Size
                       </label>
                       <select
-                        value={formData.font_size}
+                        value={formData.font_size as string}
                         onChange={(e) => handleInputChange('font_size', e.target.value)}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       >
@@ -179,7 +178,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       Font Style
                     </label>
                     <select
-                      value={formData.font_style}
+                      value={formData.font_style as string}
                       onChange={(e) => handleInputChange('font_style', e.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
@@ -205,7 +204,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       AI Model
                     </label>
                     <select
-                      value={formData.default_model}
+                      value={formData.default_model as string}
                       onChange={(e) => handleInputChange('default_model', e.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
@@ -214,7 +213,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       ))}
                     </select>
                     <p className="text-sm text-gray-500 mt-2">
-                      Choose the AI model that powers your agent's intelligence
+                      Choose the AI model that powers your agent&apos;s intelligence
                     </p>
                   </div>
 
@@ -224,13 +223,13 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                     </label>
                     <input
                       type="text"
-                      value={formData.welcome_message}
+                      value={formData.welcome_message as string}
                       onChange={(e) => handleInputChange('welcome_message', e.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Hi! I'm {bot_name}, how can I help you today?"
                     />
                     <p className="text-sm text-gray-500 mt-2">
-                      Use {'{bot_name}'} to automatically insert your agent's name
+                      Use {'{bot_name}'} to automatically insert your agent&apos;s name
                     </p>
                   </div>
 
@@ -239,14 +238,14 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       Instructions & Personality
                     </label>
                     <textarea
-                      value={formData.prompt}
+                      value={formData.prompt as string}
                       onChange={(e) => handleInputChange('prompt', e.target.value)}
                       rows={6}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical"
                       placeholder="Describe how your agent should behave, its personality, tone, and response style..."
                     />
                     <p className="text-sm text-gray-500 mt-2">
-                      Guide your agent's behavior, tone, and response style
+                      Guide your agent&apos;s behavior, tone, and response style
                     </p>
                   </div>
                 </div>
@@ -311,7 +310,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                           min="0.5"
                           max="2"
                           step="0.1"
-                          value={formData.speaking_rate || 1}
+                          value={(formData.speaking_rate as number) || 1}
                           onChange={(e) => handleInputChange('speaking_rate', parseFloat(e.target.value))}
                           className="flex-1 h-3 bg-gradient-to-r from-blue-200 to-purple-200 rounded-lg appearance-none cursor-pointer slider"
                         />
@@ -319,7 +318,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       </div>
                       <div className="text-center">
                         <span className="text-lg font-semibold text-blue-700 bg-white px-4 py-2 rounded-full border border-blue-200">
-                          {formData.speaking_rate || 1}x Speed
+                          {((formData.speaking_rate as number) || 1)}x Speed
                         </span>
                       </div>
                     </div>
@@ -330,9 +329,9 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       <Volume2 className="w-6 h-6 text-green-600 mt-1" />
                       <div>
                         <p className="text-green-800 font-semibold">Voice Preview Available</p>
-                        <p className="text-green-700 text-sm mt-1">
-                          You'll be able to test and preview the selected voice after your agent is created and trained.
-                        </p>
+                         <p className="text-green-700 text-sm mt-1">
+                           You&apos;ll be able to test and preview the selected voice after your agent is created and trained.
+                         </p>
                       </div>
                     </div>
                   </div>
@@ -360,7 +359,7 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                       <input
                         type="checkbox"
                         id="calendly_enabled"
-                        checked={formData.calendly_enabled}
+                        checked={formData.calendly_enabled as boolean}
                         onChange={(e) => handleInputChange('calendly_enabled', e.target.checked)}
                         className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                       />
@@ -370,14 +369,14 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                     </div>
                   </div>
 
-                  {formData.calendly_enabled && (
+                  {(formData.calendly_enabled as boolean) && (
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
                       <label className="block text-sm font-medium text-gray-700 mb-3">
                         Calendly Scheduling Page
                       </label>
                       <input
                         type="url"
-                        value={formData.calendly_link}
+                        value={formData.calendly_link as string}
                         onChange={(e) => handleInputChange('calendly_link', e.target.value)}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="https://calendly.com/your-username"
@@ -407,13 +406,13 @@ export function CustomizeStep({ formData, onChange, error, isLoading, onBack, on
                   <p className="font-semibold text-green-800 text-lg">Voice Agent Ready</p>
                   <p className="text-green-700">
                     Your agent will support voice interactions
-                    {formData.voice_type && (
-                      <span className="font-semibold"> with {voiceOptions.find(v => v.id === formData.voice_type)?.name} voice</span>
+                    {(formData.voice_type as string) && (
+                      <span className="font-semibold"> with {voiceOptions.find(v => v.id === (formData.voice_type as string))?.name} voice</span>
                     )}
                   </p>
-                  {formData.speaking_rate && (
+                  {(formData.speaking_rate as number) && (
                     <p className="text-green-600 text-sm mt-1">
-                      Speaking rate: {formData.speaking_rate}x
+                      Speaking rate: {(formData.speaking_rate as number)}x
                     </p>
                   )}
                 </div>

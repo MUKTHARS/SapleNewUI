@@ -2,8 +2,8 @@
 import { Bot, ArrowRight, Loader2, MessageSquare, Mic, MessageCircle } from 'lucide-react';
 
 interface BasicInfoStepProps {
-  formData: any;
-  onChange: (data: any) => void;
+  formData: Record<string, unknown>;
+  onChange: (data: Record<string, unknown>) => void;
   error: string;
   isLoading: boolean;
   onCreateBot: () => void;
@@ -43,7 +43,7 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
         <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <Bot className="w-10 h-10 text-blue-600" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Let's Create Your AI Agent</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Let&apos;s Create Your AI Agent</h2>
         <p className="text-gray-600 mt-2 text-lg">Start by giving your agent a friendly name and choose how users will interact with it</p>
       </div>
 
@@ -55,16 +55,16 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
           </label>
           <input
             type="text"
-            value={formData.name}
+            value={(formData.name as string) || ''}
             onChange={(e) => onChange({ ...formData, name: e.target.value })}
             className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg placeholder-gray-400"
             placeholder="e.g., Customer Support Agent, Sales Agent..."
             maxLength={50}
           />
           <div className="flex justify-between text-sm text-gray-500 mt-3">
-            <span>This will be your agent's display name</span>
-            <span>{formData.name.length}/50</span>
-          </div>
+             <span>This will be your agent&apos;s display name</span>
+             <span>{((formData.name as string) || '').length}/50</span>
+           </div>
         </div>
 
         {/* Media Type Selection */}
@@ -239,8 +239,8 @@ export function BasicInfoStep({ formData, onChange, error, isLoading, onCreateBo
 
         <div className="flex justify-end pt-6">
           <button
-            onClick={onCreateBot}
-            disabled={isLoading || !formData.name || formData.name.length < 2}
+             onClick={onCreateBot}
+             disabled={isLoading || !formData.name || ((formData.name as string) || '').length < 2}
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             {isLoading ? (

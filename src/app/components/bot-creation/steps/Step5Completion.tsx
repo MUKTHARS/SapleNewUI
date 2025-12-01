@@ -9,7 +9,7 @@ interface Step5CompletionProps {
   editMode?: boolean;
 }
 
-export function Step5Completion({ createdBot, bucketName, onReset, editMode = false }: Step5CompletionProps) {
+export function Step5Completion({ createdBot, onReset, editMode = false }: Step5CompletionProps) {
   return (
     <div className="text-center py-8">
       <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -19,7 +19,7 @@ export function Step5Completion({ createdBot, bucketName, onReset, editMode = fa
         {editMode ? 'Agent Updated Successfully!' : 'Agent Created Successfully!'}
       </h3>
       <p className="text-gray-600 mb-2">
-        Your AI agent "{createdBot?.name}" has been {editMode ? 'updated' : 'created'}.
+        Your AI agent &quot;{createdBot?.name}&quot; has been {editMode ? 'updated' : 'created'}.
       </p>
 
       <div className="space-x-4">

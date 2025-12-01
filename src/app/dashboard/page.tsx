@@ -1,7 +1,7 @@
 // src/app/dashboard/page.tsx - UPDATED
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TeamManagement } from '../components/TeamManagement';
 import { DashboardSidebar } from '../components/DashboardSidebar';
@@ -9,10 +9,10 @@ import { DashboardOverview } from '../components/DashboardOverview';
 import { BotList } from '../components/BotList';
 import { BotCreationWizard } from '../components/bot-creation/BotCreationWizard';
 
-export default function Dashboard() {
-  const [user, setUser] = useState<any>(null);
+function DashboardContent() {
+  const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [activeTab, setActiveTab] = useState<'overview' | 'team' | 'bots' | 'bot-list'>('overview');
-  const [workspace, setWorkspace] = useState<any>(null);
+  const [workspace, setWorkspace] = useState<Record<string, unknown> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -68,7 +68,7 @@ export default function Dashboard() {
   const renderActiveTabContent = () => {
     switch (activeTab) {
       case 'overview':
-        return <DashboardOverview workspace={workspace} />;
+        return <DashboardOverview />;
       case 'team':
         return <TeamManagement />;
       case 'bot-list':
@@ -76,7 +76,7 @@ export default function Dashboard() {
       case 'bots':
         return <BotCreationWizard />;
       default:
-        return <DashboardOverview workspace={workspace} />;
+        return <DashboardOverview />;
     }
   };
 
@@ -98,7 +98,7 @@ export default function Dashboard() {
         activeTab={activeTab}
         onTabChange={handleTabChange}
         user={user}
-        workspace={workspace}
+        workspace={workspace || undefined}
       />
 
       {/* Main Content Area */}
@@ -142,5 +142,20 @@ export default function Dashboard() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={
+      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-300 font-medium">Loading Dashboard...</p>
+        </div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   );
 }

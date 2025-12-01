@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bot, Settings, MessageSquare, Upload, Brain, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, MoreVertical, Sparkles, Eye } from 'lucide-react';
+import { Bot, Upload, Brain, Edit, Copy, X, FileText, Trash2, CheckCircle, AlertCircle, Loader2, ChevronDown, ChevronUp, Plus, Sparkles, Eye } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface Bot {
@@ -51,7 +51,6 @@ export function BotList() {
   const [isTraining, setIsTraining] = useState(false);
   const [error, setError] = useState('');
   const [fileToDelete, setFileToDelete] = useState<UploadedFile | null>(null);
-  const [selectedFramework, setSelectedFramework] = useState<string>('html');
   const [expandedFrameworks, setExpandedFrameworks] = useState<string[]>(['html']);
   const [previewBot, setPreviewBot] = useState<Bot | null>(null);
   const router = useRouter();
@@ -170,6 +169,7 @@ export function BotList() {
 
   useEffect(() => {
     fetchBots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBots = async () => {
@@ -233,7 +233,6 @@ export function BotList() {
 
   const handleOpenCopyScriptModal = (botId: string, botName: string, workspaceId?: string) => {
     setCopyScriptModal({open: true, botId, botName, workspaceId});
-    setSelectedFramework('html');
     setExpandedFrameworks(['html']);
   };
 
@@ -274,7 +273,7 @@ export function BotList() {
         await fetchUploadedFiles(uploadTrainModal.botId!);
 
         if (data.rejected_files && data.rejected_files.length > 0) {
-          setError(`Some files were rejected: ${data.rejected_files.map((f: any) => `${f.name} (${f.reason})`).join(', ')}`);
+         setError(`Some files were rejected: ${data.rejected_files.map((f: Record<string, string>) => `${f.name} (${f.reason})`).join(', ')}`);
         }
       } else {
         setError(data.error || 'Failed to upload files');
@@ -507,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             color: bot.color
                           }}
                         >
-                          Hi! I'm {bot.name}, your AI agent. How can I help you today?
+                          Hi! I&apos;m {bot.name}, your AI agent. How can I help you today?
                         </p>
                       </div>
                     </div>
@@ -913,7 +912,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   </li>
                   <li className="flex items-center">
                     <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-3"></div>
-                    Paste the script before the closing &lt;/body&gt; tag
+                    Paste the script before the closing body tag
                   </li>
                   <li className="flex items-center">
                     <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-3"></div>

@@ -1,12 +1,10 @@
 // components/BotCreationWizard.tsx - COMPLETE CORRECTED VERSION
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
 import {
   Bot,
   Palette,
-  MessageSquare,
   Calendar,
   Save,
   Upload,
@@ -66,7 +64,6 @@ export function BotCreationWizard() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [trainingStatus, setTrainingStatus] = useState<string>('');
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
-  const [bucketName, setBucketName] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   const [formData, setFormData] = useState<BotFormData>({
@@ -87,12 +84,34 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     calendly_link: '',
   });
 
+  const fetchUploadedFiles = useCallback(async () => {
+    if (!createdBot) return;
+
+    try {
+      const token = sessionStorage.getItem('access_token');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/${createdBot.id}/files/`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        const files = await response.json();
+        setUploadedFiles(files);
+      } else {
+        console.error('Failed to fetch files');
+      }
+    } catch (error) {
+      console.error('Failed to fetch files:', error);
+    }
+  }, [createdBot]);
+
   // Fetch uploaded files when step 2 is active and bot is created
   useEffect(() => {
     if (currentStep === 2 && createdBot) {
       fetchUploadedFiles();
     }
-  }, [currentStep, createdBot]);
+  }, [currentStep, createdBot, fetchUploadedFiles]);
 
   const clearError = () => setError('');
 
@@ -121,14 +140,13 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         body: JSON.stringify({ name: formData.name })
       });
 
-      const data = await response.json();
+      const data = await response.json() as Record<string, unknown>;
 
-      if (response.ok) {
-        setCreatedBot(data.bot);
-        setBucketName(data.bucket_name);
+       if (response.ok) {
+         setCreatedBot(data.bot as Bot);
         setCurrentStep(2);
       } else {
-        setError(data.error || 'Failed to create agent');
+        setError((data.error as string) || 'Failed to create agent');
       }
     } catch (error) {
       console.error('Agent creation error:', error);
@@ -167,8 +185,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
         fetchUploadedFiles();
 
         if (data.rejected_files && data.rejected_files.length > 0) {
-          setError(`Some files were rejected: ${data.rejected_files.map((f: any) => `${f.name} (${f.reason})`).join(', ')}`);
-        }
+            setError(`Some files were rejected: ${data.rejected_files.map((f: Record<string, unknown>) => `${f.name} (${f.reason})`).join(', ')}`);
+          }
       } else {
         setError(data.error || 'Failed to upload files');
       }
@@ -180,27 +198,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
     }
   };
 
-  const fetchUploadedFiles = async () => {
-    if (!createdBot) return;
 
-    try {
-      const token = sessionStorage.getItem('access_token');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bots/${createdBot.id}/files/`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.ok) {
-        const files = await response.json();
-        setUploadedFiles(files);
-      } else {
-        console.error('Failed to fetch files');
-      }
-    } catch (error) {
-      console.error('Failed to fetch files:', error);
-    }
-  };
 
   const handleTrainBot = async () => {
     if (!createdBot) return;
@@ -551,8 +549,8 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
   const renderStep4 = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">BAgentot Configuration</h3>
-        <p className="text-gray-600 mb-4">Customize your agent's appearance and behavior</p>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">Agent Configuration</h3>
+        <p className="text-gray-600 mb-4">Customize your agent&apos;s appearance and behavior</p>
       </div>
 
       {/* Bot Preview */}
@@ -708,7 +706,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               placeholder="Define how your AI agent should behave..."
             />
             <p className="text-sm text-gray-500 mt-1">
-              This prompt defines the agent's personality and behavior
+             This prompt defines the agent&apos;s personality and behavior
             </p>
           </div>
 
@@ -724,7 +722,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
               placeholder="Welcome message (use {bot_name} for agent name)"
             />
             <p className="text-sm text-gray-500 mt-1">
-              Use {'{bot_name}'} to automatically insert the agent's name
+              Use {'{bot_name}'} to automatically insert the agent&apos;s name
             </p>
           </div>
         </div>
@@ -805,7 +803,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-2">Agent Created Successfully!</h3>
       <p className="text-gray-600 mb-2">
-        Your AI agent "{createdBot?.name}" is ready to use.
+      Your AI agent &quot;{createdBot?.name}&quot; is ready to use.
       </p>
 
       <div className="space-x-4">
@@ -822,7 +820,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             setSelectedFiles([]);
             setUploadedFiles([]);
             setTrainingStatus('');
-            setBucketName('');
             setError('');
             setFormData({
               name: '',

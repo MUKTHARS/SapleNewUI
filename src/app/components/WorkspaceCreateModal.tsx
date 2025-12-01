@@ -7,15 +7,13 @@ import { motion } from 'framer-motion';
 interface WorkspaceCreateModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: (workspace: any) => void;
-
+  onSuccess: (workspace: Record<string, unknown>) => void;
 }
 
 export const WorkspaceCreateModal = ({
   isOpen,
   onClose,
   onSuccess,
-
 }: WorkspaceCreateModalProps) => {
   const [workspaceName, setWorkspaceName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +75,7 @@ export const WorkspaceCreateModal = ({
           setFieldError('Failed to create workspace');
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Workspace creation error:', error);
       setFieldError('Network error: Failed to create workspace');
     } finally {

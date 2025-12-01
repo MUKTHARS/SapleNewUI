@@ -6,14 +6,14 @@ import { WorkspaceCreateModal } from './WorkspaceCreateModal';
 
 interface UserSectionProps {
   isLoggedIn: boolean;
-  user: any;
+  user?: Record<string, unknown>;
   onLoginClick: () => void;
   onLogout: () => void;
 }
 
 export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSectionProps) => {
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
-  const [currentWorkspace, setCurrentWorkspace] = useState<any>(null);
+  const [currentWorkspace, setCurrentWorkspace] = useState<Record<string, unknown> | null>(null);
   const [workspaceLoading, setWorkspaceLoading] = useState(false);
   const [hasCheckedWorkspace, setHasCheckedWorkspace] = useState(false);
   const router = useRouter();
@@ -69,16 +69,11 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
     }
   }, [hasCheckedWorkspace, currentWorkspace, workspaceLoading, isLoggedIn]);
 
-  const handleWorkspaceCreated = (workspace: any) => {
+  const handleWorkspaceCreated = (workspace: Record<string, unknown>) => {
     setCurrentWorkspace(workspace);
     setShowWorkspaceModal(false);
     // Redirect to dashboard after workspace creation
     router.push('/dashboard');
-  };
-
-  const handleWorkspaceError = (error: string) => {
-    console.error('Workspace error:', error);
-    alert(`Workspace creation failed: ${error}`);
   };
 
   const handleDashboardClick = () => {
@@ -124,8 +119,8 @@ export const UserSection = ({ isLoggedIn, user, onLoginClick, onLogout }: UserSe
 
 // Updated LoggedInUser Component
 interface LoggedInUserProps {
-  user: any;
-  workspace: any;
+  user?: Record<string, unknown>;
+  workspace?: Record<string, unknown> | null;
   onLogout: () => void;
   onCreateWorkspace: () => void;
   onDashboardClick: () => void;
@@ -144,10 +139,10 @@ const LoggedInUser = ({ user, workspace, onLogout, onCreateWorkspace, onDashboar
       <div className="flex items-center space-x-3">
         <div className="text-right">
           <p className="text-gray-300 text-sm font-mono">
-            {user?.first_name || user?.username}
+            {(user?.first_name as string) || (user?.username as string)}
           </p>
           <p className="text-green-400 text-xs font-mono">
-            {workspace.name}
+            {(workspace.name as string)}
           </p>
         </div>
         <motion.button
@@ -171,7 +166,7 @@ const LoggedInUser = ({ user, workspace, onLogout, onCreateWorkspace, onDashboar
       // User needs to create a workspace
       <div className="flex items-center space-x-3">
         <span className="text-gray-300 text-sm font-mono">
-          Welcome, {user?.first_name || user?.username}
+          Welcome, {(user?.first_name as string) || (user?.username as string)}
         </span>
         <motion.button
           whileHover={{ scale: 1.05 }}

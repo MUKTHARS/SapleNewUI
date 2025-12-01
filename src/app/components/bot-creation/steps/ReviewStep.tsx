@@ -1,9 +1,9 @@
 // components/bot-creation/steps/ReviewStep.tsx
-import { CheckCircle, ArrowLeft, Loader2, FileText, Bot, Settings, Sparkles, Mic, MessageSquare, MessageCircle } from 'lucide-react';
+import { CheckCircle, ArrowLeft, Loader2, FileText, Bot, Settings, Sparkles, Mic } from 'lucide-react';
 
 interface ReviewStepProps {
-  formData: any;
-  uploadedFiles: any[];
+  formData: Record<string, unknown>;
+  uploadedFiles: Record<string, unknown>[];
   bucketName: string;
   error: string;
   isLoading: boolean;
@@ -12,7 +12,7 @@ interface ReviewStepProps {
   editMode?: boolean;
 }
 
-export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoading, onBack, onSubmit, editMode = false }: ReviewStepProps) {
+export function ReviewStep({ formData, uploadedFiles, error, isLoading, onBack, onSubmit, editMode = false }: ReviewStepProps) {
   const voiceOptions = [
     { id: 'alloy', name: 'Alloy', description: 'Balanced and clear', emoji: '🎯' },
     { id: 'echo', name: 'Echo', description: 'Warm and friendly', emoji: '🤗' },
@@ -30,26 +30,8 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
-  const getMediaTypeIcon = () => {
-    switch (formData.media_type) {
-      case 'text': return <MessageSquare className="w-5 h-5" />;
-      case 'audio': return <Mic className="w-5 h-5" />;
-      case 'both': return <MessageCircle className="w-5 h-5" />;
-      default: return <MessageSquare className="w-5 h-5" />;
-    }
-  };
-
-  const getMediaTypeColor = () => {
-    switch (formData.media_type) {
-      case 'text': return 'bg-blue-100 text-blue-600';
-      case 'audio': return 'bg-green-100 text-green-600';
-      case 'both': return 'bg-purple-100 text-purple-600';
-      default: return 'bg-blue-100 text-blue-600';
-    }
-  };
-
   const getTotalFileSize = () => {
-    return uploadedFiles.reduce((total, file) => total + file.size, 0);
+    return uploadedFiles.reduce((total, file) => total + (file.size as number), 0);
   };
 
   return (
@@ -76,12 +58,12 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
             title="Basic Info"
             icon={Bot}
             items={[
-              { label: 'Name', value: formData.name },
-              { label: 'AI Model', value: formData.default_model },
+              { label: 'Name', value: formData.name as string },
+              { label: 'AI Model', value: formData.default_model as string },
               { 
                 label: 'Interaction Type', 
-                value: formData.media_type === 'both' ? 'Text & Voice' : 
-                       formData.media_type === 'audio' ? 'Voice Only' : 'Text Only'
+                value: (formData.media_type as string) === 'both' ? 'Text & Voice' : 
+                       (formData.media_type as string) === 'audio' ? 'Voice Only' : 'Text Only'
               }
             ]}
           />
@@ -89,9 +71,9 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
             title="Appearance"
             icon={Settings}
             items={[
-              { label: 'Color', value: formData.color },
-              { label: 'Font', value: formData.font },
-              { label: 'Size', value: formData.font_size },
+              { label: 'Color', value: formData.color as string },
+              { label: 'Font', value: formData.font as string },
+              { label: 'Size', value: formData.font_size as string },
             ]}
           />
           <SummaryCard 
@@ -105,7 +87,7 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
         </div>
 
         {/* Voice Settings Summary */}
-        {(formData.media_type === 'audio' || formData.media_type === 'both') && (
+        {((formData.media_type as string) === 'audio' || (formData.media_type as string) === 'both') && (
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 mb-6">
             <div className="flex items-center space-x-4 mb-4">
               <Mic className="w-8 h-8 text-green-600" />
@@ -114,20 +96,20 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <p className="text-green-700 font-semibold">Voice Personality</p>
-                <p className="text-green-600">
-                  {voiceOptions.find(v => v.id === formData.voice_type)?.name || 'Alloy'}
-                  {' '}{voiceOptions.find(v => v.id === formData.voice_type)?.emoji}
-                </p>
-                <p className="text-green-500 text-sm">
-                  {voiceOptions.find(v => v.id === formData.voice_type)?.description}
-                </p>
+                  <p className="text-green-600">
+                    {voiceOptions.find(v => v.id === (formData.voice_type as string))?.name || 'Alloy'}
+                    {' '}{voiceOptions.find(v => v.id === (formData.voice_type as string))?.emoji}
+                  </p>
+                  <p className="text-green-500 text-sm">
+                    {voiceOptions.find(v => v.id === (formData.voice_type as string))?.description}
+                  </p>
               </div>
               <div>
                 <p className="text-green-700 font-semibold">Speaking Rate</p>
-                <p className="text-green-600">{formData.speaking_rate || 1}x Speed</p>
+                <p className="text-green-600">{((formData.speaking_rate as number) || 1)}x Speed</p>
                 <p className="text-green-500 text-sm">
-                  {formData.speaking_rate === 1 ? 'Normal speed' : 
-                   formData.speaking_rate > 1 ? 'Faster than normal' : 'Slower than normal'}
+                  {(formData.speaking_rate as number) === 1 ? 'Normal speed' : 
+                   (formData.speaking_rate as number) > 1 ? 'Faster than normal' : 'Slower than normal'}
                 </p>
               </div>
             </div>
@@ -143,14 +125,14 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
             </h3>
             <div className="space-y-3 max-h-60 overflow-y-auto">
               {uploadedFiles.map((file) => (
-                <div key={file.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
-                  <div className="flex items-center space-x-3">
-                    <FileText className="w-4 h-4 text-gray-400" />
-                    <span className="text-sm font-medium text-gray-700">{file.name}</span>
-                  </div>
-                  <span className="text-xs text-gray-500">{formatFileSize(file.size)}</span>
-                </div>
-              ))}
+                 <div key={file.id as string} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                   <div className="flex items-center space-x-3">
+                     <FileText className="w-4 h-4 text-gray-400" />
+                     <span className="text-sm font-medium text-gray-700">{file.name as string}</span>
+                   </div>
+                   <span className="text-xs text-gray-500">{formatFileSize((file.size as number))}</span>
+                 </div>
+               ))}
             </div>
           </div>
         )}
@@ -243,7 +225,13 @@ export function ReviewStep({ formData, uploadedFiles, bucketName, error, isLoadi
   );
 }
 
-function SummaryCard({ title, icon: Icon, items }: { title: string; icon: any; items: { label: string; value: string }[] }) {
+interface SummaryCardProps {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  items: { label: string; value: string }[];
+}
+
+function SummaryCard({ title, icon: Icon, items }: SummaryCardProps) {
   return (
     <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-center space-x-3 mb-4">

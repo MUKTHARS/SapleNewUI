@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Palette, MessageSquare, Calendar, Save } from 'lucide-react';
+import { Bot, Palette, Calendar, Save } from 'lucide-react';
 
 interface BotFormData {
   name: string;
@@ -88,7 +88,6 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
   };
 
   const fontOptions = ['Arial', 'Helvetica', 'Georgia', 'Times New Roman', 'Courier New', 'Verdana'];
-  const fontStyleOptions = ['normal', 'italic', 'bold', 'bold italic'];
   const fontSizeOptions = ['12px', '14px', '16px', '18px', '20px', '22px', '24px'];
   const modelOptions = ['gpt-4o-mini', 'gpt-4', 'gpt-3.5-turbo'];
 
@@ -103,7 +102,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">Create New AI Agent</h2>
-              <p className="text-gray-600 text-sm">Configure your AI agent's settings and behavior</p>
+              <p className="text-gray-600 text-sm">Configure your AI agent&apos;s settings and behavior</p>
             </div>
           </div>
         </div>
@@ -250,7 +249,7 @@ Do not fabricate answers. Refer only to the content you've been trained on.`,
                   placeholder="Welcome message (use {bot_name} for agent name)"
                 />
                 <p className="text-sm text-gray-500 mt-1">
-                  Use {'{bot_name}'} to automatically insert the agent's name
+                  Use &#123;bot_name&#125; to automatically insert the agent&apos;s name
                 </p>
               </div>
             </div>

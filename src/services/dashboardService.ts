@@ -239,18 +239,16 @@ export interface RecentActivity {
   user: string;
   user_email: string | null;
   timestamp: string;
-  metadata: any;
-}
+  metadata: Record<string, unknown>;
+  }
 
 // Original comprehensive interface (for backward compatibility)
 export interface DashboardStats {
   team_members: TeamMembersStats;
   bots: BotsStats;
-  files: FilesStats;
-  training: TrainingStats;
   conversations: ConversationStats;
-  performance: any;
-  recent_activity: RecentActivity[];
+   performance: Record<string, unknown>;
+   recent_activity: RecentActivity[];
   storage_usage: StorageUsage;
   user_engagement: UserEngagement;
   system_health: SystemHealth;
@@ -304,7 +302,7 @@ class DashboardService {
     return response.data;
   }
 
-  async getBotPerformance(botId?: string): Promise<any> {
+  async getBotPerformance(botId?: string): Promise<Record<string, unknown>> {
     const url = botId 
       ? `/dashboard/bots/performance/${botId}/`
       : '/dashboard/bots/performance/';

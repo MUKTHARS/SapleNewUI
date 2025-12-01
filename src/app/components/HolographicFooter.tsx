@@ -1,33 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-
-type HoloElement = {
-  left: string;
-  top: string;
-  initialX: number;
-  initialY: number;
-  animateX: number;
-  animateY: number;
-  duration: number;
-};
-
 export function HolographicFooter() {
-  const [holoElements, setHoloElements] = useState<HoloElement[]>([]);
-
-  useEffect(() => {
-    const elements = Array.from({ length: 3 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 50}%`,
-      initialX: Math.random() * 60 - 30,
-      initialY: Math.random() * 60 - 30,
-      animateX: Math.random() * 60 - 30,
-      animateY: Math.random() * 60 - 30,
-      duration: 15 + Math.random() * 20,
-    }));
-    setHoloElements(elements);
-  }, []);
 
   return (
     <footer className="relative overflow-hidden border-t border-green-400/20">

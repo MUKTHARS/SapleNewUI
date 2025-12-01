@@ -52,16 +52,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const loginWithGoogle = () => {
     // Initialize Google Sign-In
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (typeof window !== 'undefined' && (window as any).google) {
-      (window as any).google.accounts.id.initialize({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const google = (window as any).google;
+      google.accounts.id.initialize({
         client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
         callback: handleGoogleResponse,
       });
-      (window as any).google.accounts.id.prompt();
+      google.accounts.id.prompt();
     }
   };
 
-  const handleGoogleResponse = async (response: any) => {
+  const handleGoogleResponse = async (response: Record<string, string>) => {
     try {
       setIsLoading(true);
       const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/b2c/google/login/`, {
@@ -92,8 +95,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else {
         throw new Error(data.error || 'Login failed');
       }
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch {
+      console.error('Login error');
       alert('Login failed. Please try again.');
     } finally {
       setIsLoading(false);
@@ -111,7 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       );
       return response.ok;
-    } catch (error: any) {
+    } catch {
       return false;
     }
   };

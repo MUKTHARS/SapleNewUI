@@ -5,12 +5,10 @@ import { ErrorAlert } from '../shared/ErrorAlert';
 import { useState } from 'react';
 
 export function Step2FileUpload({
-  formData,
   selectedFiles,
   setSelectedFiles,
   uploadedFiles,
   setUploadedFiles,
-  bucketName,
   error,
   setError,
   isLoading,
@@ -19,7 +17,7 @@ export function Step2FileUpload({
   onUploadFiles,
   editMode = false,
   createdBot
-}: StepProps & { onUploadFiles: () => void }) {
+}: StepProps & { onUploadFiles: () => void, setUploadedFiles: (files: Record<string, unknown>[]) => void }) {
 
   const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
 
@@ -73,7 +71,7 @@ export function Step2FileUpload({
 
       if (response.ok) {
         // Remove from local state
-        setUploadedFiles(uploadedFiles.filter(file => file.id !== fileId));
+        setUploadedFiles(uploadedFiles.filter(file => (file.id as string) !== fileId));
       } else {
         const data = await response.json();
         throw new Error(data.error || 'Failed to delete file');
@@ -190,25 +188,25 @@ export function Step2FileUpload({
             {editMode ? 'Current Training Files' : 'Uploaded Files'} ({uploadedFiles.length})
           </h4>
           {uploadedFiles.map((file) => (
-            <div key={file.id} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+            <div key={file.id as string} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-4 h-4 text-green-600" />
                 <div>
-                  <span className="text-sm font-medium text-gray-700">{file.name}</span>
+                  <span className="text-sm font-medium text-gray-700">{file.name as string}</span>
                   <p className="text-xs text-gray-500">
-                    Uploaded {new Date(file.uploaded_at).toLocaleDateString()} • {file.type?.toUpperCase()} • {formatFileSize(file.size)}
+                    Uploaded {new Date(file.uploaded_at as string).toLocaleDateString()} • {(file.type as string)?.toUpperCase()} • {formatFileSize(file.size as number)}
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-xs text-green-600 font-medium">Uploaded</span>
                 <button
-                  onClick={() => handleDeleteUploadedFile(file.id, file.name)}
-                  disabled={deleteLoading === file.id}
+                  onClick={() => handleDeleteUploadedFile(file.id as string, file.name as string)}
+                  disabled={deleteLoading === (file.id as string)}
                   className="p-1 text-gray-400 hover:text-red-600 transition-colors disabled:opacity-50"
                   title="Delete file"
                 >
-                  {deleteLoading === file.id ? (
+                  {deleteLoading === (file.id as string) ? (
                     <Loader2 className="w-3 h-3 animate-spin" />
                   ) : (
                     <Trash2 className="w-3 h-3" />

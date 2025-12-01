@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { Sparkles, Upload, FileText, Check, X, Loader2, Plus, Database } from 'lucide-react';
 
 interface KnowledgeStepProps {
-  formData: any;
+  formData: Record<string, unknown>;
   selectedFiles: File[];
   setSelectedFiles: (files: File[]) => void;
-  uploadedFiles: any[];
-  setUploadedFiles: (files: any[]) => void;
+  uploadedFiles: Record<string, unknown>[];
+  setUploadedFiles: (files: Record<string, unknown>[]) => void;
   bucketName: string;
   error: string;
   isLoading: boolean;
@@ -22,7 +22,6 @@ export function KnowledgeStep({
   selectedFiles,
   setSelectedFiles,
   uploadedFiles,
-  setUploadedFiles,
   bucketName,
   error,
   isLoading,
@@ -94,7 +93,7 @@ export function KnowledgeStep({
   };
 
   const getTotalFileSize = () => {
-    return uploadedFiles.reduce((total, file) => total + file.size, 0);
+    return uploadedFiles.reduce((total, file) => total + (file.size as number), 0);
   };
 
   return (
@@ -230,14 +229,14 @@ export function KnowledgeStep({
             </h4>
             <div className="space-y-3 max-h-80 overflow-y-auto">
               {uploadedFiles.map((file) => (
-                <div key={file.id} className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                <div key={file.id as string} className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                   <div className="flex items-center space-x-4">
                     <Check className="w-6 h-6 text-green-600" />
                     <div>
-                      <span className="font-semibold text-gray-700">{file.name}</span>
+                      <span className="font-semibold text-gray-700">{file.name as string}</span>
                       <p className="text-sm text-gray-500">
-                        {formatFileSize(file.size)} • {file.type?.toUpperCase()} • 
-                        Uploaded {new Date(file.uploaded_at).toLocaleDateString()}
+                        {formatFileSize(file.size as number)} • {(file.type as string)?.toUpperCase()} • 
+                        Uploaded {new Date(file.uploaded_at as string).toLocaleDateString()}
                       </p>
                     </div>
                   </div>
