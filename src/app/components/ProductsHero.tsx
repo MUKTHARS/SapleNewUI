@@ -6,7 +6,7 @@ export function ProductsHero() {
   return (
     <section className="relative h-[80vh] md:h-[90vh] overflow-hidden">
       {/* Video Background */}
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -15,10 +15,10 @@ export function ProductsHero() {
       >
         <source src="/videos/products-hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
 
       {/* Overlay (Optional: darken for better text contrast) */}
-      {/* <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div> */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center flex flex-col justify-center h-full">

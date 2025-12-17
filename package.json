@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@developer-hub/liquid-glass": "^1.2.3",
+    "@next/font": "^14.2.15",
     "@types/nodemailer": "^6.4.17",
     "axios": "^1.12.2",
+    "canvas-confetti": "^1.9.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.20.1",
     "lucide-react": "^0.525.0",
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

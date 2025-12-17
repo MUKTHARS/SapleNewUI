@@ -115,11 +115,6 @@ body {
 }
 
 
-/* ===============================
-   Avaamo Dark Theme Overrides
-   (Navbar / Footer style)
-   =============================== */
-
 nav {
   background: rgba(10, 10, 12, 0.92);
   backdrop-filter: blur(10px);
@@ -330,4 +325,6 @@ nav button {
 html {
   scroll-padding-top: 4rem;
 }
+
+
 

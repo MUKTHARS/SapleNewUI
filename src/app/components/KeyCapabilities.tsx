@@ -1,4 +1,3 @@
-// src/app/components/KeyCapabilities.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -100,85 +99,101 @@ export function KeyCapabilities() {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Premium Glass Card - Similar to kore.ai */}
-              <div className="relative h-full rounded-2xl p-6 overflow-hidden transition-all duration-500
-                /* Glass base */
-                bg-gradient-to-br from-white/90 via-white/70 to-white/90
-                backdrop-blur-md
-                /* Borders for glass effect */
-                border border-white/80
-                border-t-white/90
-                border-l-white/90
-                /* Sophisticated shadows like kore.ai */
-                shadow-[0_8px_32px_rgba(14,165,233,0.08)]
-                shadow-sky-200/30
-                /* Inner shadow for depth */
-                before:absolute before:inset-0 before:rounded-2xl before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6),inset_0_-1px_0_0_rgba(14,165,233,0.1)]
-                /* Hover effects */
-                hover:shadow-[0_20px_50px_rgba(14,165,233,0.15)]
-                hover:shadow-sky-300/40
-                hover:scale-[1.02]
-                hover:bg-gradient-to-br from-white via-white/85 to-white
-                hover:border-white
-                hover:before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8),inset_0_-1px_0_0_rgba(14,165,233,0.15)]">
-                
-                {/* Blue reflection layer - visible through glass */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(
-                      135deg,
-                      rgba(14, 165, 233, 0.03) 0%,
-                      rgba(56, 189, 248, 0.02) 50%,
-                      rgba(6, 182, 212, 0.01) 100%
-                    )`
-                  }}
-                />
-
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon with subtle glass effect */}
-                  <div className="w-14 h-14 rounded-xl mb-5
-                    bg-gradient-to-br from-white to-sky-50
-                    shadow-[0_4px_12px_rgba(14,165,233,0.1)]
-                    border border-white/80
-                    flex items-center justify-center
-                    group-hover:scale-110
-                    group-hover:shadow-[0_8px_24px_rgba(14,165,233,0.15)]
-                    transition-all duration-300">
-                    <div className="text-sky-600 group-hover:text-sky-700">
-                      {capability.icon}
-                    </div>
-                  </div>
-
-                  {/* Text */}
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    {capability.name}
-                  </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {capability.description}
-                  </p>
-
-                  {/* Subtle indicator */}
-                  <div className="flex items-center gap-2 pt-4 border-t border-gray-100 group-hover:border-sky-100 transition-colors">
-                    <div className="flex-1">
-                      <div className="h-px bg-gradient-to-r from-transparent via-sky-200/30 to-transparent 
-                        group-hover:via-sky-300/50 transition-all duration-500" />
-                    </div>
-                    <div className="text-xs font-medium text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Learn more
-                    </div>
-                    <svg className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" 
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Edge highlight for premium look */}
-                <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 border border-sky-100/50 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.8)_inset]" />
-                </div>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
               </div>
+              
+              {/* 3D tilt effect container */}
+              <motion.div
+                whileHover={{ rotateX: 5, rotateY: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  perspective: "1000px"
+                }}
+                className="relative h-full"
+              >
+                {/* Premium Glass Card - Similar to kore.ai */}
+                <div className="relative h-full rounded-2xl p-6 overflow-hidden transition-all duration-500
+                  /* Glass base */
+                  bg-gradient-to-br from-white/90 via-white/70 to-white/90
+                  backdrop-blur-md
+                  /* Borders for glass effect */
+                  border border-white/80
+                  border-t-white/90
+                  border-l-white/90
+                  /* Sophisticated shadows like kore.ai */
+                  shadow-[0_8px_32px_rgba(14,165,233,0.08)]
+                  shadow-sky-200/30
+                  /* Inner shadow for depth */
+                  before:absolute before:inset-0 before:rounded-2xl before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6),inset_0_-1px_0_0_rgba(14,165,233,0.1)]
+                  /* Hover effects */
+                  hover:shadow-[0_20px_50px_rgba(14,165,233,0.15)]
+                  hover:shadow-sky-300/40
+                  hover:scale-[1.02]
+                  hover:bg-gradient-to-br from-white via-white/85 to-white
+                  hover:border-white
+                  hover:before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8),inset_0_-1px_0_0_rgba(14,165,233,0.15)]">
+                  
+                  {/* Blue reflection layer - visible through glass */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `linear-gradient(
+                        135deg,
+                        rgba(14, 165, 233, 0.03) 0%,
+                        rgba(56, 189, 248, 0.02) 50%,
+                        rgba(6, 182, 212, 0.01) 100%
+                      )`
+                    }}
+                  />
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon with subtle glass effect */}
+                    <div className="w-14 h-14 rounded-xl mb-5
+                      bg-gradient-to-br from-white to-sky-50
+                      shadow-[0_4px_12px_rgba(14,165,233,0.1)]
+                      border border-white/80
+                      flex items-center justify-center
+                      group-hover:scale-110
+                      group-hover:shadow-[0_8px_24px_rgba(14,165,233,0.15)]
+                      transition-all duration-300">
+                      <div className="text-sky-600 group-hover:text-sky-700">
+                        {capability.icon}
+                      </div>
+                    </div>
+
+                    {/* Text */}
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                      {capability.name}
+                    </h4>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {capability.description}
+                    </p>
+
+                    {/* Subtle indicator */}
+                    <div className="flex items-center gap-2 pt-4 border-t border-gray-100 group-hover:border-sky-100 transition-colors">
+                      <div className="flex-1">
+                        <div className="h-px bg-gradient-to-r from-transparent via-sky-200/30 to-transparent 
+                          group-hover:via-sky-300/50 transition-all duration-500" />
+                      </div>
+                      <div className="text-xs font-medium text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Learn more
+                      </div>
+                      <svg className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" 
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Edge highlight for premium look */}
+                  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 border border-sky-100/50 rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.8)_inset]" />
+                  </div>
+                </div>
+              </motion.div>
 
               {/* Active indicator dot */}
               {hoveredIndex === index && (
