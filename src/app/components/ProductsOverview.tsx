@@ -2,112 +2,177 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Zap, Eye, Clock, Smartphone } from 'lucide-react';
+import { Brain, Zap, Eye, Clock, Smartphone, ArrowRight, Sparkles } from 'lucide-react';
 
 export function ProductsOverview() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Custom LLMs Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-blue-100 color inline-flex px-4 py-2 rounded-full mb-6">
-              <Brain className="mr-2" size={18} />
-              <span>Custom LLMs</span>
-            </div>
-            <h2 className="text-3xl font-bold mb-6">Empowering Agents with AI-Driven Assistance</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Agent Assist solutions leverage AI to empower customer service representatives by providing real-time insights, suggested responses, and access to knowledge bases.
-            </p>
-            <ul className="space-y-4">
-              {[
-                "Enhances efficiency and reduces resolution times",
-                "Ensures consistent, high-quality support",
-                "Allows agents to focus on complex interactions",
-                "Integrates with existing workflows"
-              ].map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="color mr-2">✓</span>
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+    <section className="py-16 bg-black relative overflow-hidden">
+      {/* Ambient background grid */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 p-8 rounded-xl border border-gray-200"
-          >
-            <h3 className="text-xl font-semibold mb-6">Key Features</h3>
-            <div className="space-y-6">
-              {[
-                {
-                  icon: <Zap className="w-5 h-5 color" />,
-                  title: "Intelligent Information Access",
-                  description: "AI-driven insights and consolidated customer data"
-                },
-                {
-                  icon: <Eye className="w-5 h-5 color" />,
-                  title: "Consistent and Personalized Support",
-                  description: "Unified view of customer interactions with advanced analytics"
-                },
-                {
-                  icon: <Smartphone className="w-5 h-5 color" />,
-                  title: "Unified Agent Workspace",
-                  description: "Integrates all communication channels and CRM data"
-                },
-                {
-                  icon: <Clock className="w-5 h-5 color" />,
-                  title: "24/7 Support",
-                  description: "Real-time AI insights and customer history access"
-                }
-              ].map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 mt-1">{feature.icon}</div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">{feature.title}</h4>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+      {/* Subtle radial gradient overlay */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-gradient-radial from-white/5 to-transparent blur-3xl" />
 
-        {/* Benefits Section */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Header - Reduced spacing */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-color text-white rounded-xl p-12"
+          className="text-center mb-12"
         >
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Transform Your Customer Service</h2>
-            <div className="grid md:grid-cols-2 gap-8 mt-8">
-              {[
-                "Reduce response times by up to 80%",
-                "Increase customer satisfaction scores",
-                "Lower operational costs by 30-50%",
-                "Scale support to global markets"
-              ].map((benefit, index) => (
-                <div key={index} className="flex items-center">
-                  <span className="bg-blue-900 rounded-full p-1 mr-3">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </span>
-                  <span>{benefit}</span>
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-sm text-white/70 rounded-full text-xs font-medium mb-4 border border-white/10">
+            <Brain size={14} />
+            Custom LLMs
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Empowering Agents with<br />AI-Driven Assistance
+          </h2>
+          <p className="text-base text-white/60 max-w-2xl mx-auto leading-relaxed">
+            Agent Assist solutions leverage AI to empower customer service representatives by providing 
+            real-time insights, suggested responses, and access to knowledge bases.
+          </p>
+        </motion.div>
+
+        {/* Features Grid - Reduced gaps and spacing */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {[
+            {
+              icon: <Zap className="w-5 h-5" />,
+              title: "Intelligent Information Access",
+              description: "AI-driven insights and consolidated customer data at your fingertips"
+            },
+            {
+              icon: <Eye className="w-5 h-5" />,
+              title: "Consistent Support",
+              description: "Unified view of customer interactions with advanced analytics"
+            },
+            {
+              icon: <Smartphone className="w-5 h-5" />,
+              title: "Unified Workspace",
+              description: "Integrates all communication channels and CRM data seamlessly"
+            },
+            {
+              icon: <Clock className="w-5 h-5" />,
+              title: "24/7 Support",
+              description: "Real-time AI insights and complete customer history access"
+            }
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group h-full flex flex-col relative"
+            >
+              {/* Glass card effect */}
+              <div className="relative h-full bg-white/[0.02] backdrop-blur-xl rounded-xl p-5 border border-white/10 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300">
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-xl" />
                 </div>
-              ))}
+                
+                <div className="relative flex flex-col h-full">
+                  <div className="w-10 h-10 bg-white/5 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0 border border-white/10">
+                    <div className="text-white/90">
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-base font-semibold text-white mb-2 line-clamp-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed flex-grow">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Value Proposition - Glass morphism design */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-2xl"
+        >
+          {/* Glass background */}
+          <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-2xl border border-white/10" />
+          
+          {/* Ambient glow */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.02]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: '30px 30px'
+            }} />
+          </div>
+
+          <div className="relative z-10 p-10 md:p-12">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <Sparkles className="w-5 h-5 text-white/40" />
+                <h3 className="text-3xl md:text-4xl font-bold text-white text-center">
+                  Transform Your Customer Service
+                </h3>
+              </div>
+              <p className="text-white/50 text-center mb-10 text-base leading-relaxed">
+                Deliver exceptional experiences at scale with AI-powered assistance
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  {
+                    metric: "80%",
+                    label: "Reduction in response times"
+                  },
+                  {
+                    metric: "95%",
+                    label: "Increase in customer satisfaction"
+                  },
+                  {
+                    metric: "50%",
+                    label: "Lower operational costs"
+                  },
+                  {
+                    metric: "24/7",
+                    label: "Global support coverage"
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group flex items-center gap-4 bg-white/[0.03] backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300"
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="text-3xl font-bold text-white">
+                        {item.metric}
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white/50 text-sm leading-snug">
+                        {item.label}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/40 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
