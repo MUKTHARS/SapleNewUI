@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Server, Brain, Smartphone, Clock, Shield, Zap } from 'lucide-react';
+import { Server, Brain, Smartphone, Clock} from 'lucide-react';
 
 const features = [
   {

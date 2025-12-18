@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Clock, User, BookOpen, Sparkles } from 'lucide-react';
+import { Calendar, Clock, User, BookOpen } from 'lucide-react';
 
 interface BlogHeroProps {
   title: string;

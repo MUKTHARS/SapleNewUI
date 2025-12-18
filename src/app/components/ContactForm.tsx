@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, Building, User, MessageSquare, Clock, CheckCircle } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, Clock, CheckCircle } from 'lucide-react';
 
 type FormData = {
   name: string;

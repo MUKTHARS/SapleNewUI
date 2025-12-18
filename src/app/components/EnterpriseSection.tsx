@@ -3,7 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { Slideshow } from './Slideshow';
-import { Sparkles, Users, MessageSquare, Volume2, Target } from 'lucide-react';
+import { Users, MessageSquare, Volume2 } from 'lucide-react';
 
 export function EnterpriseSection() {
   return (

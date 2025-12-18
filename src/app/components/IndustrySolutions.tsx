@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Banknote, HeartPulse, GraduationCap, ShoppingCart, ArrowRight } from 'lucide-react';
+import { Banknote, HeartPulse, GraduationCap, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 
 export function IndustrySolutions() {

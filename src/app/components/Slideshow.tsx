@@ -3,7 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause, MessageSquare, Smartphone, BarChart3, Cpu, Zap, Users, Globe, Settings } from 'lucide-react';
+import {  MessageSquare, Smartphone, BarChart3, Cpu, Zap,} from 'lucide-react';
 import Lottie from 'lottie-react';
 
 // Define slide data with CORRECTED Lottie file paths
@@ -52,7 +52,7 @@ const slides = [
 
 export function Slideshow() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying] = useState(true);
   const [lottieData, setLottieData] = useState<Array<any>>(Array(slides.length).fill(null));
   const [loading, setLoading] = useState(true);
 
@@ -60,9 +60,9 @@ export function Slideshow() {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  // const prevSlide = () => {
+  //   setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  // };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
