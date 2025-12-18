@@ -191,7 +191,7 @@ export function IndustrySolutions() {
           className="mt-16 text-center"
         >
           <p className="text-white/50 mb-6">
-            Don't see your industry? We build custom solutions.
+            Don&apos;t see your industry? We build custom solutions.
           </p>
           <button className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white rounded-xl font-medium
             border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300">

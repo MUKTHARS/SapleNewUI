@@ -237,7 +237,7 @@ export function KeyCapabilities() {
                 Need a Custom Capability?
               </h3>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Our platform is highly extensible. Let's discuss your unique requirements.
+                Our platform is highly extensible. Let&apos;s discuss your unique requirements.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

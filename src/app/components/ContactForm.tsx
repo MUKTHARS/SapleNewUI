@@ -278,8 +278,8 @@ export function ContactForm() {
                   )}
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  Feel free to share as much or as little as you'd like. We're here to listen.
-                </p>
+  Feel free to share as much or as little as you&apos;d like. We&apos;re here to listen.
+</p>
               </div>
 
               {/* Submit button with human touch */}
