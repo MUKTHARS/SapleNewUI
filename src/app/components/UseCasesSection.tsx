@@ -117,17 +117,17 @@ export function UseCasesSection() {
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Icon with subtle glass effect */}
                   <div className={`w-14 h-14 rounded-xl mb-5
-                    bg-gradient-to-br from-white to-sky-50
-                    shadow-[0_4px_12px_rgba(14,165,233,0.1)]
-                    border border-white/80
-                    flex items-center justify-center
-                    group-hover:scale-110
-                    group-hover:shadow-[0_8px_24px_rgba(14,165,233,0.15)]
-                    transition-all duration-300`}>
-                    <div className={`${usecase.iconColor} group-hover:${usecase.iconColor.replace('600', '700')}`}>
-                      {usecase.icon}
-                    </div>
-                  </div>
+  bg-gradient-to-br from-white to-sky-50
+  shadow-[0_4px_12px_rgba(12,112,117,0.1)]
+  border border-white/80
+  flex items-center justify-center
+  group-hover:scale-110
+  group-hover:shadow-[0_8px_24px_rgba(12,112,117,0.15)]
+  transition-all duration-300`}>
+  <div className="text-[#0C7075] group-hover:text-[#072E33]">
+    {usecase.icon}
+  </div>
+</div>
 
                   {/* Text content */}
                   <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">

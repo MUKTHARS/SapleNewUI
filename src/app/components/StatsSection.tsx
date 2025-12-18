@@ -121,22 +121,22 @@ export function StatsSection() {
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Icon with subtle glass effect */}
                   <div className={`w-14 h-14 rounded-xl mb-5
-                    bg-gradient-to-br ${stat.iconBg}
-                    shadow-[0_4px_12px_rgba(14,165,233,0.1)]
-                    border border-white/80
-                    flex items-center justify-center
-                    group-hover:scale-110
-                    group-hover:shadow-[0_8px_24px_rgba(14,165,233,0.15)]
-                    transition-all duration-300`}>
-                    <div className={`${stat.textColor} group-hover:${stat.textColor.replace('600', '700')}`}>
-                      {stat.icon}
-                    </div>
-                  </div>
+  bg-gradient-to-br from-white to-sky-50
+  shadow-[0_4px_12px_rgba(12,112,117,0.1)]
+  border border-white/80
+  flex items-center justify-center
+  group-hover:scale-110
+  group-hover:shadow-[0_8px_24px_rgba(12,112,117,0.15)]
+  transition-all duration-300`}>
+  <div className="text-[#0C7075] group-hover:text-[#072E33]">
+    {stat.icon}
+  </div>
+</div>
 
                   {/* Stat value */}
-                  <div className={`text-4xl md:text-5xl font-bold ${stat.textColor} mb-3`}>
-                    {stat.value}
-                  </div>
+                 <div className={`text-4xl md:text-5xl font-bold text-[#0C7075] mb-3`}>
+  {stat.value}
+</div>
 
                   {/* Stat label */}
                   <div className="text-lg font-semibold text-gray-900 mb-3">

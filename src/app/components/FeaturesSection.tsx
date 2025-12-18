@@ -93,18 +93,20 @@ export function FeaturesSection() {
                 </div>
 
                 {/* Icon container */}
-                <div className="relative w-12 h-12 bg-gradient-to-br from-green-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 border border-white/20 group-hover:border-green-400/40">
-                  <div className="text-green-300 group-hover:text-green-200 transition-colors duration-300">
-                    {feature.icon}
-                  </div>
-                </div>
+               <div className="relative w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 border border-white/30 group-hover:border-white/50">
+  <div className="text-white group-hover:text-white transition-colors duration-300">
+    {feature.icon}
+  </div>
+</div>
 
                 {/* Content */}
                 <div className="relative">
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-green-100 transition-colors duration-300">
+                  {/* <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-green-100 transition-colors duration-300"> */}
+                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-white transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+                  <p className="text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
+                  {/* <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300"> */}
                     {feature.description}
                   </p>
                 </div>

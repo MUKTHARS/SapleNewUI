@@ -82,12 +82,11 @@ export function EnterpriseSection() {
 
                     <div className="relative z-10">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white to-sky-50 shadow-[0_4px_12px_rgba(14,165,233,0.1)] border border-white/80 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_8px_24px_rgba(14,165,233,0.15)] transition-all duration-300 flex-shrink-0">
-                          <div className="text-sky-600 group-hover:text-sky-700">
-                            {item.icon}
-                          </div>
-                        </div>
-
+                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white to-sky-50 shadow-[0_4px_12px_rgba(12,112,117,0.1)] border border-white/80 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_8px_24px_rgba(12,112,117,0.15)] transition-all duration-300 flex-shrink-0">
+  <div className="text-[#0C7075] group-hover:text-[#072E33]">
+    {item.icon}
+  </div>
+</div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-lg font-semibold text-gray-900 mb-2">
                             {item.title}
