@@ -137,9 +137,9 @@ export default function DemoHubPage() {
                 <div className="w-2 h-2 bg-[#0c7075] rounded-full animate-pulse" />
                 <span className="text-sm font-medium text-[#0c7075]">Interactive Demos</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+              <section className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Explore Our AI Capabilities
-              </h2>
+              </section>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Watch how our AI agents transform customer service across different industries
               </p>
