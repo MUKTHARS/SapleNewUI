@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { X, Download, Share2, ExternalLink, PlayCircle, Eye, ThumbsUp, Clock, Pause } from 'lucide-react';
+import { X, Download, Share2, ExternalLink, PlayCircle, Eye, ThumbsUp, Clock } from 'lucide-react';
 import { useState, useRef } from 'react';
 
 interface Video {

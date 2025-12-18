@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 export function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [showFallback, setShowFallback] = useState(false);
+  const [, setShowFallback] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
