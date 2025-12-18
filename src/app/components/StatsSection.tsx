@@ -150,13 +150,13 @@ export function StatsSection() {
                         <div className="h-px bg-gradient-to-r from-transparent via-sky-200/30 to-transparent 
                           group-hover:via-sky-300/50 transition-all duration-500" />
                       </div>
-                      <div className="text-xs font-medium text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {/* <div className="text-xs font-medium text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         Industry benchmark
-                      </div>
-                      <svg className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" 
+                      </div> */}
+                      {/* <svg className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" 
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      </svg> */}
                     </div>
                   </div>
                 </div>
