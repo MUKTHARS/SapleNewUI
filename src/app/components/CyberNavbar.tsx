@@ -100,7 +100,7 @@ export function CyberNavbar() {
                 user={user || undefined}
                 onLoginClick={() => setShowLoginModal(true)}
                 onLogout={handleLogout}
-                compact={true}
+                // compact={true}
               />
             </div>
 
@@ -111,7 +111,7 @@ export function CyberNavbar() {
                 user={user || undefined}
                 onLoginClick={() => setShowLoginModal(true)}
                 onLogout={handleLogout}
-                compact={true}
+                // compact={true}
               />
 
               <button
