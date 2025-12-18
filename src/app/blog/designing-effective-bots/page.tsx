@@ -22,12 +22,12 @@ export default function DesigningEffectiveBots() {
         />
 
         <BlogContent>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Introduction</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Introduction</section>
           <p className="text-gray-600 mb-8">
             As conversational AI becomes a cornerstone of digital engagement, the way bots communicate with users has never been more critical. Whether assisting in healthcare, supporting sales teams, or guiding customer service agents, bots must be thoughtfully designed to deliver value, clarity, and trust. This blog explores the key characteristics and tone of effective bots and dives into how different bot types—like healthcare symptom checkers, sales bots, and agent assist bots—should be uniquely tailored.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Core Characteristics of a Good Bot</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Core Characteristics of a Good Bot</section>
           <p className="text-gray-600 mb-4">
             Regardless of industry or purpose, effective bots typically share a few fundamental traits:
           </p>
@@ -47,7 +47,7 @@ export default function DesigningEffectiveBots() {
             ))}
           </ul>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Defining the Bot&#39;s Tone</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Defining the Bot&#39;s Tone</section>
           <p className="text-gray-600 mb-6">
             A bot&#39;s tone is a reflection of the brand—and it must align with the context and emotional needs of the user. Here&#39;s how tone can vary:
           </p>
@@ -73,7 +73,7 @@ export default function DesigningEffectiveBots() {
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Healthcare Bots (Symptom Checker)</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Healthcare Bots (Symptom Checker)</section>
           <div className="bg-blue-50 p-6 rounded-lg mb-8">
             <h3 className="font-semibold mb-2">Purpose:</h3>
             <p className="text-gray-700 mb-4">
@@ -95,7 +95,7 @@ export default function DesigningEffectiveBots() {
             </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Sales Bots</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Sales Bots</section>
           <div className="bg-green-50 p-6 rounded-lg mb-8">
             <h3 className="font-semibold mb-2">Purpose:</h3>
             <p className="text-gray-700 mb-4">
@@ -117,7 +117,7 @@ export default function DesigningEffectiveBots() {
             </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Agent Assist Bots</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Agent Assist Bots</section>
           <div className="bg-purple-50 p-6 rounded-lg mb-8">
             <h3 className="font-semibold mb-2">Purpose:</h3>
             <p className="text-gray-700 mb-4">
@@ -139,7 +139,7 @@ export default function DesigningEffectiveBots() {
             </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Designing Bots with Purpose</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Designing Bots with Purpose</section>
           <p className="text-gray-600 mb-6">
             Different bots serve different roles. Designing them successfully means:
           </p>
@@ -156,7 +156,7 @@ export default function DesigningEffectiveBots() {
             ))}
           </ul>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Final Thoughts</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Final Thoughts</section>
           <p className="text-gray-600 mb-6">
             As organizations move toward more autonomous and scalable support strategies, bots play an increasingly central role. But not all bots are created equal. The most impactful ones are those that blend personality, purpose, and precision.
           </p>

@@ -22,16 +22,16 @@ export default function NoCodeAgenticAI() {
         />
 
         <BlogContent>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Introduction: A Shift in Intelligent Automation</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Introduction: A Shift in Intelligent Automation</section>
           <p className="text-gray-600 mb-8">
             The concept of no-code agentic AI represents a significant evolution in how businesses think about automation. By enabling users to build intelligent, autonomous agents without needing to write code, this approach is opening new opportunities for process efficiency, collaboration, and scale.
           </p>
 
           <div className="bg-blue-50 p-6 rounded-lg mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <section className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <Code className="mr-3" size={24} />
               1. Understanding No‑Code Agentic AI
-            </h2>
+            </section>
             <p className="text-gray-600 mb-4">
               At its core, no-code agentic AI combines two ideas:
             </p>
@@ -55,10 +55,10 @@ export default function NoCodeAgenticAI() {
           </div>
 
           <div className="bg-green-50 p-6 rounded-lg mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <section className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <BarChart2 className="mr-3" size={24} />
               2. Why It Matters Now
-            </h2>
+            </section>
             <p className="text-gray-600 mb-4">
               Several factors make no-code agentic AI particularly relevant today:
             </p>
@@ -79,7 +79,7 @@ export default function NoCodeAgenticAI() {
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">3. Practical Benefits for Organizations</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">3. Practical Benefits for Organizations</section>
           <p className="text-gray-600 mb-4">
             Adopting no-code agentic AI can bring measurable improvements:
           </p>
@@ -105,7 +105,7 @@ export default function NoCodeAgenticAI() {
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">4. Common Use Cases</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">4. Common Use Cases</section>
           <p className="text-gray-600 mb-4">
             No-code agentic AI is already being used in a variety of contexts:
           </p>
@@ -144,7 +144,7 @@ export default function NoCodeAgenticAI() {
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">5. Considerations for Getting Started</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">5. Considerations for Getting Started</section>
           <p className="text-gray-600 mb-6">
             If you&#39;re evaluating how to adopt no-code agentic AI in your organization, consider starting with a focused use case. Map out the manual steps involved, identify where an agent could take over, and use templates or prebuilt logic blocks to get started quickly.
           </p>
@@ -152,7 +152,7 @@ export default function NoCodeAgenticAI() {
             Most platforms offer analytics and monitoring tools, helping teams understand performance and continuously improve automation strategies.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Conclusion: Evolving with the Landscape</h2>
+          <section className="text-2xl font-bold text-gray-900 mb-6">Conclusion: Evolving with the Landscape</section>
           <p className="text-gray-600 mb-6">
             The no-code agentic AI landscape is still emerging, but its potential is already evident. As more teams look to automate tasks and collaborate across functions, having accessible and adaptive tooling becomes a strategic enabler—not just a convenience.
           </p>

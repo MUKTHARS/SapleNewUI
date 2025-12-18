@@ -27,9 +27,11 @@ export function ProductsHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            AI Solutions for Enterprise Customer Service
-          </h1>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#0C7075] to-[#072E33]">
+    AI Solutions for Enterprise Customer Service
+  </span>
+</h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Transform your customer support with our cutting-edge AI platform combining Custom LLMs and Agent Assist technologies.
           </p>

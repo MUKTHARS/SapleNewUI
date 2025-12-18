@@ -34,9 +34,9 @@ export default function BlogList() {
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900">
+            <section className="text-2xl font-semibold text-gray-900">
               Latest Articles
-            </h2>
+            </section>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
