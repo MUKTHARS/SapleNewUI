@@ -336,4 +336,146 @@ html {
 }
 
 
+/* Force navbar links to pure white */
+nav a,
+nav a.text-white\/80,
+nav a.text-gray-300,
+nav a:not(.bg-white\/10):not(:hover),
+nav .lg\:flex a,
+nav .lg\:hidden a {
+  color: #ffffff !important;
+}
+
+/* Force hover states to pure white */
+nav a:hover,
+nav a.text-white\/80:hover,
+nav a.text-gray-300:hover,
+nav .lg\:flex a:hover,
+nav .lg\:hidden a:hover {
+  color: #ffffff !important;
+}
+
+/* Remove any transparency effects */
+nav a,
+nav a * {
+  opacity: 1 !important;
+}
+
+/* Specific override for active states */
+nav a.bg-white\/10,
+nav a[class*="bg-white"] {
+  color: #ffffff !important;
+}
+
+/* Mobile menu override */
+nav .fixed a,
+nav .fixed .lg\:hidden a {
+  color: #ffffff !important;
+}
+
+/* User Section override */
+nav button,
+nav button span {
+  color: #ffffff !important;
+}
+
+/* Ensure pure white with no transparency */
+nav {
+  --tw-text-opacity: 1 !important;
+}
+
+
+html {
+  scroll-padding-top: 0;
+}
+
+nav {
+  z-index: 999 !important;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove any default margin/padding that might cause gaps */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure hero section has no gaps */
+.relative.h-\[80vh\],
+.relative.h-\[90vh\] {
+  margin-top: -1px;
+  border-top: 1px solid transparent;
+}
+
+/* Fix any white flashes during scroll */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add these CSS rules to fix the scrolling white gap */
+
+/* Fix for white gap when scrolling from top */
+body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove any margin/padding from html and body */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Fix for hero section gap */
+section:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure navbar and hero section are properly aligned */
+nav + * {
+  margin-top: 0 !important;
+}
+
+/* Force the hero section to be flush with navbar */
+.relative.h-\[80vh\],
+.relative.h-\[90vh\] {
+  margin-top: -1px !important;
+  top: -1px !important;
+}
+
+/* Fix for Safari scrolling issues */
+@supports (-webkit-touch-callout: none) {
+  .relative.h-\[80vh\],
+  .relative.h-\[90vh\] {
+    height: calc(80vh + 1px);
+  }
+  
+  .relative.h-\[90vh\] {
+    height: calc(90vh + 1px);
+  }
+}
+
+/* Ensure video container covers completely */
+.absolute.inset-0 {
+  top: -1px !important;
+  height: calc(100% + 1px) !important;
+}
+
+/* Prevent any transform issues */
+.transform-none {
+  transform: none !important;
+} 
+
 

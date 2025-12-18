@@ -20,7 +20,7 @@ const demoVideos = [
     duration: '2:45',
     category: 'retail',
     thumbnail: '/uploads/thumbnails/ecommerce-demo.jpg',
-    videoUrl: '/uploads/videos/sapleAI.mp4',
+    videoUrl: '/uploads/videos/video.mp4',
     tags: ['ecommerce', 'customer support', 'sales', 'automation'],
   },
   {
