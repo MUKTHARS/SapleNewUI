@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Cpu, Target, BarChart3, Zap } from 'lucide-react';
+import { TrendingUp, Cpu, Target, BarChart3 } from 'lucide-react';
 
 export function StatsSection() {
   return (

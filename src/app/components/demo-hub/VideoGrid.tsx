@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PlayCircle, Clock, ExternalLink, Eye, Zap } from 'lucide-react';
+import { PlayCircle, Clock, Eye, Zap } from 'lucide-react';
 import { VideoModal } from './VideoModal';
 
 interface Video {

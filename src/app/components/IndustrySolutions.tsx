@@ -161,10 +161,10 @@ export function IndustrySolutions() {
 
                   {/* CTA */}
                   <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                    <span className="text-sm font-medium text-white/40 group-hover:text-white/60 transition-colors">
+                    {/* <span className="text-sm font-medium text-white/40 group-hover:text-white/60 transition-colors">
                       Learn more
-                    </span>
-                    <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all duration-300" />
+                    </span> */}
+                    {/* <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-white/60 group-hover:translate-x-1 transition-all duration-300" /> */}
                   </div>
                 </div>
 

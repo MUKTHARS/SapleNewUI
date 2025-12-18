@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Zap, BookOpen, Languages, UserCheck, Target, ArrowRight } from 'lucide-react';
+import { Zap, BookOpen, Languages, UserCheck } from 'lucide-react';
 
 export function UseCasesSection() {
   return (

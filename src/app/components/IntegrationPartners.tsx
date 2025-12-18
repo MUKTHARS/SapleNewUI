@@ -319,14 +319,15 @@ export function IntegrationPartners() {
                     viewport={{ once: true, margin: "-100px" }}
                     className="text-center mb-20"
                 >
-                    <motion.h2
-                        className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-600"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                    >
-                        Universal Script Integration
-                    </motion.h2>
+                   <motion.h2
+  className="text-4xl md:text-5xl font-bold mb-6 !text-black !bg-none !text-opacity-100"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3 }}
+>
+  Universal Script Integration
+</motion.h2>
+
                     <motion.p
                         className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
                         initial={{ opacity: 0 }}

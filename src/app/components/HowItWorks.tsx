@@ -67,7 +67,7 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -76,17 +76,18 @@ export function HowItWorks() {
           >
             <div className="w-2 h-2 bg-sky-500 rounded-full animate-pulse" />
             <span className="text-sm font-medium text-sky-700">Process</span>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            How it works
-          </motion.h2>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="text-4xl md:text-5xl font-bold !text-black mb-6"
+>
+  How it works
+</motion.h2>
+
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
