@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { GoogleLoginButton } from './GoogleLoginButton';
+import { X } from 'lucide-react';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -19,7 +20,6 @@ export const LoginModal = ({ isOpen, onClose, onSuccess, onError }: LoginModalPr
   const handleWorkspaceCheck = (hasWorkspace: boolean) => {
     if (!hasWorkspace) {
       setIsCheckingWorkspace(true);
-      // Close the login modal after a brief delay
       setTimeout(() => {
         onClose();
         setIsCheckingWorkspace(false);
@@ -28,72 +28,45 @@ export const LoginModal = ({ isOpen, onClose, onSuccess, onError }: LoginModalPr
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-900 border border-green-400/30 rounded-lg p-8 max-w-md w-full">
-        <ModalHeader onClose={onClose} />
-
-        {isCheckingWorkspace ? (
-          <div className="text-center py-8">
-            <div className="w-8 h-8 border-2 border-green-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-300 font-mono text-sm">Checking workspace...</p>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl">
+        <div className="p-8">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <section className="text-2xl font-bold text-gray-900">Sign In</section>
+              <p className="text-gray-600 mt-1">Access your saple.ai dashboard</p>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
-        ) : (
-          <ModalContent
-            onSuccess={onSuccess}
-            onError={onError}
-            onWorkspaceCheck={handleWorkspaceCheck}
-          />
-        )}
 
-        <ModalFooter />
+          {isCheckingWorkspace ? (
+            <div className="text-center py-8">
+              <div className="w-8 h-8 border-2 border-[#0C7075] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-gray-700">Checking workspace...</p>
+            </div>
+          ) : (
+            <>
+              <GoogleLoginButton
+                onSuccess={onSuccess}
+                onError={onError}
+                onWorkspaceCheck={handleWorkspaceCheck}
+              />
+              
+              <div className="mt-6 text-center">
+                <p className="text-gray-500 text-sm">
+                  By continuing, you agree to our Terms of Service and Privacy Policy
+                </p>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
 };
-
-// Modal Header Component (unchanged)
-interface ModalHeaderProps {
-  onClose: () => void;
-}
-
-const ModalHeader = ({ onClose }: ModalHeaderProps) => (
-  <div className="flex justify-between items-center mb-6">
-    <h2 className="text-2xl font-bold text-white font-mono tracking-wider">SIGN IN</h2>
-    <button
-      onClick={onClose}
-      className="text-gray-400 hover:text-white transition-colors text-xl"
-    >
-      ✕
-    </button>
-  </div>
-);
-
-// Modal Content Component - UPDATED
-interface ModalContentProps {
-  onSuccess: (userData: Record<string, unknown>) => void;
-  onError: (error: string) => void;
-  onWorkspaceCheck?: (hasWorkspace: boolean) => void;
-}
-
-const ModalContent = ({ onSuccess, onError, onWorkspaceCheck }: ModalContentProps) => (
-  <>
-    <p className="text-gray-300 mb-6 text-center font-mono text-sm tracking-wide">
-      ACCESS YOUR SAPLE.AI DASHBOARD
-    </p>
-
-    <GoogleLoginButton
-      onSuccess={onSuccess}
-      onError={onError}
-      onWorkspaceCheck={onWorkspaceCheck}
-    />
-  </>
-);
-
-// Modal Footer Component (unchanged)
-const ModalFooter = () => (
-  <div className="mt-6 text-center">
-    <p className="text-gray-400 text-xs font-mono tracking-wide">
-      BY CONTINUING, YOU AGREE TO OUR TERMS OF SERVICE AND PRIVACY POLICY
-    </p>
-  </div>
-);

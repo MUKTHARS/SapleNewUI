@@ -1,4 +1,3 @@
-// src/app/components/SolutionsHero.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -6,9 +5,21 @@ import { motion } from 'framer-motion';
 export function SolutionsHero() {
   return (
     <section className="relative h-[80vh] md:h-[90vh] overflow-hidden">
-      {/* Dark Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
-      
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src="/videos/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark overlay for better text contrast */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -16,10 +27,6 @@ export function SolutionsHero() {
           backgroundSize: '80px 80px'
         }} />
       </div>
-
-      {/* Animated gradient orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-green-500/5 via-transparent to-cyan-500/10 rounded-full blur-3xl" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center flex flex-col justify-center h-full">
@@ -29,22 +36,12 @@ export function SolutionsHero() {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full mb-6 border border-white/10"
-          >
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-white/80">AI Solutions</span>
-          </motion.div> */}
-
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-  <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#0C7075] to-[#072E33]">
-    AI Agents for<br />
-    Business Automation
-  </span>
-</h1>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#0C7075] to-[#072E33]">
+              AI Agents for<br />
+              Business Automation
+            </span>
+          </h1>
           
           <motion.p
             initial={{ opacity: 0, y: 10 }}
