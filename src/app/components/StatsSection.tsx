@@ -178,9 +178,9 @@ export function StatsSection() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-500 text-sm italic">
+          {/* <p className="text-gray-500 text-sm italic">
             Based on average results from enterprise deployments over 12 months
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </section>
