@@ -125,14 +125,14 @@ export function ProductsDropdown() {
 </button>   
 
       {/* Dropdown Menu - Light Theme */}
-      <AnimatePresence>
+     <AnimatePresence>
   {isOpen && (
     <motion.div
       initial={{ opacity: 0, y: 8, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 8, scale: 0.98 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="absolute left-1/2 transform -translate-x-[30%] top-full mt-2 w-[1000px] max-w-[90vw] bg-slate-50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-[20px] border border-slate-200 rounded-[12px] overflow-hidden z-50"
+      className="absolute left-1/2 transform -translate-x-[30%] top-full mt-2 w-[1000px] max-w-[90vw] bg-gradient-to-b from-blue-50 to-indigo-50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-[20px] border border-blue-100 rounded-[12px] overflow-hidden z-50"
       style={{
         boxShadow: '0 20px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1)'
       }}
@@ -143,7 +143,7 @@ export function ProductsDropdown() {
             <div className="p-7">
               <div className="flex">
                 {/* Left Column - Platform - Light Theme */}
-                <div className="w-1/4 pr-8 border-r border-slate-200">
+                <div className="w-1/4 pr-8 border-r border-blue-100">
                 {/* <div className="w-1/4 pr-8 border-r border-slate-100"> */}
                   <div className="mb-8">
                     <div className="flex items-center gap-2.5 mb-4">
@@ -230,7 +230,7 @@ export function ProductsDropdown() {
             </div>
 
             {/* Footer with gradient background */}
-            <div className="px-7 py-4 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 border-t border-slate-200 flex justify-between items-center">
+           <div className="px-7 py-4 bg-gradient-to-r from-blue-100/70 to-indigo-100/70 border-t border-blue-100 flex justify-between items-center">
             {/* <div className="px-7 py-4 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 border-t border-slate-100 flex justify-between items-center"> */}
               <div className="text-slate-500 text-[12px] font-medium">
                 Complete suite of AI solutions
