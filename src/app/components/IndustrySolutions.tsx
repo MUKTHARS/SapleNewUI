@@ -65,7 +65,7 @@ export function IndustrySolutions() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -74,7 +74,7 @@ export function IndustrySolutions() {
           >
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
             <span className="text-sm font-medium text-white/80">Industry Solutions</span>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

@@ -1,4 +1,3 @@
-// components/CyberNavbar.tsx
 'use client';
 
 import Link from 'next/link';
@@ -9,17 +8,36 @@ import { useState, useEffect } from 'react';
 import Logo from './saple-logo.png';
 import { LoginModal } from './LoginModal';
 import { UserSection } from './UserSection';
-
+import { ProductsDropdown } from './dropdown/ProductsDropdown';
+import { MobileProductsMenu } from './dropdown/MobileProductsMenu';
+import { MobileSolutionsMenu } from './dropdown/MobileSolutionsMenu';
+import { SolutionsDropdown } from './dropdown/SolutionsDropdown';
 export function CyberNavbar() {
   const pathname = usePathname();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
+
+  // Update navItems - remove Products from regular nav items
+  // const navItems = [
+  //   { href: '/solutions', name: 'Solutions' },
+  //   { href: '/demo-hub', name: 'Demo Hub' },
+  //   { href: '/contact', name: 'Contact' },
+  //   { href: '/blog', name: 'Blog' },
+  // ];
+
+// export function CyberNavbar() {
+//   const pathname = usePathname();
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [showLoginModal, setShowLoginModal] = useState(false);
+//   const [user, setUser] = useState<Record<string, unknown> | null>(null);
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: '/products', name: 'Products' },
-    { href: '/solutions', name: 'Solutions' },
+    // { href: '/products', name: 'Products' },
+    // { href: '/solutions', name: 'Solutions' },
     { href: '/demo-hub', name: 'Demo Hub' },
     { href: '/contact', name: 'Contact' },
     { href: '/blog', name: 'Blog' },
@@ -81,37 +99,49 @@ export function CyberNavbar() {
     };
   }, []);
 
-  return (
+return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14"> {/* Reduced from h-16 to h-14 */}
+          <div className="flex justify-between items-center h-14">
             <LogoSection />
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Updated with Solutions dropdown */}
             <div className="hidden lg:flex items-center gap-0.5">
-              <NavigationItems navItems={navItems} pathname={pathname} />
+              {/* Products Dropdown */}
+              <ProductsDropdown />
+              
+              {/* Solutions Dropdown */}
+              <SolutionsDropdown />
+              
+              {/* Other Navigation Items */}
+              {navItems.map((item, index) => (
+                <NavigationItem
+                  key={index}
+                  href={item.href}
+                  name={item.name}
+                  isActive={pathname === item.href}
+                />
+              ))}
             </div>
 
-            {/* Desktop User Section */}
+            {/* Desktop User Section - unchanged */}
             <div className="hidden lg:flex items-center">
               <UserSection
                 isLoggedIn={isLoggedIn}
                 user={user || undefined}
                 onLoginClick={() => setShowLoginModal(true)}
                 onLogout={handleLogout}
-                // compact={true}
               />
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - unchanged */}
             <div className="lg:hidden flex items-center gap-2">
               <UserSection
                 isLoggedIn={isLoggedIn}
                 user={user || undefined}
                 onLoginClick={() => setShowLoginModal(true)}
                 onLogout={handleLogout}
-                // compact={true}
               />
 
               <button
@@ -139,10 +169,10 @@ export function CyberNavbar() {
         </div>
       </nav>
 
-      {/* Spacer for fixed navbar - Reduced height */}
-      <div className="h-14" /> {/* Reduced from h-16 to h-14 */}
+      {/* Spacer for fixed navbar */}
+      <div className="h-14" />
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Updated with Solutions menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -155,13 +185,13 @@ export function CyberNavbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
-            {/* Mobile Menu Panel */}
+            {/* Mobile Menu Panel - Updated with both Products and Solutions */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 h-full w-72 bg-gray-900/95 backdrop-blur-md border-l border-white/10 z-50 lg:hidden"
+              className="fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-md border-l border-white/10 z-50 lg:hidden overflow-y-auto"
             >
               <div className="flex flex-col h-full p-4">
                 {/* Mobile Menu Header */}
@@ -177,8 +207,29 @@ export function CyberNavbar() {
                   </button>
                 </div>
 
-                {/* Mobile Navigation Items */}
+                {/* Mobile Navigation Items - Updated */}
                 <nav className="flex-1 space-y-1">
+                  {/* Products Menu in Mobile */}
+                  <div className="mb-6">
+                    <div className="px-3 py-2 mb-2">
+                      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+                        Products
+                      </h3>
+                    </div>
+                    <MobileProductsMenu onClose={() => setIsMobileMenuOpen(false)} />
+                  </div>
+
+                  {/* Solutions Menu in Mobile */}
+                  <div className="mb-6">
+                    <div className="px-3 py-2 mb-2">
+                      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+                        Solutions
+                      </h3>
+                    </div>
+                    <MobileSolutionsMenu onClose={() => setIsMobileMenuOpen(false)} />
+                  </div>
+
+                  {/* Other Navigation Items */}
                   {navItems.map((item, index) => (
                     <MobileNavigationItem
                       key={index}
@@ -189,7 +240,7 @@ export function CyberNavbar() {
                   ))}
                 </nav>
 
-                {/* Mobile User Info */}
+                {/* Mobile User Info - unchanged */}
                 {isLoggedIn && user && (
                   <div className="pt-4 border-t border-white/5">
                     <div className="mb-3">
