@@ -140,17 +140,17 @@ const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
       {/* Dropdown Menu - Light Theme with different styling */}
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-[1100px] max-w-[90vw] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-[20px] border border-slate-100 rounded-[12px] overflow-hidden z-50"
-            style={{
-              boxShadow: '0 20px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1)'
-            }}
-          >
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-[1100px] max-w-[90vw] bg-slate-50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-[20px] border border-slate-200 rounded-[12px] overflow-hidden z-50"
+      style={{
+        boxShadow: '0 20px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1)'
+      }}
+    >
             {/* Different gradient top border */}
             {/* <div className="h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 w-full"></div> */}
             
@@ -168,55 +168,53 @@ const timeoutRef = useRef<NodeJS.Timeout | null>(null);
                 </p>
               </div>
 
-              {/* Industry Grid - Different styling */}
-              <div className="grid grid-cols-5 gap-6">
-                {industrySolutions.map((industry, index) => (
-                  <div key={index} className={`space-y-4 ${index === industrySolutions.length - 1 ? 'col-span-1' : ''}`}>
-                    <div className="flex items-start gap-3 mb-1">
-                      <span className="text-xl mt-0.5">{industry.icon}</span>
-                      <div>
-                        <h4 className="text-slate-800 font-semibold text-[14px] mb-1.5">
-                          {industry.title}
-                        </h4>
-                        <p className="text-slate-500 text-[12.5px] leading-relaxed">
-                          {industry.description}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Sub-items - Non-clickable with different styling */}
-                    <ul className="space-y-1.5">
-                      {industry.items.map((item, itemIndex) => (
-  <li key={itemIndex}>
-    <div className="text-slate-600 flex items-start">
-      <span className="text-[12.5px] leading-relaxed">{item.name}</span>
+              
+<div className="grid grid-cols-5 gap-6">
+  {industrySolutions.map((industry, index) => (
+    <div key={index} className={`space-y-3 ${index === industrySolutions.length - 1 ? 'col-span-1' : ''}`}>
+      {/* Title and Subtitle Container */}
+      <div className="mb-4">
+        <h4 className="text-slate-800 font-semibold text-[15px] mb-2">
+          {industry.title}
+        </h4>
+        <p className="text-slate-500 text-[12.5px] leading-relaxed">
+          {industry.description}
+        </p>
+      </div>
+      
+      {/* Sub-items - Non-clickable with different styling */}
+      <ul className="space-y-2">
+        {industry.items.map((item, itemIndex) => (
+          <li key={itemIndex}>
+            <div className="text-slate-600">
+              <span className="text-[13px] leading-relaxed">{item.name}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      
+      {/* View More link - Different styling */}
+      <div className="pt-4">
+        <Link
+          href={industry.href}
+          className="!text-black hover:!text-black text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
+          onClick={() => setIsOpen(false)}
+        >
+          View {industry.title.toUpperCase()}
+          <svg className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
     </div>
-  </li>
-))}
-                    </ul>
-                    
-                    {/* View More link - Different styling */}
-                    <div className="pt-3">
-                      <Link
-                        href={industry.href}
-                        className="!text-black hover:!text-black text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
-
-                        // className="text-emerald-600 hover:text-emerald-700 text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        View {industry.title.toLowerCase()}
-                        <svg className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
+  ))}
+</div>
             </div>
 
             {/* Footer with different gradient */}
-            <div className="px-7 py-4 bg-gradient-to-r from-emerald-50/50 to-teal-50/50 border-t border-slate-100 flex justify-between items-center">
+             <div className="px-7 py-4 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 border-t border-slate-200 flex justify-between items-center">
+          
+            {/* <div className="px-7 py-4 bg-gradient-to-r from-emerald-50/50 to-teal-50/50 border-t border-slate-100 flex justify-between items-center"> */}
               <div className="text-slate-500 text-[12px] font-medium">
                 Custom AI solutions for every business need
               </div>
