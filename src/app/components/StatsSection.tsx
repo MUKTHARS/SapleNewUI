@@ -134,7 +134,7 @@ export function StatsSection() {
 </div>
 
                   {/* Stat value */}
-                 <div className={`text-4xl md:text-5xl font-bold text-[#0C7075] mb-3`}>
+                 <div className={`text-4xl md:text-3xl font-bold text-[#0C7075] mb-3`}>
   {stat.value}
 </div>
 

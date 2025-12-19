@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { ScrollSection } from './components/ScrollSection';
 import { HeroSection } from './components/HeroSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { EnterpriseSection } from './components/EnterpriseSection';
@@ -69,6 +70,7 @@ export default function Home() {
       <ErrorBoundary>
         <HeroSection />
         <FeaturesSection />
+        <ScrollSection /> 
         <EnterpriseSection />
         <UseCasesSection />
         <StatsSection />

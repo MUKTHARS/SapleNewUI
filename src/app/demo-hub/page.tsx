@@ -133,10 +133,10 @@ export default function DemoHubPage() {
           <div className="relative z-10 container mx-auto px-4 max-w-7xl">
             {/* Section Header */}
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#0c7075]/20 shadow-sm mb-6">
+              {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#0c7075]/20 shadow-sm mb-6">
                 <div className="w-2 h-2 bg-[#0c7075] rounded-full animate-pulse" />
                 <span className="text-sm font-medium text-[#0c7075]">Interactive Demos</span>
-              </div>
+              </div> */}
               <section className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Explore Our AI Capabilities
               </section>
