@@ -375,8 +375,8 @@ export function ScrollSection() {
         {/* Scroll hint */}
         <div className="text-center mt-12">
           <div className="inline-flex items-center gap-3 text-sm text-gray-500">
-            <span className="hidden lg:inline">Scroll or use arrow keys to navigate videos</span>
-            <span className="lg:hidden">Swipe up/down to navigate videos</span>
+            <span className="hidden lg:inline">Scroll or use arrow keys to navigate</span>
+            <span className="lg:hidden">Swipe up/down to navigate</span>
             <div className="flex gap-1">
               <div className="w-1 h-1 rounded-full bg-gray-600 animate-bounce" style={{ animationDelay: '0ms' }}></div>
               <div className="w-1 h-1 rounded-full bg-gray-600 animate-bounce" style={{ animationDelay: '100ms' }}></div>
