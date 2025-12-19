@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function SolutionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -119,27 +119,24 @@ export function SolutionsDropdown() {
     >
       {/* Trigger Button */}
       <button
-        onClick={handleClick}
-        className={`px-3 py-1.5 text-[13px] font-medium rounded-[4px] transition-all flex items-center gap-1.5 relative ${
-          isOpen
-            ? 'text-slate-800 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 shadow-[0_2px_8px_rgba(16,185,129,0.15)]'
-            : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-teal-50/50 hover:border hover:border-emerald-100/50 hover:shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-transparent'
-        }`}
-      >
-        <span className="font-semibold tracking-[-0.01em]">Solutions</span>
-        <motion.svg
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          className="w-3.5 h-3.5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M19 9l-7 7-7-7" />
-        </motion.svg>
-        {isOpen && (
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
-        )}
-      </button>
+  onClick={handleClick}
+  className={`px-2 py-1 text-sm font-medium rounded-md transition-all flex items-center gap-1 ${
+    isOpen
+      ? 'text-white bg-white/10'
+      : 'text-white/80 hover:text-white hover:bg-white/5'
+  }`}
+>
+  Solutions
+  <motion.svg
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    className="w-3 h-3"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </motion.svg>
+</button>
 
       {/* Dropdown Menu - Light Theme with different styling */}
       <AnimatePresence>
@@ -190,13 +187,12 @@ export function SolutionsDropdown() {
                     {/* Sub-items - Non-clickable with different styling */}
                     <ul className="space-y-1.5">
                       {industry.items.map((item, itemIndex) => (
-                        <li key={itemIndex}>
-                          <div className="text-slate-600 flex items-start">
-                            <span className="w-[5px] h-[5px] bg-slate-300 rounded-full mt-[9px] mr-3 flex-shrink-0"></span>
-                            <span className="text-[12.5px] leading-relaxed">{item.name}</span>
-                          </div>
-                        </li>
-                      ))}
+  <li key={itemIndex}>
+    <div className="text-slate-600 flex items-start">
+      <span className="text-[12.5px] leading-relaxed">{item.name}</span>
+    </div>
+  </li>
+))}
                     </ul>
                     
                     {/* View More link - Different styling */}

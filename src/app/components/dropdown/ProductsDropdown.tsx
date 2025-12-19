@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function ProductsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+ const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -104,28 +104,25 @@ export function ProductsDropdown() {
       onMouseLeave={handleMouseLeave}
     >
       {/* Trigger Button */}
-      <button
-        onClick={handleClick}
-        className={`px-3 py-1.5 text-[13px] font-medium rounded-[4px] transition-all flex items-center gap-1.5 relative ${
-          isOpen
-            ? 'text-slate-800 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 shadow-[0_2px_8px_rgba(59,130,246,0.15)]'
-            : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50 hover:border hover:border-blue-100/50 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] border border-transparent'
-        }`}
-      >
-        <span className="font-semibold tracking-[-0.01em]">Products</span>
-        <motion.svg
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          className="w-3.5 h-3.5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M19 9l-7 7-7-7" />
-        </motion.svg>
-        {isOpen && (
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
-        )}
-      </button>
+ <button
+  onClick={handleClick}
+  className={`px-2 py-1 text-sm font-medium rounded-md transition-all flex items-center gap-1 ${
+    isOpen
+      ? 'text-white bg-white/10'
+      : 'text-white/80 hover:text-white hover:bg-white/5'
+  }`}
+>
+  Products
+  <motion.svg
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    className="w-3 h-3"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </motion.svg>
+</button>   
 
       {/* Dropdown Menu - Light Theme */}
       <AnimatePresence>
@@ -141,7 +138,7 @@ export function ProductsDropdown() {
             }}
           >
             {/* Gradient top border */}
-            <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 w-full"></div>
+            {/* <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 w-full"></div> */}
             
             <div className="p-7">
               <div className="flex">
@@ -149,7 +146,7 @@ export function ProductsDropdown() {
                 <div className="w-1/4 pr-8 border-r border-slate-100">
                   <div className="mb-8">
                     <div className="flex items-center gap-2.5 mb-4">
-                      <div className="w-2 h-6 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
+                      {/* <div className="w-2 h-6 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div> */}
                       <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-[0.15em]">
                         Platform
                       </h3>
@@ -177,18 +174,18 @@ export function ProductsDropdown() {
                   </div>
                   
                   {/* Platform separator with badge */}
-                  <div className="pt-6 border-t border-slate-100">
+                  {/* <div className="pt-6 border-t border-slate-100">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-full">
                       <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                       <span className="text-[11px] font-medium text-blue-700">Enterprise Ready</span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Right Column - Products - Light Theme */}
                 <div className="w-3/4 pl-8">
                   <div className="flex items-center gap-2.5 mb-6">
-                    <div className="w-2 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div>
+                    {/* <div className="w-2 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div> */}
                     <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-[0.15em]">
                       Products
                     </h3>
@@ -211,18 +208,18 @@ export function ProductsDropdown() {
                         
                         {/* Sub-items for each product category */}
                         <ul className="space-y-2.5">
-                          {category.items.map((item, itemIndex) => (
-                            <li key={itemIndex}>
-                              <Link
-                                href={item.href}
-                                className="text-slate-600 hover:text-slate-900 transition-colors duration-200 flex items-start group"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                <span className="w-[5px] h-[5px] bg-slate-300 rounded-full mt-[9px] mr-3 flex-shrink-0 group-hover:bg-emerald-500 transition-colors duration-200"></span>
-                                <span className="text-[12.5px] leading-relaxed">{item.name}</span>
-                              </Link>
-                            </li>
-                          ))}
+                       {category.items.map((item, itemIndex) => (
+  <li key={itemIndex}>
+    <Link
+      href={item.href}
+      className="!text-black hover:!text-black transition-colors duration-200 flex items-start group"
+      onClick={() => setIsOpen(false)}
+    >
+      <span className="mr-2 text-[8px] opacity-70">●</span>
+      <span className="text-[12.5px] leading-relaxed">{item.name}</span>
+    </Link>
+  </li>
+))}
                         </ul>
                       </div>
                     ))}
@@ -236,7 +233,7 @@ export function ProductsDropdown() {
               <div className="text-slate-500 text-[12px] font-medium">
                 Complete suite of AI solutions
               </div>
-              <Link
+              {/* <Link
                 href="/products/all"
                 className="text-blue-600 hover:text-blue-700 text-[13px] font-semibold transition-colors duration-200 flex items-center group"
                 onClick={() => setIsOpen(false)}
@@ -245,7 +242,7 @@ export function ProductsDropdown() {
                 <svg className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         )}
