@@ -62,13 +62,6 @@ export function ScrollSection() {
   const [activeSection, setActiveSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Initialize on mount
-  useEffect(() => {
-    setIsMounted(true);
-    setIsVideoLoaded(new Array(scrollSections.length).fill(false));
-  }, []);
 
   const handleSectionClick = useCallback((index: number) => {
     if (!scrollContainerRef.current) return;
@@ -82,9 +75,6 @@ export function ScrollSection() {
       behavior: 'smooth'
     });
 
-    // Update active section immediately
-    setActiveSection(index);
-
     setTimeout(() => setIsScrolling(false), 500);
   }, []);
 
@@ -94,10 +84,8 @@ export function ScrollSection() {
     const scrollTop = scrollContainerRef.current.scrollTop;
     const containerHeight = scrollContainerRef.current.clientHeight;
     
-    // Calculate section based on scroll position with threshold
-    const scrollPercentage = scrollTop / containerHeight;
-    const currentSection = Math.round(scrollPercentage);
-    const newActiveSection = Math.min(Math.max(0, currentSection), scrollSections.length - 1);
+    const currentSection = Math.floor(scrollTop / containerHeight);
+    const newActiveSection = Math.min(currentSection, scrollSections.length - 1);
     
     if (newActiveSection !== activeSection) {
       setActiveSection(newActiveSection);
@@ -112,47 +100,47 @@ export function ScrollSection() {
     });
   }, []);
 
-  // Set up scroll event listener
+  // Initialize video loaded state
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleContainerScroll = () => {
-      requestAnimationFrame(() => {
-        handleScroll();
-      });
-    };
-
-    container.addEventListener('scroll', handleContainerScroll, { passive: true });
-    
-    // Initial check
-    handleContainerScroll();
-
-    return () => {
-      container.removeEventListener('scroll', handleContainerScroll);
-    };
-  }, [handleScroll]);
+    setIsVideoLoaded(new Array(scrollSections.length).fill(false));
+  }, []);
 
   // Manage video playback based on active section
   useEffect(() => {
-    if (!isScrolling && isMounted) {
+    if (!isScrolling) {
       // Play active section video
       const activeVideo = videoRefs.current[activeSection];
-      if (activeVideo && activeVideo.paused) {
+      if (activeVideo) {
         activeVideo.play().catch(() => {
-          console.log('Autoplay prevented for section', activeSection);
+          // Autoplay was prevented, continue muted
+          console.log('Autoplay prevented');
         });
       }
       
       // Pause other videos
       videoRefs.current.forEach((video, index) => {
-        if (video && index !== activeSection && !video.paused) {
+        if (video && index !== activeSection) {
           video.pause();
           video.currentTime = 0;
         }
       });
+    } else {
+      // Pause all videos while scrolling
+      videoRefs.current.forEach(video => {
+        if (video) {
+          video.pause();
+        }
+      });
     }
-  }, [activeSection, isScrolling, isMounted]);
+  }, [activeSection, isScrolling]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   // Add keyboard navigation
   useEffect(() => {
@@ -171,49 +159,6 @@ export function ScrollSection() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeSection, handleSectionClick]);
-
-  // Add intersection observer for more reliable detection
-  useEffect(() => {
-    if (!scrollContainerRef.current || !isMounted) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            if (index !== activeSection) {
-              setActiveSection(index);
-            }
-          }
-        });
-      },
-      {
-        root: scrollContainerRef.current,
-        threshold: 0.5,
-        rootMargin: '0px'
-      }
-    );
-
-    const sections = scrollContainerRef.current.querySelectorAll('.snap-start');
-    sections.forEach((section, index) => {
-      section.setAttribute('data-index', index.toString());
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, [isMounted, activeSection]);
-
-  if (!isMounted) {
-    return (
-      <section className="py-24 bg-black relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="h-96 bg-gray-900/50 animate-pulse rounded-2xl" />
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-24 bg-black relative overflow-hidden">
@@ -352,10 +297,8 @@ export function ScrollSection() {
                         {/* Video container with proper aspect ratio but fits available space */}
                         <div className="relative w-full h-full rounded-2xl overflow-hidden border border-gray-800">
                           <video
-                            ref={el => { 
-                              if (el) videoRefs.current[index] = el;
-                            }}
-                            autoPlay={index === 0 && isMounted}
+                            ref={el => { videoRefs.current[index] = el; }}
+                            autoPlay={index === 0}
                             loop
                             muted
                             playsInline
@@ -411,7 +354,7 @@ export function ScrollSection() {
           </div>
         </div>
 
-        {/* Progress indicator - Always visible */}
+        {/* Progress indicator */}
         <div className="flex justify-center mt-8">
           <div className="flex gap-2">
             {scrollSections.map((_, index) => (
@@ -432,8 +375,8 @@ export function ScrollSection() {
         {/* Scroll hint */}
         <div className="text-center mt-12">
           <div className="inline-flex items-center gap-3 text-sm text-gray-500">
-            <span className="hidden lg:inline">Scroll or use arrow keys to navigate videos</span>
-            <span className="lg:hidden">Swipe up/down to navigate videos</span>
+            <span className="hidden lg:inline">Scroll or use arrow keys to navigate</span>
+            <span className="lg:hidden">Swipe up/down to navigate</span>
             <div className="flex gap-1">
               <div className="w-1 h-1 rounded-full bg-gray-600 animate-bounce" style={{ animationDelay: '0ms' }}></div>
               <div className="w-1 h-1 rounded-full bg-gray-600 animate-bounce" style={{ animationDelay: '100ms' }}></div>
