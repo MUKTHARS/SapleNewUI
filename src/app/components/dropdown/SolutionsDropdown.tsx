@@ -44,7 +44,7 @@ export function SolutionsDropdown() {
     };
   }, []);
 
-  // Industry solutions based on your image
+  // Industry solutions
   const industrySolutions = [
     {
       title: 'BFSI',
@@ -120,82 +120,96 @@ export function SolutionsDropdown() {
       {/* Trigger Button */}
       <button
         onClick={handleClick}
-        className={`px-2 py-1 text-sm font-medium rounded-md transition-all flex items-center gap-1 ${
+        className={`px-3 py-1.5 text-[13px] font-medium rounded-[4px] transition-all flex items-center gap-1.5 relative ${
           isOpen
-            ? 'text-white bg-white/10'
-            : 'text-white/80 hover:text-white hover:bg-white/5'
+            ? 'text-slate-800 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 shadow-[0_2px_8px_rgba(16,185,129,0.15)]'
+            : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-teal-50/50 hover:border hover:border-emerald-100/50 hover:shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-transparent'
         }`}
       >
-        Solutions
+        <span className="font-semibold tracking-[-0.01em]">Solutions</span>
         <motion.svg
           animate={{ rotate: isOpen ? 180 : 0 }}
-          className="w-3 h-3"
+          className="w-3.5 h-3.5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M19 9l-7 7-7-7" />
         </motion.svg>
+        {isOpen && (
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
+        )}
       </button>
 
-      {/* Dropdown Menu - Adjusted width for 5 industries */}
+      {/* Dropdown Menu - Light Theme with different styling */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.15 }}
-            className="absolute left-1/2 transform -translate-x-1/2 top-full mt-1 w-[1100px] max-w-[90vw] bg-gray-900/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl z-50 overflow-hidden"
+            initial={{ opacity: 0, y: 8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-[1100px] max-w-[90vw] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-[20px] border border-slate-100 rounded-[12px] overflow-hidden z-50"
+            style={{
+              boxShadow: '0 20px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1)'
+            }}
           >
-            <div className="p-6">
-              {/* Header */}
-              <div className="mb-6">
-                <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                  By Industry
-                </h3>
-                <p className="text-gray-300 text-sm">
+            {/* Different gradient top border */}
+            {/* <div className="h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 w-full"></div> */}
+            
+            <div className="p-7">
+              {/* Header with different styling */}
+              <div className="mb-8">
+                <div className="flex items-center gap-2.5 mb-3">
+                  {/* <div className="w-2 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div> */}
+                  <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-[0.15em]">
+                    By Industry
+                  </h3>
+                </div>
+                <p className="text-slate-700 text-[14px] font-medium">
                   Industry-specific AI solutions powered by Saple.ai
                 </p>
               </div>
 
-              {/* Industry Grid - 5 columns for 5 industries */}
-              <div className="grid grid-cols-5 gap-4">
+              {/* Industry Grid - Different styling */}
+              <div className="grid grid-cols-5 gap-6">
                 {industrySolutions.map((industry, index) => (
-                  <div key={index} className={`space-y-3 ${index === industrySolutions.length - 1 ? 'col-span-1' : ''}`}>
-                    <div className="flex items-start gap-3 mb-2">
+                  <div key={index} className={`space-y-4 ${index === industrySolutions.length - 1 ? 'col-span-1' : ''}`}>
+                    <div className="flex items-start gap-3 mb-1">
                       <span className="text-xl mt-0.5">{industry.icon}</span>
                       <div>
-                        <h4 className="text-white font-semibold text-sm mb-1">
+                        <h4 className="text-slate-800 font-semibold text-[14px] mb-1.5">
                           {industry.title}
                         </h4>
-                        <p className="text-gray-400 text-xs leading-relaxed">
+                        <p className="text-slate-500 text-[12.5px] leading-relaxed">
                           {industry.description}
                         </p>
                       </div>
                     </div>
                     
-                    {/* Sub-items for each industry - Non-clickable */}
+                    {/* Sub-items - Non-clickable with different styling */}
                     <ul className="space-y-1.5">
                       {industry.items.map((item, itemIndex) => (
                         <li key={itemIndex}>
-                          <div className="text-gray-400 flex items-start">
-                            <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mt-1.5 mr-2.5 flex-shrink-0"></span>
-                            <span className="text-xs leading-relaxed">{item.name}</span>
+                          <div className="text-slate-600 flex items-start">
+                            <span className="w-[5px] h-[5px] bg-slate-300 rounded-full mt-[9px] mr-3 flex-shrink-0"></span>
+                            <span className="text-[12.5px] leading-relaxed">{item.name}</span>
                           </div>
                         </li>
                       ))}
                     </ul>
                     
-                    {/* View More link for each industry - Clickable */}
-                    <div className="pt-2">
+                    {/* View More link - Different styling */}
+                    <div className="pt-3">
                       <Link
                         href={industry.href}
-                        className="text-blue-400 hover:text-blue-300 text-xs font-medium transition-colors inline-flex items-center group"
+                        className="!text-black hover:!text-black text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
+
+                        // className="text-emerald-600 hover:text-emerald-700 text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
                         onClick={() => setIsOpen(false)}
                       >
                         View {industry.title.toLowerCase()}
-                        <svg className="w-3 h-3 ml-1 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </Link>
@@ -205,21 +219,23 @@ export function SolutionsDropdown() {
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="px-6 py-4 bg-black/30 border-t border-white/10 flex justify-between items-center">
-              <div className="text-gray-400 text-xs">
+            {/* Footer with different gradient */}
+            <div className="px-7 py-4 bg-gradient-to-r from-emerald-50/50 to-teal-50/50 border-t border-slate-100 flex justify-between items-center">
+              <div className="text-slate-500 text-[12px] font-medium">
                 Custom AI solutions for every business need
               </div>
-              <Link
+              {/* <Link
                 href="/solutions/all"
-                className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors flex items-center group"
+                // className="text-emerald-600 hover:text-emerald-700 text-[13px] font-semibold transition-colors duration-200 flex items-center group"
+                className="!text-black hover:!text-black text-[12.5px] font-semibold transition-colors duration-200 inline-flex items-center group"
+
                 onClick={() => setIsOpen(false)}
               >
                 Explore all solutions
-                <svg className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         )}

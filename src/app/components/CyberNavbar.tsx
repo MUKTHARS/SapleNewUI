@@ -18,7 +18,7 @@ export function CyberNavbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
+  // const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
 
   // Update navItems - remove Products from regular nav items
   // const navItems = [
@@ -291,23 +291,23 @@ const LogoSection = () => (
 );
 
 // Navigation Items Component (Desktop) - Smaller text and padding
-interface NavigationItemsProps {
-  navItems: Array<{ href: string; name: string }>;
-  pathname: string;
-}
+// interface NavigationItemsProps {
+//   navItems: Array<{ href: string; name: string }>;
+//   pathname: string;
+// }
 
-const NavigationItems = ({ navItems, pathname }: NavigationItemsProps) => (
-  <>
-    {navItems.map((item, index) => (
-      <NavigationItem
-        key={index}
-        href={item.href}
-        name={item.name}
-        isActive={pathname === item.href}
-      />
-    ))}
-  </>
-);
+// const NavigationItems = ({ navItems, pathname }: NavigationItemsProps) => (
+//   <>
+//     {navItems.map((item, index) => (
+//       <NavigationItem
+//         key={index}
+//         href={item.href}
+//         name={item.name}
+//         isActive={pathname === item.href}
+//       />
+//     ))}
+//   </>
+// );
 
 // Single Navigation Item Component (Desktop) - Smaller
 interface NavigationItemProps {

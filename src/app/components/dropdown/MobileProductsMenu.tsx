@@ -9,12 +9,12 @@ interface MobileProductsMenuProps {
 }
 
 export function MobileProductsMenu({ onClose }: MobileProductsMenuProps) {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+//   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [expandedProduct, setExpandedProduct] = useState<string | null>(null);
 
-  const toggleSection = (section: string) => {
-    setExpandedSection(expandedSection === section ? null : section);
-  };
+//   const toggleSection = (section: string) => {
+//     setExpandedSection(expandedSection === section ? null : section);
+//   };
 
   const toggleProduct = (product: string) => {
     setExpandedProduct(expandedProduct === product ? null : product);
