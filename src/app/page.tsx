@@ -7,11 +7,11 @@ import { ScrollSection } from './components/ScrollSection';
 import { HeroSection } from './components/HeroSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { EnterpriseSection } from './components/EnterpriseSection';
-import { UseCasesSection } from './components/UseCasesSection';
+// import { UseCasesSection } from './components/UseCasesSection';
 import { StatsSection } from './components/StatsSection';
 import { CtaSection } from './components/CtaSection';
 import { ErrorBoundary } from './components/ErrorBoundary';
-
+import { KnowledgeFirstSection } from '@/app/components/KnowledgeFirstSection';
 export default function Home() {
   const [isChecking, setIsChecking] = useState(true);
   const router = useRouter();
@@ -72,7 +72,8 @@ export default function Home() {
         <FeaturesSection />
         <ScrollSection /> 
         <EnterpriseSection />
-        <UseCasesSection />
+        <KnowledgeFirstSection />
+        {/* <UseCasesSection /> */}
         <StatsSection />
         <CtaSection />
       </ErrorBoundary>

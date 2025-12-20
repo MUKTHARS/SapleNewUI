@@ -9,8 +9,8 @@ const scrollSections = [
   {
     id: 'ai-agent',
     title: 'AI Agent',
-    subtitle: 'Deliver exceptional CX for less, with human-centric AI Agents you can trust',
-    description: 'Deploy empathetic AI agents that understand context, emotions, and intent to deliver human-like interactions at scale.',
+    subtitle: 'Human-centric AI agents for exceptional, trustworthy CX',
+    // description: 'Deploy empathetic AI agents that understand context, emotions, and intent to deliver human-like interactions at scale.',
     ctaText: 'Explore AI Agent',
     icon: <Brain className="w-5 h-5" />,
     color: '#0EA5E9',
@@ -25,8 +25,8 @@ const scrollSections = [
   {
     id: 'agent-assist',
     title: 'Agent Assist',
-    subtitle: 'Turn every agent into a top performer with real-time guidance, knowledge and workflow automation',
-    description: 'Empower your team with AI copilots that provide real-time suggestions, automate routine tasks, and enhance decision-making.',
+    subtitle: 'Agent Assist " Real-time guidance. Trusted knowledge. Automated workflows."',
+    // description: 'Empower your team with AI copilots that provide real-time suggestions, automate routine tasks, and enhance decision-making.',
     ctaText: 'Explore Agent Assist',
     icon: <MessageSquare className="w-5 h-5" />,
     color: '#8B5CF6',
@@ -41,8 +41,8 @@ const scrollSections = [
   {
     id: 'conversation-intelligence',
     title: 'Conversation Intelligence',
-    subtitle: 'Uncover the signals hidden in every conversation and capture the voice of your customer at scale to turn insights into better business outcomes',
-    description: 'Transform conversations into data-driven insights with advanced analytics, sentiment analysis, and performance metrics.',
+    subtitle: ' "Converstional Intell" Capture the voice of your customer at scale by uncovering hidden signals in every conversation — and turn insights into action',
+    // description: 'Transform conversations into data-driven insights with advanced analytics, sentiment analysis, and performance metrics.',
     ctaText: 'Explore Conversation Intelligence',
     icon: <BarChart className="w-5 h-5" />,
     color: '#10B981',
@@ -187,9 +187,9 @@ export function ScrollSection() {
                 Service Platform
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            {/* <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Watch our platform in action - each video demonstrates a key capability
-            </p>
+            </p> */}
           </motion.div>
         </div>
 

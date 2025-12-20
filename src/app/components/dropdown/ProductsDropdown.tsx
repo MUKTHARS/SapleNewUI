@@ -209,15 +209,15 @@ export function ProductsDropdown() {
                         
                         {/* Sub-items for each product category */}
                         <ul className="space-y-2.5">
-                       {category.items.map((item, itemIndex) => (
+{category.items.map((item, itemIndex) => (
   <li key={itemIndex}>
     <Link
       href={item.href}
       className="!text-black hover:!text-black transition-colors duration-200 flex items-start group"
       onClick={() => setIsOpen(false)}
     >
-      <span className="mr-2 text-[8px] opacity-70">●</span>
-      <span className="text-[12.5px] leading-relaxed">{item.name}</span>
+      <span className="mr-2 text-[4px] opacity-70">●</span>
+      <span className="text-[14.5px] leading-relaxed">{item.name}</span>
     </Link>
   </li>
 ))}
