@@ -425,9 +425,9 @@ export function ScrollSection() {
                   <h4 className="text-lg font-semibold text-white mb-3">
                     {section.subtitle}
                   </h4>
-                  <p className="text-gray-300 mb-6">
+                  {/* <p className="text-gray-300 mb-6">
                     {section.description}
-                  </p>
+                  </p> */}
                   
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     {section.features.map((feature, idx) => (
