@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -117,7 +117,7 @@ export function HeroSection() {
                   className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-white/20 border border-white/20 transition-all duration-300"
                 >
                   <span>Explore Features</span>
-                  <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                  {/* <Spark  les className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" /> */}
                 </Link>
                 <p className="text-sm text-transparent mt-2">.</p>
               </motion.div>

@@ -2,6 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export function KnowledgeFirstSection() {
   return (
@@ -19,49 +20,50 @@ export function KnowledgeFirstSection() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-blue-500/5 to-transparent rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-4 lg:col-span-1"
-          >
-            {/* Main Heading */}
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-              A knowledge-first AI platform built for scale
-            </h2>
+        {/* Title and Description at Top - Centered */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center max-w-4xl mx-auto mb-16 space-y-6"
+        >
+          {/* Main Heading */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            A knowledge-first AI platform built for scale
+          </h2>
 
-            {/* Description */}
-            <p className="text-base text-gray-300 leading-relaxed">
-              Empower users with AI-driven solutions across channels and content mediums — including voice, video, live translation, and seamless agent escalation.
-            </p>
-          </motion.div>
+          {/* Description */}
+          <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            Empower users with AI-driven solutions across channels and content mediums — including voice, video, live translation, and seamless agent escalation.
+          </p>
+        </motion.div>
 
-          {/* Right Column - Image (takes 2/3 of space) */}
-         <motion.div
-  initial={{ opacity: 0, x: 30 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className="relative lg:col-span-2"
->
-  {/* Single glassy frame */}
-  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-gray-800/30 backdrop-blur-md border border-gray-700/50 shadow-2xl p-4">
-    <img
-      src="/images/Saple AI Capabilities v4.png"
-      alt="Knowledge-first AI Platform"
-      className="w-full h-auto object-cover rounded-lg"
-      onError={(e) => {
-        e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
-      }}
-    />
-    {/* Subtle inner glow */}
-    <div className="absolute inset-0 rounded-2xl border border-gray-600/20 pointer-events-none" />
-  </div>
-</motion.div>
-        </div>
+                       {/* Image Section - Full width, larger */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative w-full mt-12"
+        >
+          {/* Large glassy frame with inner padding */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-gray-800/30 backdrop-blur-md border border-gray-700/50 shadow-2xl p-2">
+            {/* Image container with perfect fit */}
+            <div className="relative w-full aspect-[4/3]">
+              <Image
+                src="/images/Saple AI Capabilities v8.png"
+                alt="Knowledge-first AI Platform"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                priority
+              />
+            </div>
+            {/* Subtle inner glow */}
+            <div className="absolute inset-0 rounded-3xl border border-gray-600/20 pointer-events-none" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
