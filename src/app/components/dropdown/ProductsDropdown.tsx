@@ -51,7 +51,7 @@ export function ProductsDropdown() {
       name: 'Platform Overview', 
       description: 'A no-code, enterprise-ready platform to build, deploy, and manage AI agents across chat, voice, and workflows — securely and at scale.' 
     },
-    { href: '/platform/neo', name: 'Neo' },
+    { href: '/platform/neo', name: 'Neo Canvas' },
     { href: '/platform/integrations', name: 'Integrations' },
     { href: '/platform/responsible-ai', name: 'Responsible AI' },
   ];
@@ -216,7 +216,7 @@ export function ProductsDropdown() {
       className="!text-black hover:!text-black transition-colors duration-200 flex items-start group"
       onClick={() => setIsOpen(false)}
     >
-      <span className="mr-2 text-[4px] opacity-70">●</span>
+      {/* <span className="mr-2 text-[8px] opacity-70">●</span> */}
       <span className="text-[14.5px] leading-relaxed">{item.name}</span>
     </Link>
   </li>

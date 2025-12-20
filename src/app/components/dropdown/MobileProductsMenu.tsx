@@ -23,7 +23,7 @@ export function MobileProductsMenu({ onClose }: MobileProductsMenuProps) {
   // Platform menu items (updated)
   const platformItems = [
     { href: '/platform/overview', name: 'Platform Overview' },
-    { href: '/platform/neo', name: 'Neo' },
+    { href: '/platform/neo', name: 'Neo Canvas' },
     { href: '/platform/integrations', name: 'Integrations' },
     { href: '/platform/responsible-ai', name: 'Responsible AI' },
   ];
