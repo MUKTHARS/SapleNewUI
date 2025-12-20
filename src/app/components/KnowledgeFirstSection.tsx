@@ -40,25 +40,27 @@ export function KnowledgeFirstSection() {
           </motion.div>
 
           {/* Right Column - Image (takes 2/3 of space) */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative lg:col-span-2"
-          >
-            {/* Image Container */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
-      <img
-        src="/images/Saple AI Capabilities v1.png"
-        alt="Knowledge-first AI Platform"
-        className="w-full h-auto object-cover"
-        onError={(e) => {
-          e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
-        }}
-      />
-    </div>
-          </motion.div>
+         <motion.div
+  initial={{ opacity: 0, x: 30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="relative lg:col-span-2"
+>
+  {/* Single glassy frame */}
+  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-gray-800/30 backdrop-blur-md border border-gray-700/50 shadow-2xl p-4">
+    <img
+      src="/images/Saple AI Capabilities v4.png"
+      alt="Knowledge-first AI Platform"
+      className="w-full h-auto object-cover rounded-lg"
+      onError={(e) => {
+        e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
+      }}
+    />
+    {/* Subtle inner glow */}
+    <div className="absolute inset-0 rounded-2xl border border-gray-600/20 pointer-events-none" />
+  </div>
+</motion.div>
         </div>
       </div>
     </section>
