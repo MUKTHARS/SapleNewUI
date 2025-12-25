@@ -48,11 +48,12 @@ export function KnowledgeFirstSection() {
           className="relative w-full mt-12"
         >
           {/* Large glassy frame with inner padding */}
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-gray-800/30 backdrop-blur-md border border-gray-700/50 shadow-2xl p-2">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#cce7f1]/30 via-[#cce7f1]/20 to-[#cce7f1]/30 backdrop-blur-md border border-[#cce7f1]/50 shadow-2xl p-2">
+          {/* <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-gray-800/30 backdrop-blur-md border border-gray-700/50 shadow-2xl p-2"> */}
             {/* Image container with perfect fit */}
             <div className="relative w-full aspect-[4/3]">
               <Image
-                src="/images/Saple AI Capabilities v8.png"
+                src="/images/Saple AI Capabilities v9.png"
                 alt="Knowledge-first AI Platform"
                 fill
                 className="object-contain"
@@ -61,7 +62,8 @@ export function KnowledgeFirstSection() {
               />
             </div>
             {/* Subtle inner glow */}
-            <div className="absolute inset-0 rounded-3xl border border-gray-600/20 pointer-events-none" />
+            <div className="absolute inset-0 rounded-3xl border border-[#cce7f1]/30 pointer-events-none" />
+            {/* <div className="absolute inset-0 rounded-3xl border border-gray-600/20 pointer-events-none" /> */}
           </div>
         </motion.div>
       </div>
