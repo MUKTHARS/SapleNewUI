@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import Image from 'next/image';
 export function ProductsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -51,9 +51,9 @@ export function ProductsDropdown() {
       name: 'Platform Overview', 
       description: 'A no-code, enterprise-ready platform to build, deploy, and manage AI agents across chat, voice, and workflows — securely and at scale.' 
     },
-    { href: '/platform/neo', name: 'Neo Canvas' },
-    { href: '/platform/integrations', name: 'Integrations' },
-    { href: '/platform/responsible-ai', name: 'Responsible AI' },
+    // { href: '/platform/neo', name: 'Neo Canvas' },
+    // { href: '/platform/integrations', name: 'Integrations' },
+    // { href: '/platform/responsible-ai', name: 'Responsible AI' },
   ];
 
   // Product categories (main products)
@@ -142,46 +142,57 @@ export function ProductsDropdown() {
             
             <div className="p-7">
               <div className="flex">
-                {/* Left Column - Platform - Light Theme */}
-                <div className="w-1/4 pr-8 border-r border-blue-100">
-                {/* <div className="w-1/4 pr-8 border-r border-slate-100"> */}
-                  <div className="mb-8">
-                    <div className="flex items-center gap-2.5 mb-4">
-                      {/* <div className="w-2 h-6 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div> */}
-                      <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-[0.15em]">
-                        Platform
-                      </h3>
-                    </div>
-                    <ul className="space-y-6">
-                      {platformItems.map((item, index) => (
-                        <li key={index}>
-                          <Link
-                            href={item.href}
-                            className="group block"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <p className="text-slate-800 font-semibold text-[14px] mb-1.5 group-hover:text-blue-600 transition-colors duration-200">
-                              {item.name}
-                            </p>
-                            {item.description && (
-                              <p className="text-slate-500 text-[12.5px] leading-relaxed group-hover:text-slate-700 transition-colors duration-200">
-                                {item.description}
-                              </p>
-                            )}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Platform separator with badge */}
-                  {/* <div className="pt-6 border-t border-slate-100">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-full">
-                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                      <span className="text-[11px] font-medium text-blue-700">Enterprise Ready</span>
-                    </div>
-                  </div> */}
+               {/* Left Column - Platform - Light Theme */}
+<div className="w-1/4 pr-8 border-r border-blue-100">
+  <div className="mb-8">
+    <div className="flex items-center gap-2.5 mb-4">
+      <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-[0.15em]">
+        Platform
+      </h3>
+    </div>
+    
+    {/* Platform Image */}
+    <div className="mb-6 overflow-hidden rounded-lg border border-blue-100 bg-white/50">
+      <div className="aspect-[4/3] relative">
+        <Image src="/api/placeholder/48/48" alt="AI Agents" width={48} height={48} className="w-12 h-12 rounded-lg"
+          onError={(e) => {
+            // Fallback if image doesn't exist
+            e.currentTarget.style.display = 'none';
+            e.currentTarget.parentElement!.innerHTML = `
+              <div class="w-full h-full bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center">
+                <div class="text-center p-4">
+                  <div class="text-2xl font-bold text-slate-800 mb-2">AgentC PAG</div>
+                  <div class="text-xs text-slate-600">Enterprise AI Platform</div>
                 </div>
+              </div>
+            `;
+          }}
+        />
+      </div>
+    </div>
+    
+    <ul className="space-y-6">
+      {platformItems.map((item, index) => (
+        <li key={index}>
+          <Link
+            href={item.href}
+            className="group block"
+            onClick={() => setIsOpen(false)}
+          >
+            <p className="text-slate-800 font-semibold text-[14px] mb-1.5 group-hover:text-blue-600 transition-colors duration-200">
+              {item.name}
+            </p>
+            {item.description && (
+              <p className="text-slate-500 text-[12.5px] leading-relaxed group-hover:text-slate-700 transition-colors duration-200">
+                {item.description}
+              </p>
+            )}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
 
                 {/* Right Column - Products - Light Theme */}
                 <div className="w-3/4 pl-8">
