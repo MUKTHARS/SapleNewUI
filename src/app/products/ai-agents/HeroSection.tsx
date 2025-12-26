@@ -15,24 +15,24 @@ export function HeroSection() {
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-left"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Deliver exceptional CX for less, with human-centric AI Agents you can trust
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               Saple AI Agents deliver natural, human-like conversations across chat, voice, and messaging 
               channels - designed to understand intent, take action, and resolve customer needs autonomously. 
               Built with enterprise-grade safety, observability, and control.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -52,25 +52,6 @@ export function HeroSection() {
               </motion.button>
             </div>
           </motion.div>
-          
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
-              <div className="aspect-video bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
-                <div className="text-white text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                    <PlayCircle className="w-10 h-10" />
-                  </div>
-                  <p className="text-lg font-semibold">AI Agent Demo Video</p>
-                  <p className="text-sm text-gray-400 mt-2">See Saple AI Agents in action</p>
-                </div>
-              </div>
-            </div>
-          </motion.div> */}
         </div>
       </div>
     </section>

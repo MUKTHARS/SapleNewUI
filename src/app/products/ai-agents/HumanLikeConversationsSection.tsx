@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { MessageSquare, Brain } from 'lucide-react';
+import Image from 'next/image';
 
 export function HumanLikeConversationsSection() {
   return (
@@ -41,12 +42,6 @@ export function HumanLikeConversationsSection() {
                    Saple AI Agents don&apos;t just answer questions—they reason, act, and learn across every interaction.
                   </span>
                 </div>
-                <div className="flex items-start gap-3">
-                  {/* <Zap className="w-5 h-5 text-white mt-1 flex-shrink-0" /> */}
-                  {/* <span className="text-gray-300">
-                    Real-time adaptation and secure workflow execution
-                  </span> */}
-                </div>
               </div>
             </div>
           </motion.div>
@@ -56,23 +51,33 @@ export function HumanLikeConversationsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
+            className="relative"
           >
-            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800">
-              <div className="text-3xl font-bold text-white mb-2">98%</div>
-              <div className="text-sm font-medium text-gray-400">Customer Satisfaction</div>
-            </div>
-            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800">
-              <div className="text-3xl font-bold text-white mb-2">40%</div>
-              <div className="text-sm font-medium text-gray-400">Faster Resolution</div>
-            </div>
-            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800">
-              <div className="text-3xl font-bold text-white mb-2">90%</div>
-              <div className="text-sm font-medium text-gray-400">Automation Rate</div>
-            </div>
-            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800">
-              <div className="text-3xl font-bold text-white mb-2">24/7</div>
-              <div className="text-sm font-medium text-gray-400">Availability</div>
+            <div className="relative rounded-2xl overflow-hidden border border-gray-800">
+              <div className="aspect-[4/3] relative">
+                <Image
+                  src="/images/Saple AI Agent Image 2.png" // Update with your actual image path
+                  alt="AI Agent Human-like Conversations Interface"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              {/* Stats overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {/* <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-white mb-1">98%</div>
+                    <div className="text-xs text-gray-300">Customer Satisfaction</div>
+                  </div>
+                  <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-white mb-1">40%</div>
+                    <div className="text-xs text-gray-300">Faster Resolution</div>
+                  </div> */}
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
