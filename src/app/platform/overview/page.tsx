@@ -2,31 +2,38 @@
 
 import { motion } from 'framer-motion';
 import { 
-  // Zap, 
   Brain, 
   BarChart,
   Shield,
-  GitBranch,
+  // GitBranch,
   Workflow,
   MessageSquare,
   Cpu,
-  Users,
-  // ChevronRight,
+  // Users,
   Play,
   Server,
   Target,
   Sparkles,
   ArrowRight,
-  // Cloud,
-  Code,
-  Eye,
+  // Code,
+  // Eye,
   CheckCircle,
-  // Rocket,
   ShieldCheck,
   Globe,
-  // Database,
-  Settings,
-  Monitor
+  // Settings,
+  // Monitor,
+  Search,
+  TestTube2,
+  Gauge,
+  AlertCircle,
+  // Zap,
+  // FileText,
+  // CpuChip,
+  // Users2,
+  // TargetIcon,
+  // FlaskConical,
+  ChartNoAxesCombined,
+  // Lightbulb
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
@@ -36,48 +43,41 @@ const platformHighlights = [
     title: "Zero-Code Studio",
     description: "Build sophisticated AI agents with our visual, drag-and-drop interface—no engineering required.",
     icon: <Workflow className="w-6 h-6" />,
-    color: "from-blue-500 to-cyan-500",
+    color: "from-blue-600 to-sky-500",
     stat: "10x faster development"
   },
   {
     title: "Enterprise-Ready",
     description: "SOC 2 Type II certified with enterprise-grade security, scalability, and 99.9% uptime SLA.",
     icon: <ShieldCheck className="w-6 h-6" />,
-    color: "from-green-500 to-emerald-500",
+    color: "from-emerald-600 to-green-500",
     stat: "Fortune 500 trusted"
   },
   {
     title: "Omnichannel AI",
     description: "Deploy consistent AI experiences across web chat, mobile apps, voice, and social platforms.",
     icon: <Globe className="w-6 h-6" />,
-    color: "from-purple-500 to-pink-500",
+    color: "from-violet-600 to-purple-500",
     stat: "15+ channels supported"
   },
   {
     title: "Intelligent Analytics",
     description: "Real-time insights, sentiment analysis, and actionable recommendations to optimize performance.",
     icon: <BarChart className="w-6 h-6" />,
-    color: "from-amber-500 to-orange-500",
+    color: "from-amber-600 to-orange-500",
     stat: "90% faster insights"
   }
 ];
 
-// Adjusted angles for the desired layout:
-// card1 (top): 90° (north)
-// card2 (top left): 150°
-// card3 (top right): 30°
-// card4 (left): 210°
-// card5 (right): -30° (330°)
-// card6 (bottom left): 240°
-// card7 (bottom right): 300°
+// Human-made gradient colors - softer, more natural transitions
 const circularFlow = [
   { 
     stage: "Discover", 
     description: "From data to deployment with Zero Setup AI agents",
-    icon: <Eye className="w-5 h-5" />,
-    color: "bg-purple-500",
-    gradient: "from-purple-500 to-pink-500",
-    angle: 90, // Top card (card1)
+    icon: <Search className="w-5 h-5" />,
+    color: "bg-gradient-to-br from-indigo-400 via-purple-400 to-fuchsia-400",
+    gradient: "from-indigo-100 via-purple-50 to-fuchsia-50",
+    angle: 90,
     delay: 0,
     moduleId: 0
   },
@@ -85,49 +85,49 @@ const circularFlow = [
     stage: "Build", 
     description: "Create no-code AI agents in minutes",
     icon: <Brain className="w-5 h-5" />,
-    color: "bg-blue-500",
-    gradient: "from-blue-500 to-cyan-500",
-    angle: 150, // Top left (card2)
+    color: "bg-gradient-to-br from-blue-400 via-sky-400 to-cyan-400",
+    gradient: "from-blue-50 via-sky-50 to-cyan-50",
+    angle: 150,
     delay: 0.1,
     moduleId: 0
   },
   { 
     stage: "Debug", 
     description: "Identify real-time issues as you build",
-    icon: <Code className="w-5 h-5" />,
-    color: "bg-cyan-500",
-    gradient: "from-cyan-500 to-teal-500",
-    angle: 30, // Top right (card3)
+    icon: <AlertCircle className="w-5 h-5" />,
+    color: "bg-gradient-to-br from-teal-400 via-emerald-400 to-green-400",
+    gradient: "from-teal-50 via-emerald-50 to-green-50",
+    angle: 30,
     delay: 0.2,
     moduleId: 1
   },
   { 
     stage: "Test", 
     description: "Ship reliable AI agents faster",
-    icon: <Settings className="w-5 h-5" />,
-    color: "bg-green-500",
-    gradient: "from-green-500 to-emerald-500",
-    angle: 210, // Left (card4)
+    icon: <TestTube2 className="w-5 h-5" />,
+    color: "bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400",
+    gradient: "from-amber-50 via-yellow-50 to-orange-50",
+    angle: 210,
     delay: 0.3,
     moduleId: 1
   },
   { 
     stage: "Analyze", 
     description: "Drive continuous improvement of AI agents",
-    icon: <BarChart className="w-5 h-5" />,
-    color: "bg-amber-500",
-    gradient: "from-amber-500 to-yellow-500",
-    angle: -30, // Right (card5) - equivalent to 330°
+    icon: <ChartNoAxesCombined className="w-5 h-5" />,
+    color: "bg-gradient-to-br from-rose-400 via-pink-400 to-red-400",
+    gradient: "from-rose-50 via-pink-50 to-red-50",
+    angle: -30,
     delay: 0.4,
     moduleId: 2
   },
   { 
     stage: "Measure", 
     description: "Actionable insights from real-time metrics",
-    icon: <Monitor className="w-5 h-5" />,
-    color: "bg-orange-500",
-    gradient: "from-orange-500 to-red-500",
-    angle: 240, // Bottom left (card6)
+    icon: <Gauge className="w-5 h-5" />,
+    color: "bg-gradient-to-br from-violet-400 via-purple-400 to-indigo-400",
+    gradient: "from-violet-50 via-purple-50 to-indigo-50",
+    angle: 240,
     delay: 0.5,
     moduleId: 2
   },
@@ -135,48 +135,199 @@ const circularFlow = [
     stage: "Respond", 
     description: "Deliver grounded, precise answers with AgentC PAG",
     icon: <MessageSquare className="w-5 h-5" />,
-    color: "bg-red-500",
-    gradient: "from-red-500 to-pink-500",
-    angle: 300, // Bottom right (card7)
+    color: "bg-gradient-to-br from-sky-400 via-blue-400 to-indigo-400",
+    gradient: "from-sky-50 via-blue-50 to-indigo-50",
+    angle: 300,
     delay: 0.6,
     moduleId: 3
   }
 ];
 
-const coreModules = [
+// All 7 interactive cards with human-made gradient colors and black icons
+const interactiveCards = [
   {
-    title: "Agent Studio",
-    description: "Comprehensive environment for designing, training, and managing AI agents with version control.",
-    icon: <Brain className="w-8 h-8" />,
-    link: "/platform/studio",
-    features: ["Visual Flow Builder", "Model Training", "A/B Testing", "Version Control"],
-    flowStages: [0, 1] // Map to circularFlow indices
+    id: 0,
+    title: "Discover Module",
+    subtitle: "Data Intelligence & Insights",
+    description: "Automatically discover patterns, anomalies, and opportunities in your data with zero setup. Our AI-powered discovery engine analyzes your existing data sources to recommend optimal agent configurations.",
+    icon: <Search className="w-8 h-8 text-gray-900" />,
+    color: "from-indigo-50 via-purple-50/80 to-fuchsia-50/60",
+    borderColor: "border-indigo-200/50",
+    features: [
+      "Zero Setup Data Ingestion",
+      "Pattern Recognition AI",
+      "Automated Insights Generation",
+      "Multi-source Data Integration"
+    ],
+    metrics: [
+      { label: "Setup Time", value: "0 hours" },
+      { label: "Accuracy", value: "98%" },
+      { label: "Data Sources", value: "50+" }
+    ],
+    link: "/platform/discover"
   },
   {
-    title: "Integration Hub",
-    description: "Connect with your entire tech stack—from CRM and ERP to custom APIs and legacy systems.",
-    icon: <GitBranch className="w-8 h-8" />,
-    link: "/platform/integrations",
-    features: ["500+ Connectors", "Custom APIs", "Real-time Sync", "Event-driven"],
-    flowStages: [2, 3] // Map to circularFlow indices
+    id: 1,
+    title: "Build Studio",
+    subtitle: "Visual AI Agent Creation",
+    description: "Create sophisticated AI agents without writing a single line of code. Our drag-and-drop interface supports complex workflows, decision trees, and multi-model orchestration.",
+    icon: <Brain className="w-8 h-8 text-gray-900" />,
+    color: "from-blue-50 via-sky-50/80 to-cyan-50/60",
+    borderColor: "border-blue-200/50",
+    features: [
+      "Drag & Drop Interface",
+      "Multi-Model Orchestration",
+      "Real-time Collaboration",
+      "Version Control"
+    ],
+    metrics: [
+      { label: "Build Speed", value: "10x Faster" },
+      { label: "Complexity", value: "No-Code" },
+      { label: "Team Size", value: "Unlimited" }
+    ],
+    link: "/platform/build"
   },
   {
-    title: "Analytics Suite",
-    description: "Deep insights into agent performance, customer satisfaction, and business impact metrics.",
-    icon: <BarChart className="w-8 h-8" />,
-    link: "/platform/analytics",
-    features: ["Real-time Dashboards", "Custom Reports", "Predictive Analytics", "ROI Tracking"],
-    flowStages: [4, 5] // Map to circularFlow indices
+    id: 2,
+    title: "Debug Center",
+    subtitle: "Real-time Issue Resolution",
+    description: "Identify and fix issues in real-time with our comprehensive debugging tools. Monitor agent performance, track conversation flows, and pinpoint problems instantly.",
+    icon: <AlertCircle className="w-8 h-8 text-gray-900" />,
+    color: "from-teal-50 via-emerald-50/80 to-green-50/60",
+    borderColor: "border-emerald-200/50",
+    features: [
+      "Real-time Error Tracking",
+      "Conversation Flow Analysis",
+      "Performance Monitoring",
+      "Automated Testing"
+    ],
+    metrics: [
+      { label: "Issue Resolution", value: "90% Faster" },
+      { label: "Uptime", value: "99.9%" },
+      { label: "Test Coverage", value: "100%" }
+    ],
+    link: "/platform/debug"
   },
   {
-    title: "Agent Assist",
-    description: "AI copilot for human agents that suggests responses, automates tasks, and escalates when needed.",
-    icon: <Users className="w-8 h-8" />,
-    link: "/platform/agent-assist",
-    features: ["Real-time Coaching", "Automation", "Knowledge Base", "Escalation"],
-    flowStages: [6] // Map to circularFlow indices
+    id: 3,
+    title: "Testing Suite",
+    subtitle: "Comprehensive Quality Assurance",
+    description: "Ensure your AI agents perform flawlessly in production with our comprehensive testing suite. Run A/B tests, load tests, and security audits all in one place.",
+    icon: <TestTube2 className="w-8 h-8 text-gray-900" />,
+    color: "from-amber-50 via-yellow-50/80 to-orange-50/60",
+    borderColor: "border-amber-200/50",
+    features: [
+      "A/B Testing Framework",
+      "Load & Stress Testing",
+      "Security Audits",
+      "Compliance Checks"
+    ],
+    metrics: [
+      { label: "Test Scenarios", value: "1000+" },
+      { label: "Accuracy", value: "99.5%" },
+      { label: "Compliance", value: "SOC 2" }
+    ],
+    link: "/platform/test"
+  },
+  {
+    id: 4,
+    title: "Analytics Hub",
+    subtitle: "Advanced Performance Insights",
+    description: "Gain deep insights into your AI agents' performance with advanced analytics. Track KPIs, user satisfaction, and business impact metrics in real-time.",
+    icon: <ChartNoAxesCombined className="w-8 h-8 text-gray-900" />,
+    color: "from-rose-50 via-pink-50/80 to-red-50/60",
+    borderColor: "border-rose-200/50",
+    features: [
+      "Real-time Dashboards",
+      "Custom KPI Tracking",
+      "Predictive Analytics",
+      "ROI Calculation"
+    ],
+    metrics: [
+      { label: "Data Points", value: "1M+/day" },
+      { label: "Report Speed", value: "Real-time" },
+      { label: "Insight Accuracy", value: "95%" }
+    ],
+    link: "/platform/analytics"
+  },
+  {
+    id: 5,
+    title: "Measurement Center",
+    subtitle: "Precision Metrics & Monitoring",
+    description: "Measure every aspect of your AI agents' performance with precision metrics. Monitor response times, accuracy rates, and user satisfaction scores.",
+    icon: <Gauge className="w-8 h-8 text-gray-900" />,
+    color: "from-violet-50 via-purple-50/80 to-indigo-50/60",
+    borderColor: "border-violet-200/50",
+    features: [
+      "Custom Metric Builder",
+      "Real-time Alerts",
+      "Performance Benchmarks",
+      "Trend Analysis"
+    ],
+    metrics: [
+      { label: "Metrics Tracked", value: "200+" },
+      { label: "Alert Speed", value: "< 1s" },
+      { label: "Data Retention", value: "2 years" }
+    ],
+    link: "/platform/measure"
+  },
+  {
+    id: 6,
+    title: "Response Engine",
+    subtitle: "Intelligent Answer Generation",
+    description: "Power your AI agents with our advanced response engine that delivers accurate, context-aware answers using AgentC PAG technology.",
+    icon: <MessageSquare className="w-8 h-8 text-gray-900" />,
+    color: "from-sky-50 via-blue-50/80 to-indigo-50/60",
+    borderColor: "border-sky-200/50",
+    features: [
+      "Context-Aware Responses",
+      "Multi-language Support",
+      "Real-time Learning",
+      "Feedback Integration"
+    ],
+    metrics: [
+      { label: "Response Accuracy", value: "96%" },
+      { label: "Languages", value: "15+" },
+      { label: "Response Time", value: "< 1s" }
+    ],
+    link: "/platform/respond"
   }
 ];
+
+// const coreModules = [
+//   {
+//     title: "Agent Studio",
+//     description: "Comprehensive environment for designing, training, and managing AI agents with version control.",
+//     icon: <Brain className="w-8 h-8" />,
+//     link: "/platform/studio",
+//     features: ["Visual Flow Builder", "Model Training", "A/B Testing", "Version Control"],
+//     flowStages: [0, 1]
+//   },
+//   {
+//     title: "Integration Hub",
+//     description: "Connect with your entire tech stack—from CRM and ERP to custom APIs and legacy systems.",
+//     icon: <GitBranch className="w-8 h-8" />,
+//     link: "/platform/integrations",
+//     features: ["500+ Connectors", "Custom APIs", "Real-time Sync", "Event-driven"],
+//     flowStages: [2, 3]
+//   },
+//   {
+//     title: "Analytics Suite",
+//     description: "Deep insights into agent performance, customer satisfaction, and business impact metrics.",
+//     icon: <BarChart className="w-8 h-8" />,
+//     link: "/platform/analytics",
+//     features: ["Real-time Dashboards", "Custom Reports", "Predictive Analytics", "ROI Tracking"],
+//     flowStages: [4, 5]
+//   },
+//   {
+//     title: "Agent Assist",
+//     description: "AI copilot for human agents that suggests responses, automates tasks, and escalates when needed.",
+//     icon: <Users className="w-8 h-8" />,
+//     link: "/platform/agent-assist",
+//     features: ["Real-time Coaching", "Automation", "Knowledge Base", "Escalation"],
+//     flowStages: [6]
+//   }
+// ];
 
 const enterpriseFeatures = [
   {
@@ -207,61 +358,53 @@ const enterpriseFeatures = [
 
 export default function PlatformOverviewPage() {
   const [hoveredStage, setHoveredStage] = useState<number | null>(null);
-  const [activeModule, setActiveModule] = useState<number | null>(null);
+  const [activeStage, setActiveStage] = useState<number | null>(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const coreModulesRef = useRef<HTMLDivElement>(null);
+  const interactiveCardsRef = useRef<HTMLDivElement>(null);
 
   const handleFlowCardClick = (stageIndex: number) => {
-    // Find which module this stage belongs to
-    const clickedStage = circularFlow[stageIndex];
-    if (clickedStage?.moduleId !== undefined) {
-      setActiveModule(clickedStage.moduleId);
-      
-      // Scroll to core modules section with smooth animation
-      setIsScrolling(true);
-      setTimeout(() => {
-        if (coreModulesRef.current) {
-          coreModulesRef.current.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
-        }
-        setIsScrolling(false);
-      }, 100);
-    }
+    setActiveStage(stageIndex);
+    
+    setIsScrolling(true);
+    setTimeout(() => {
+      if (interactiveCardsRef.current) {
+        interactiveCardsRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+      setIsScrolling(false);
+    }, 100);
   };
 
- const handleModuleHover = (moduleIndex: number) => {
-  // When hovering over a module, highlight related flow stages
-  const currentModule = coreModules[moduleIndex]; 
-  if (currentModule?.flowStages?.length > 0) {
-    // Highlight the first related stage
-    setHoveredStage(currentModule.flowStages[0]);
-  }
-};
+  // const handleModuleHover = (moduleIndex: number) => {
+  //   const currentModule = coreModules[moduleIndex]; 
+  //   if (currentModule?.flowStages?.length > 0) {
+  //     setHoveredStage(currentModule.flowStages[0]);
+  //   }
+  // };
 
-  const handleModuleLeave = () => {
-    // Don't clear hoveredStage if it was set by clicking
-    if (!isScrolling) {
-      setHoveredStage(null);
-    }
-  };
+  // const handleModuleLeave = () => {
+  //   if (!isScrolling) {
+  //     setHoveredStage(null);
+  //   }
+  // };
 
-  // Reset active module after 3 seconds
   useEffect(() => {
-    if (activeModule !== null) {
+    if (activeStage !== null) {
       const timer = setTimeout(() => {
-        setActiveModule(null);
-      }, 3000);
+        setActiveStage(0);
+      }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [activeModule]);
+  }, [activeStage]);
+
+  const activeCard = activeStage !== null ? interactiveCards[activeStage] : interactiveCards[0];
 
   return (
     <div className="min-h-screen bg-black pt-20">
       {/* Dark Theme Hero Section */}
       <section className="relative overflow-hidden py-24 px-4 bg-gradient-to-b from-gray-900 to-black">
-        {/* Animated background */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '3s' }} />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s', animationDelay: '1s' }} />
@@ -274,11 +417,6 @@ export default function PlatformOverviewPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
-              <Sparkles className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">Enterprise AI Platform</span>
-            </div> */}
-            
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
               The Complete Platform for
               <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
@@ -297,7 +435,7 @@ export default function PlatformOverviewPage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link href="/contact">
-                  <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300">
+                  <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-sky-500 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300">
                     <span>Start Building Free</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -403,7 +541,6 @@ export default function PlatformOverviewPage() {
 
       {/* Light Theme Circular Flowchart Section */}
       <section className="py-24 px-4 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
-        {/* Background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-100 to-pink-100 rounded-full blur-3xl opacity-50" />
         
@@ -415,7 +552,7 @@ export default function PlatformOverviewPage() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <section className="text-4xl md:text-5xl font-bold text-black-900 mb-6">
+            <section className="text-4xl md:text-5xl font-bold text-grey-900 mb-6">
               AI Agent Development & Deployment Lifecycle
             </section>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -423,348 +560,331 @@ export default function PlatformOverviewPage() {
             </p>
           </motion.div>
 
-{/* Circular Flowchart Container */}
-<div className="relative h-[750px]">
-  {/* Center Platform Hub with Glass Effect */}
-  <div className="absolute inset-0 flex items-center justify-center z-20">
-    <motion.div
-      initial={{ scale: 0 }}
-      whileInView={{ scale: 1 }}
-      transition={{ duration: 0.8, type: "spring" }}
-      viewport={{ once: true }}
-      className="relative"
-    >
-      <div className="w-44 h-44 rounded-full bg-white/85 backdrop-blur-xl border-2 border-white/90 shadow-2xl flex flex-col items-center justify-center p-6">
-        <div className="text-center">
-          <h3 className="text-lg font-bold text-gray-900 mb-2">
-            AgentC PAG
-          </h3>
-          <div className="h-px w-14 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-3"></div>
-          <p className="text-xs text-gray-600">
-            AI Platform
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-
-  {/* Heptagon Structure with Electric Animation */}
-  <div className="absolute inset-0 flex items-center justify-center z-0"> {/* Changed to z-0 to be behind cards */}
-    <svg className="w-full h-full max-w-2xl max-h-2xl" viewBox="0 0 600 600">
-      {/* Main Heptagon - Dotted Line */}
-      <polygon
-        points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150" // Reversed points for clockwise
-        fill="none"
-        stroke="url(#heptagonGradient)"
-        strokeWidth="3"
-        strokeDasharray="12,12"
-        className="opacity-60"
-      />
-      
-      {/* Electric Pulse Animation - Traveling around heptagon CLOCKWISE */}
-      <polygon
-        points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150" // Reversed for clockwise
-        fill="none"
-        stroke="url(#electricPulse)"
-        strokeWidth="4"
-        strokeDasharray="12,12"
-        strokeLinecap="round"
-        className="opacity-80"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from="0"
-          to="24"
-          dur="3s"
-          repeatCount="indefinite"
-          calcMode="linear"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.3;0.8;0.3"
-          dur="1.5s"
-          repeatCount="indefinite"
-        />
-      </polygon>
-      
-      {/* Electric Glow Effect - Clockwise */}
-      <polygon
-        points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150" // Reversed for clockwise
-        fill="none"
-        stroke="url(#electricGlow)"
-        strokeWidth="6"
-        strokeDasharray="12,12"
-        className="opacity-40"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from="0"
-          to="24"
-          dur="2.5s"
-          repeatCount="indefinite"
-          calcMode="linear"
-          begin="0.5s"
-        />
-      </polygon>
-      
-      {/* Electric Spark Particles traveling around CLOCKWISE */}
-      <circle cx="300" cy="100" r="2" fill="#60A5FA">
-        <animateMotion
-          path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100" // Reversed path
-          dur="4s"
-          repeatCount="indefinite"
-          rotate="auto"
-        />
-        <animate
-          attributeName="r"
-          values="2;4;2"
-          dur="1s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.2;1;0.2"
-          dur="1s"
-          repeatCount="indefinite"
-        />
-      </circle>
-      
-      <circle cx="300" cy="100" r="1.5" fill="#8B5CF6">
-        <animateMotion
-          path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100" // Reversed path
-          dur="3.5s"
-          repeatCount="indefinite"
-          rotate="auto"
-          begin="0.3s"
-        />
-        <animate
-          attributeName="r"
-          values="1.5;3;1.5"
-          dur="1.2s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.3;0.9;0.3"
-          dur="1.2s"
-          repeatCount="indefinite"
-        />
-      </circle>
-      
-      <circle cx="300" cy="100" r="1" fill="#34D399">
-        <animateMotion
-          path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100" // Reversed path
-          dur="5s"
-          repeatCount="indefinite"
-          rotate="auto"
-          begin="0.7s"
-        />
-        <animate
-          attributeName="r"
-          values="1;2.5;1"
-          dur="1.5s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.1;0.7;0.1"
-          dur="1.5s"
-          repeatCount="indefinite"
-        />
-      </circle>
-      
-      {/* Center lines to each vertex - BEHIND cards */}
-      {[
-        {x: 300, y: 100},   // 0: Top
-        {x: 150, y: 150},   // 1: Top-left (was Top-right)
-        {x: 100, y: 300},   // 2: Left (was Right)
-        {x: 150, y: 450},   // 3: Bottom-left (was Bottom-right)
-        {x: 300, y: 500},   // 4: Bottom
-        {x: 450, y: 450},   // 5: Bottom-right (was Bottom-left)
-        {x: 500, y: 300}    // 6: Right (was Left)
-      ].map((point, idx) => (
-        <line
-          key={idx}
-          x1="300"
-          y1="300"
-          x2={point.x}
-          y2={point.y}
-          stroke="url(#lineGradient)"
-          strokeWidth="2"
-          strokeDasharray="8,8"
-          className="opacity-15" 
-        />
-      ))}
-      
-      <defs>
-        <linearGradient id="heptagonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.6" />
-          <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#10B981" stopOpacity="0.6" />
-        </linearGradient>
-        
-        <linearGradient id="electricPulse" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60A5FA" />
-          <stop offset="25%" stopColor="#8B5CF6" />
-          <stop offset="50%" stopColor="#34D399" />
-          <stop offset="75%" stopColor="#8B5CF6" />
-          <stop offset="100%" stopColor="#60A5FA" />
-        </linearGradient>
-        
-        <linearGradient id="electricGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.8" />
-          <stop offset="25%" stopColor="#8B5CF6" stopOpacity="0.9" />
-          <stop offset="50%" stopColor="#34D399" stopOpacity="0.8" />
-          <stop offset="75%" stopColor="#8B5CF6" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.8" />
-        </linearGradient>
-        
-        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" /> {/* Reduced opacity */}
-          <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.2" /> {/* Reduced opacity */}
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-
-  {/* Heptagon Nodes - 7 corners */}
-  <div className="absolute inset-0 flex items-center justify-center">
-    {/* Perfect heptagon vertices with large spacing - Adjusted for clockwise orientation */}
-    {circularFlow.map((stage, index) => {
-      // Large radius for proper spacing
-      const radius = 280;
-      
-      // 7 equally spaced angles for heptagon (360/7 ≈ 51.43°) - CLOCKWISE from top
-      const baseAngle = -90; // Start from top
-      const angleStep = 360 / 7;
-      // Go clockwise (negative direction) for clockwise animation
-      const angle = baseAngle - (index * angleStep);
-      // const angleRad = (angle * Math.PI) / 180;
-      
-      // Adjust specific positions for better visual balance
-      let adjustedAngle = angle;
-      let adjustedRadius = radius;
-      
-      // Fine-tune each vertex for perfect heptagon shape (clockwise order)
-      switch(index) {
-        case 0: // Top
-          adjustedAngle = -90;
-          adjustedRadius = radius;
-          break;
-        case 1: // Top-left (clockwise from top)
-          adjustedAngle = -90 - 51.43;
-          adjustedRadius = radius + 10;
-          break;
-        case 2: // Left
-          adjustedAngle = -90 - (51.43 * 2);
-          adjustedRadius = radius + 15;
-          break;
-        case 3: // Bottom-left
-          adjustedAngle = -90 - (51.43 * 3);
-          adjustedRadius = radius + 10;
-          break;
-        case 4: // Bottom
-          adjustedAngle = -90 - (51.43 * 4);
-          adjustedRadius = radius;
-          break;
-        case 5: // Bottom-right
-          adjustedAngle = -90 - (51.43 * 5);
-          adjustedRadius = radius + 10;
-          break;
-        case 6: // Right
-          adjustedAngle = -90 - (51.43 * 6);
-          adjustedRadius = radius + 15;
-          break;
-      }
-      
-      const finalAngleRad = (adjustedAngle * Math.PI) / 180;
-      
-      // Calculate position on circle
-      const centerX = Math.cos(finalAngleRad) * adjustedRadius;
-      const centerY = Math.sin(finalAngleRad) * adjustedRadius;
-      
-      // Card dimensions for heptagon corners
-      const cardWidth = 170; // w-[170px]
-      const cardHeight = 150;
-      
-      // Additional fine-tuning for perfect corner placement
-      let fineTuneX = 0;
-      let fineTuneY = 0;
-      
-      // Adjust each corner position for perfect heptagon shape
-      if (index === 0) { // Top
-        fineTuneY = -5;
-      } else if (index === 1) { // Top-left (clockwise)
-        fineTuneX = -10;
-        fineTuneY = -3;
-      } else if (index === 2) { // Left
-        fineTuneX = -15;
-      } else if (index === 3) { // Bottom-left
-        fineTuneX = -10;
-        fineTuneY = 3;
-      } else if (index === 4) { // Bottom
-        fineTuneY = 5;
-      } else if (index === 5) { // Bottom-right
-        fineTuneX = 10;
-        fineTuneY = 3;
-      } else if (index === 6) { // Right
-        fineTuneX = 15;
-      }
-      
-      return (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: stage.delay }}
-          viewport={{ once: true }}
-          className="absolute z-30 cursor-pointer"
-          style={{
-            left: `calc(50% + ${centerX + fineTuneX}px - ${cardWidth / 2}px)`,
-            top: `calc(50% + ${centerY + fineTuneY}px - ${cardHeight / 2}px)`,
-          }}
-          onMouseEnter={() => setHoveredStage(index)}
-          onMouseLeave={() => {
-            if (!activeModule && !isScrolling) {
-              setHoveredStage(null);
-            }
-          }}
-          onClick={() => handleFlowCardClick(index)}
-        >
-          <div className="relative group">
-            {/* Heptagon Corner Card - Clean design */}
-            <div 
-              className={`w-[170px] bg-white/90 backdrop-blur-xl rounded-xl p-4 border-2 border-white/95 shadow-xl transition-all duration-300 ${
-                hoveredStage === index ? 'scale-110 shadow-2xl ring-2 ring-blue-300' : 'hover:scale-110 hover:shadow-2xl'
-              } ${
-                activeModule !== null && circularFlow.findIndex(s => s.moduleId === activeModule) === index 
-                  ? 'ring-4 ring-blue-400 ring-opacity-50' 
-                  : ''
-              }`}
-            >
-              {/* Node Icon */}
-              <div className={`w-9 h-9 ${stage.color} rounded-full flex items-center justify-center mx-auto mb-3 group-hover:rotate-12 transition-transform duration-300 shadow-lg`}>
-                <div className="text-white">
-                  {stage.icon}
+          {/* Circular Flowchart Container */}
+          <div className="relative h-[750px] overflow-hidden">
+            {/* Center Platform Hub with Glass Effect */}
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.8, type: "spring" }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="w-44 h-44 rounded-full bg-white/85 backdrop-blur-xl border-2 border-white/90 shadow-2xl flex flex-col items-center justify-center p-6">
+                  <div className="text-center">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      AgentC PAG
+                    </h3>
+                    <div className="h-px w-14 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-3"></div>
+                    <p className="text-xs text-gray-600">
+                      AI Platform
+                    </p>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Node Title */}
-              <h3 className="text-sm font-bold text-gray-900 mb-2 text-center">
-                {stage.stage}
-              </h3>
-              
-              {/* Node Description */}
-              <p className="text-xs text-gray-600 text-center leading-tight min-h-[2.5rem]">
-                {stage.description}
-              </p>
+              </motion.div>
+            </div>
+
+            {/* Heptagon Structure with Electric Animation - BEHIND CARDS (z-index: 0) */}
+            <div className="absolute inset-0 flex items-center justify-center z-0">
+              <svg className="w-full h-full max-w-2xl max-h-2xl" viewBox="0 0 600 600">
+                {/* Main Heptagon - Dotted Line */}
+                <polygon
+                  points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150"
+                  fill="none"
+                  stroke="url(#heptagonGradient)"
+                  strokeWidth="3"
+                  strokeDasharray="12,12"
+                  className="opacity-60"
+                />
+                
+                {/* Electric Pulse Animation */}
+                <polygon
+                  points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150"
+                  fill="none"
+                  stroke="url(#electricPulse)"
+                  strokeWidth="4"
+                  strokeDasharray="12,12"
+                  strokeLinecap="round"
+                  className="opacity-80"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="0"
+                    to="24"
+                    dur="3s"
+                    repeatCount="indefinite"
+                    calcMode="linear"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.3;0.8;0.3"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                  />
+                </polygon>
+                
+                {/* Electric Glow Effect */}
+                <polygon
+                  points="300,100 150,150 100,300 150,450 300,500 450,450 500,300 450,150"
+                  fill="none"
+                  stroke="url(#electricGlow)"
+                  strokeWidth="6"
+                  strokeDasharray="12,12"
+                  className="opacity-40"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="0"
+                    to="24"
+                    dur="2.5s"
+                    repeatCount="indefinite"
+                    calcMode="linear"
+                    begin="0.5s"
+                  />
+                </polygon>
+                
+                {/* Electric Spark Particles */}
+                <circle cx="300" cy="100" r="2" fill="#60A5FA">
+                  <animateMotion
+                    path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100"
+                    dur="4s"
+                    repeatCount="indefinite"
+                    rotate="auto"
+                  />
+                  <animate
+                    attributeName="r"
+                    values="2;4;2"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.2;1;0.2"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                
+                <circle cx="300" cy="100" r="1.5" fill="#8B5CF6">
+                  <animateMotion
+                    path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100"
+                    dur="3.5s"
+                    repeatCount="indefinite"
+                    rotate="auto"
+                    begin="0.3s"
+                  />
+                  <animate
+                    attributeName="r"
+                    values="1.5;3;1.5"
+                    dur="1.2s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.3;0.9;0.3"
+                    dur="1.2s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                
+                <circle cx="300" cy="100" r="1" fill="#34D399">
+                  <animateMotion
+                    path="M300,100 L150,150 L100,300 L150,450 L300,500 L450,450 L500,300 L450,150 L300,100"
+                    dur="5s"
+                    repeatCount="indefinite"
+                    rotate="auto"
+                    begin="0.7s"
+                  />
+                  <animate
+                    attributeName="r"
+                    values="1;2.5;1"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.1;0.7;0.1"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                
+                {/* Center lines to each vertex */}
+                {[
+                  {x: 300, y: 100},
+                  {x: 150, y: 150},
+                  {x: 100, y: 300},
+                  {x: 150, y: 450},
+                  {x: 300, y: 500},
+                  {x: 450, y: 450},
+                  {x: 500, y: 300}
+                ].map((point, idx) => (
+                  <line
+                    key={idx}
+                    x1="300"
+                    y1="300"
+                    x2={point.x}
+                    y2={point.y}
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                    strokeDasharray="8,8"
+                    className="opacity-15" 
+                  />
+                ))}
+                
+                <defs>
+                  <linearGradient id="heptagonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.6" />
+                    <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#10B981" stopOpacity="0.6" />
+                  </linearGradient>
+                  
+                  <linearGradient id="electricPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#60A5FA" />
+                    <stop offset="25%" stopColor="#8B5CF6" />
+                    <stop offset="50%" stopColor="#34D399" />
+                    <stop offset="75%" stopColor="#8B5CF6" />
+                    <stop offset="100%" stopColor="#60A5FA" />
+                  </linearGradient>
+                  
+                  <linearGradient id="electricGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.8" />
+                    <stop offset="25%" stopColor="#8B5CF6" stopOpacity="0.9" />
+                    <stop offset="50%" stopColor="#34D399" stopOpacity="0.8" />
+                    <stop offset="75%" stopColor="#8B5CF6" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.8" />
+                  </linearGradient>
+                  
+                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.2" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            {/* Heptagon Nodes - 7 corners - CARDS IN FRONT (z-index: 30) */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {circularFlow.map((stage, index) => {
+                const radius = 280;
+                const baseAngle = -90;
+                const angleStep = 360 / 7;
+                const angle = baseAngle - (index * angleStep);
+                
+                let adjustedAngle = angle;
+                let adjustedRadius = radius;
+                
+                switch(index) {
+                  case 0:
+                    adjustedAngle = -90;
+                    adjustedRadius = radius;
+                    break;
+                  case 1:
+                    adjustedAngle = -90 - 51.43;
+                    adjustedRadius = radius + 10;
+                    break;
+                  case 2:
+                    adjustedAngle = -90 - (51.43 * 2);
+                    adjustedRadius = radius + 15;
+                    break;
+                  case 3:
+                    adjustedAngle = -90 - (51.43 * 3);
+                    adjustedRadius = radius + 10;
+                    break;
+                  case 4:
+                    adjustedAngle = -90 - (51.43 * 4);
+                    adjustedRadius = radius;
+                    break;
+                  case 5:
+                    adjustedAngle = -90 - (51.43 * 5);
+                    adjustedRadius = radius + 10;
+                    break;
+                  case 6:
+                    adjustedAngle = -90 - (51.43 * 6);
+                    adjustedRadius = radius + 15;
+                    break;
+                }
+                
+                const finalAngleRad = (adjustedAngle * Math.PI) / 180;
+                const centerX = Math.cos(finalAngleRad) * adjustedRadius;
+                const centerY = Math.sin(finalAngleRad) * adjustedRadius;
+                
+                const cardWidth = 170;
+                const cardHeight = 150;
+                
+                let fineTuneX = 0;
+                let fineTuneY = 0;
+                
+                if (index === 0) {
+                  fineTuneY = -5;
+                } else if (index === 1) {
+                  fineTuneX = -10;
+                  fineTuneY = -3;
+                } else if (index === 2) {
+                  fineTuneX = -15;
+                } else if (index === 3) {
+                  fineTuneX = -10;
+                  fineTuneY = 3;
+                } else if (index === 4) {
+                  fineTuneY = 5;
+                } else if (index === 5) {
+                  fineTuneX = 10;
+                  fineTuneY = 3;
+                } else if (index === 6) {
+                  fineTuneX = 15;
+                }
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: stage.delay }}
+                    viewport={{ once: true }}
+                    className="absolute z-30 cursor-pointer"
+                    style={{
+                      left: `calc(50% + ${centerX + fineTuneX}px - ${cardWidth / 2}px)`,
+                      top: `calc(50% + ${centerY + fineTuneY}px - ${cardHeight / 2}px)`,
+                    }}
+                    onMouseEnter={() => setHoveredStage(index)}
+                    onMouseLeave={() => {
+                      if (!isScrolling) {
+                        setHoveredStage(null);
+                      }
+                    }}
+                    onClick={() => handleFlowCardClick(index)}
+                  >
+                    <div className="relative group">
+                      <div 
+                        className={`w-[170px] bg-white/95 backdrop-blur-sm rounded-xl p-4 border border-gray-200 shadow-lg transition-all duration-300 ${
+                          hoveredStage === index ? 'scale-110 shadow-xl ring-2 ring-blue-300/50' : 'hover:scale-105 hover:shadow-xl'
+                        } ${
+                          activeStage === index 
+                            ? 'ring-2 ring-blue-400 scale-105' 
+                            : ''
+                        }`}
+                      >
+                        <div className={`w-9 h-9 ${stage.color} rounded-full flex items-center justify-center mx-auto mb-3 group-hover:rotate-12 transition-transform duration-300 shadow-md`}>
+                          <div className="text-white">
+                            {stage.icon}
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-sm font-bold text-gray-900 mb-2 text-center">
+                          {stage.stage}
+                        </h3>
+                        
+                        <p className="text-xs text-gray-600 text-center leading-tight min-h-[2.5rem]">
+                          {stage.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
-        </motion.div>
-      );
-    })}
-  </div>
-</div>
 
           {/* Active stage indicator */}
           {hoveredStage !== null && (
@@ -773,24 +893,19 @@ export default function PlatformOverviewPage() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-12 max-w-2xl mx-auto text-center"
             >
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/60 backdrop-blur-sm rounded-full border border-white/80">
-                <div className={`w-3 h-3 ${circularFlow[hoveredStage].color} rounded-full`}></div>
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200">
+                <div className={`w-3 h-3 rounded-full ${circularFlow[hoveredStage].color}`}></div>
                 <span className="font-medium text-gray-900">{circularFlow[hoveredStage].stage}</span>
-                <span className="text-gray-600">•</span>
+                <span className="text-gray-400">•</span>
                 <span className="text-gray-600">{circularFlow[hoveredStage].description}</span>
-                {circularFlow[hoveredStage].moduleId !== undefined && (
-                  <span className="text-xs text-blue-500 font-medium">
-                    (Module: {coreModules[circularFlow[hoveredStage].moduleId]?.title})
-                  </span>
-                )}
               </div>
             </motion.div>
           )}
         </div>
       </section>
 
-      {/* Light Theme Core Modules - With interaction */}
-      <section ref={coreModulesRef} className="py-24 px-4 bg-gradient-to-b from-white to-blue-50">
+      {/* Interactive Cards Section - Shows details of clicked stage */}
+      <section ref={interactiveCardsRef} className="py-24 px-4 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -799,135 +914,136 @@ export default function PlatformOverviewPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 backdrop-blur-sm border border-blue-200 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-100/80 to-purple-100/80 backdrop-blur-sm border border-blue-200/50 mb-6">
               <Sparkles className="w-4 h-4 text-blue-600" />
-              <span className="text-sm font-medium text-blue-800">Platform Architecture</span>
+              <span className="text-sm font-medium text-blue-800">Platform Modules</span>
             </div>
-            <section className="text-4xl md:text-5xl font-bold text-black-600 mb-6">
-              Everything You Need in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">One Platform</span>
-            </section>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Four integrated modules that work together seamlessly to power your AI agent strategy.
+            <h2 className="text-4xl md:text-5xl font-bold text-black-600 mb-6">
+              Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Platform Features</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+              Click on any stage in the workflow above to explore its detailed capabilities
             </p>
             
-            {/* Active module indicator */}
-            {activeModule !== null && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-200"
-              >
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-blue-700">
-                  Showing: {coreModules[activeModule]?.title}
-                </span>
-                <button
-                  onClick={() => setActiveModule(null)}
-                  className="ml-2 text-xs text-gray-500 hover:text-gray-700"
+            {/* Stage indicator pills */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {circularFlow.map((stage, index) => (
+                <motion.button
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setActiveStage(index);
+                    handleFlowCardClick(index);
+                  }}
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-300 ${
+                    activeStage === index 
+                      ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white border-transparent shadow-md' 
+                      : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:shadow-sm'
+                  }`}
                 >
-                  ✕
-                </button>
-              </motion.div>
-            )}
+                  <div className={`w-2.5 h-2.5 rounded-full ${stage.color}`} />
+                  <span className="text-sm font-medium">{stage.stage}</span>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {coreModules.map((module, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: activeModule === index ? 0 : index * 0.1 
-                }}
-                viewport={{ once: true }}
-                className="group"
-                onMouseEnter={() => handleModuleHover(index)}
-                onMouseLeave={handleModuleLeave}
-              >
-                <Link href={module.link}>
-                  <div className={`relative h-full rounded-2xl p-8 border-2 ${activeModule === index ? 'border-blue-300 bg-gradient-to-r from-blue-50/50 to-purple-50/50 ring-4 ring-blue-200 ring-opacity-30' : 'border-blue-100 bg-white/80'} backdrop-blur-sm hover:border-blue-300 hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl`}>
-                    {/* Background glow with animation for active module */}
-                    <div className={`absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 ${
-                      activeModule === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                    } transition-opacity duration-500`} />
-                    
-                    {/* Active module pulse effect */}
-                    {activeModule === index && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 animate-pulse rounded-2xl" />
-                    )}
-
-                    {/* Icon */}
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 border ${
-                      activeModule === index ? 'border-blue-300' : 'border-blue-200'
-                    } flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <div className={`${activeModule === index ? 'text-blue-600' : 'text-blue-600'}`}>
-                        {module.icon}
-                      </div>
+          {/* Main Interactive Card - Shows details of active stage */}
+          <motion.div
+            key={activeStage}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <div className={`relative rounded-3xl bg-gradient-to-br ${activeCard.color} border ${activeCard.borderColor} overflow-hidden shadow-lg`}>
+              {/* Subtle texture overlay */}
+              {/* <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px]" /> */}
+              <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px] -z-10" />
+              {/* Header with icon */}
+              <div className="relative p-8 border-b border-gray-200/30">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md border border-gray-200/50">
+                      {activeCard.icon}
                     </div>
-
-                    {/* Content */}
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      {module.title}
-                      {activeModule === index && (
-                        <span className="ml-2 text-sm font-normal text-blue-600 animate-pulse">
-                          ← Selected
-                        </span>
-                      )}
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {module.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="space-y-3">
-                      {module.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <CheckCircle className={`w-4 h-4 ${activeModule === index ? 'text-green-600' : 'text-green-500'} flex-shrink-0`} />
-                          <span className="text-sm text-gray-700">{feature}</span>
+                    <div>
+                      <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                        {activeCard.title}
+                      </h3>
+                      <p className="text-lg text-gray-700">
+                        {activeCard.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  <Link href={activeCard.link}>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gray-900 to-gray-800 text-white font-semibold hover:shadow-lg transition-all duration-300"
+                    >
+                      <span>Explore Module</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
+                </div>
+                
+                <p className="text-lg text-gray-800 leading-relaxed">
+                  {activeCard.description}
+                </p>
+              </div>
+              
+              {/* Content section */}
+              <div className="relative p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Features */}
+                  <div className="lg:col-span-2">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-6">Key Features</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {activeCard.features.map((feature, index) => (
+                        <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/50">
+                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-800 font-medium">{feature}</span>
                         </div>
                       ))}
                     </div>
-
-                    {/* Hover indicator */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent ${
-                      activeModule === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                    } transition-opacity duration-300`} />
-                    
-                    {/* Related stages indicator */}
-                    <div className="absolute top-4 right-4">
-                      <div className="flex gap-1">
-                        {module.flowStages?.map((stageIdx) => (
-                          <div
-                            key={stageIdx}
-                            className={`w-2 h-2 rounded-full ${
-                              hoveredStage === stageIdx || activeModule === index 
-                                ? circularFlow[stageIdx]?.color 
-                                : 'bg-gray-300'
-                            }`}
-                          />
-                        ))}
-                      </div>
+                  </div>
+                  
+                  {/* Metrics */}
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-6">Performance Metrics</h4>
+                    <div className="space-y-4">
+                      {activeCard.metrics.map((metric, index) => (
+                        <div key={index} className="p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/50">
+                          <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
+                          <div className="text-sm text-gray-700">{metric.label}</div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Click instruction */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: activeModule !== null ? 0 : 1 }}
-            className="mt-8 text-center"
-          >
-            <p className="text-sm text-gray-500">
-              💡 <span className="font-medium text-blue-600">Tip:</span> Click on any stage in the workflow above to highlight its corresponding platform module
-            </p>
+                </div>
+              </div>
+              
+              {/* Progress indicator */}
+              {/* <div className="relative h-1 bg-gray-200/50">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-gray-900 to-gray-800"
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
+              </div> */}
+            </div>
           </motion.div>
+
+          {/* All cards preview */}
+          
         </div>
       </section>
+
+      {/* Core Modules Section */}
+      
 
       {/* Dark Theme Enterprise Capabilities */}
       <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-black">
@@ -1023,16 +1139,19 @@ export default function PlatformOverviewPage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="relative rounded-3xl bg-white border-2 border-blue-100 p-12 shadow-2xl">
-              {/* Background glow */}
+            <div className="relative rounded-3xl bg-gradient-to-br from-white/95 to-blue-50/95 border-2 border-blue-100/50 p-12 shadow-xl">
+              {/* Subtle texture */}
+              {/* <div className="absolute inset-0 rounded-3xl opacity-10 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px]" /> */}
+              <div className="absolute inset-0 rounded-3xl opacity-10 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] -z-10" />
+
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-3xl blur-xl" />
               
               <div className="relative z-10">
-                <section className="text-4xl md:text-5xl font-bold text-black mb-6">
-  Start Building Today
-</section>
+                <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                  Start Building Today
+                </h2>
 
-                <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                <p className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
                   Join thousands of teams using our platform to transform customer experiences with AI.
                 </p>
                 
@@ -1042,7 +1161,7 @@ export default function PlatformOverviewPage() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link href="/contact">
-                      <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300">
+                      <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-gray-900 to-gray-800 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300">
                         <span>Get Started Free</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </button>
@@ -1054,7 +1173,7 @@ export default function PlatformOverviewPage() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link href="/demo">
-                      <button className="group inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl font-semibold border border-gray-800 hover:bg-gray-800 transition-all duration-300">
+                      <button className="group inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm text-gray-900 px-8 py-4 rounded-xl font-semibold border border-gray-200 hover:bg-white transition-all duration-300">
                         <span>Schedule a Demo</span>
                         <MessageSquare className="w-4 h-4" />
                       </button>
@@ -1062,7 +1181,7 @@ export default function PlatformOverviewPage() {
                   </motion.div>
                 </div>
                 
-                <p className="text-sm text-gray-500 mt-8">
+                <p className="text-sm text-gray-600 mt-8">
                   No credit card required • Free 14-day trial • Enterprise support available
                 </p>
               </div>
