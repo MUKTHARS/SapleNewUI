@@ -53,32 +53,19 @@ export function HumanLikeConversationsSection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-gray-800">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/images/Saple AI Agent Image 2.png" // Update with your actual image path
-                  alt="AI Agent Human-like Conversations Interface"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              </div>
-              {/* Stats overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="grid grid-cols-2 gap-4">
-                  {/* <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <div className="text-2xl font-bold text-white mb-1">98%</div>
-                    <div className="text-xs text-gray-300">Customer Satisfaction</div>
-                  </div>
-                  <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <div className="text-2xl font-bold text-white mb-1">40%</div>
-                    <div className="text-xs text-gray-300">Faster Resolution</div>
-                  </div> */}
-                </div>
-              </div>
-            </div>
+
+<div className="relative rounded-2xl border border-gray-800 bg-black">
+  <div className="relative">
+    <Image
+      src="/images/Saple Ai Agent Image 2.png"
+      alt="AI Agent Human-like Conversations Interface"
+      width={600}
+      height={450}
+      className="w-full h-auto rounded-2xl"
+      sizes="(max-width: 768px) 100vw, 50vw"
+    />
+  </div>
+</div>
           </motion.div>
         </div>
       </div>
