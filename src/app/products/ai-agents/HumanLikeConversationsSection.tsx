@@ -57,7 +57,7 @@ export function HumanLikeConversationsSection() {
 <div className="relative rounded-2xl border border-gray-800 bg-black">
   <div className="relative">
     <Image
-      src="/images/Saple Ai Agent Image 2.png"
+      src="/images/Saple_Ai_Agent_Image.png"
       alt="AI Agent Human-like Conversations Interface"
       width={600}
       height={450}
